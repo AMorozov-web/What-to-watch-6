@@ -8,6 +8,8 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
+    watchContentBase: true,
+    hot: true,
     open: true,
     port: 1337,
   },
