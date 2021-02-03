@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MainPage from '../main-page/main-page';
 
-const App = (props) => {
-  const {titles} = props;
+const App = ({titles}) => {
 
   return (
     <MainPage

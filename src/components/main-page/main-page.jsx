@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import SmallMovieCard from '../small-movie-card/small-movie-card';
 import {nanoid} from 'nanoid';
 
-const MainPage = (props) => {
-  const {titles} = props;
+const MainPage = ({titles}) => {
 
   return (
-    <div>
+    <>
       <section className="movie-card">
         <div className="movie-card__bg">
           <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -112,7 +111,7 @@ const MainPage = (props) => {
           </div>
         </footer>
       </div>
-    </div>
+    </>
   );
 };
 

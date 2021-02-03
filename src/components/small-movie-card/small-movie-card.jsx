@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SmallMovieCard = (props) => {
-  const {title} = props;
+const SmallMovieCard = ({title}) => {
 
   return (
     <article className="small-movie-card catalog__movies-card">
