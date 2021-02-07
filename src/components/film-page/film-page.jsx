@@ -118,7 +118,7 @@ const FilmPage = () => {
           </div>
         </section>
         <footer className="page-footer">
-          <Logo addClass={`logo__link--light`}/>
+          <Logo inFooter/>
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
           </div>
