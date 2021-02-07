@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SmallMovieCard from '../small-movie-card/small-movie-card';
-import {nanoid} from 'nanoid';
 
 const MainPage = ({titles}) => {
 
@@ -92,7 +91,7 @@ const MainPage = ({titles}) => {
             </li>
           </ul>
           <div className="catalog__movies-list">
-            {titles.map((movieTitle) => <SmallMovieCard key={nanoid()} title={movieTitle} />)}
+            {titles.map((movieTitle, i) => <SmallMovieCard key={movieTitle + i} title={movieTitle} />)}
           </div>
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
