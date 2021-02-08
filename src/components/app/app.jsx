@@ -5,7 +5,7 @@ import MainPage from '../main-page/main-page';
 import SignInPage from '../sign-in-page/sign-in-page';
 import MyListPage from '../my-list-page/my-list-page';
 import FilmPage from '../film-page/film-page';
-import AddReviewPage from '../add-review-page/add-review.page';
+import AddReviewPage from '../add-review-page/add-review-page';
 import PlayerPage from '../player-page/player-page';
 import NotFoundPage from '../not-found-page/not-found-page';
 
@@ -23,13 +23,13 @@ const App = ({titles}) => {
         <Route exact path="/mylist">
           <MyListPage />
         </Route>
-        <Route exact path="/films/:id?">
+        <Route exact path="/films/:id">
           <FilmPage />
         </Route>
         <Route exact path="/films/:id/review">
           <AddReviewPage />
         </Route>
-        <Route exact path="/player/:id?">
+        <Route exact path="/player/:id">
           <PlayerPage />
         </Route>
         <Route>

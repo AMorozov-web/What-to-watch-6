@@ -91,7 +91,7 @@ const MainPage = ({titles}) => {
             </li>
           </ul>
           <div className="catalog__movies-list">
-            {titles.map((movieTitle, i) => <SmallMovieCard key={movieTitle + i} title={movieTitle} />)}
+            {titles.map((movieTitle) => <SmallMovieCard key={movieTitle} title={movieTitle} />)}
           </div>
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
