@@ -1,5 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  filmsTypeReview,
+} from '../../consts';
 
 const SmallMovieCard = ({film}) => {
 
@@ -17,7 +19,7 @@ const SmallMovieCard = ({film}) => {
 
 
 SmallMovieCard.propTypes = {
-  film: PropTypes.object.isRequired,
+  film: filmsTypeReview.isRequired,
 };
 
 export default SmallMovieCard;

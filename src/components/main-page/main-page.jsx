@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SmallMovieCard from '../small-movie-card/small-movie-card';
+import {
+  filmsTypeReview,
+} from '../../consts';
 
 const MainPage = ({films}) => {
 
@@ -116,12 +119,7 @@ const MainPage = ({films}) => {
 
 MainPage.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        previewImage: PropTypes.string.isRequired,
-        previewVideoLink: PropTypes.string.isRequired,
-      })
+      filmsTypeReview.isRequired
   ).isRequired,
 };
 

@@ -8,6 +8,9 @@ import FilmPage from '../film-page/film-page';
 import AddReviewPage from '../add-review-page/add-review-page';
 import PlayerPage from '../player-page/player-page';
 import NotFoundPage from '../not-found-page/not-found-page';
+import {
+  filmsTypeReview,
+} from '../../consts';
 
 const App = ({films}) => {
 
@@ -42,12 +45,7 @@ const App = ({films}) => {
 
 App.propTypes = {
   films: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        previewImage: PropTypes.string.isRequired,
-        previewVideoLink: PropTypes.string.isRequired,
-      })
+      filmsTypeReview.isRequired
   ).isRequired,
 };
 
