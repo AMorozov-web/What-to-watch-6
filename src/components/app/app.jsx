@@ -9,13 +9,13 @@ import AddReviewPage from '../add-review-page/add-review-page';
 import PlayerPage from '../player-page/player-page';
 import NotFoundPage from '../not-found-page/not-found-page';
 
-const App = ({titles}) => {
+const App = ({films}) => {
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage titles={titles} />
+          <MainPage films={films} />
         </Route>
         <Route exact path="/login">
           <SignInPage />
@@ -41,7 +41,14 @@ const App = ({titles}) => {
 };
 
 App.propTypes = {
-  titles: PropTypes.arrayOf(PropTypes.string.isRequired),
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        previewImage: PropTypes.string.isRequired,
+        previewVideoLink: PropTypes.string.isRequired,
+      })
+  ).isRequired,
 };
 
 export default App;

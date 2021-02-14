@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SmallMovieCard from '../small-movie-card/small-movie-card';
 
-const MainPage = ({titles}) => {
+const MainPage = ({films}) => {
 
   return (
     <>
@@ -91,7 +91,7 @@ const MainPage = ({titles}) => {
             </li>
           </ul>
           <div className="catalog__movies-list">
-            {titles.map((movieTitle) => <SmallMovieCard key={movieTitle} title={movieTitle} />)}
+            {films.map((film) => <SmallMovieCard key={film.id} film={film} />)}
           </div>
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -115,7 +115,14 @@ const MainPage = ({titles}) => {
 };
 
 MainPage.propTypes = {
-  titles: PropTypes.arrayOf(PropTypes.string.isRequired),
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        previewImage: PropTypes.string.isRequired,
+        previewVideoLink: PropTypes.string.isRequired,
+      })
+  ).isRequired,
 };
 
 export default MainPage;

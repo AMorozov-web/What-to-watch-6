@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SmallMovieCard = ({title}) => {
+const SmallMovieCard = ({film}) => {
 
   return (
     <article className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
-        <img src="img/macbeth.jpg" alt={title} width={280} height={175} />
+        <img src={film.previewImage} alt={film.title} width={280} height={175} />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
       </h3>
     </article>
   );
@@ -17,7 +17,7 @@ const SmallMovieCard = ({title}) => {
 
 
 SmallMovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
+  film: PropTypes.object.isRequired,
 };
 
 export default SmallMovieCard;
