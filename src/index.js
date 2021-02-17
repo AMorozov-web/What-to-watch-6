@@ -1,11 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-import FILMS from './mocks/films';
 
-ReactDOM.render(
-    <App
-      films={FILMS}
-    />,
-    document.querySelector(`#root`)
-);
+const adaptToCLient = (film) => {
+  const adaptedFilm = Object.assign(
+      {},
+      film,
+      {
+        title: film.name,
+        posterImage: film.poster_image,
+        previewImage: film.preview_image,
+        backgroundImage: film.background_image,
+        backgroundColor: film.background_color,
+        scoresCount: film.scores_count,
+        runTime: film.run_time,
+        isFavorite: film.is_favorite,
+        videoLink: film.video_link,
+        previewVideoLink: film.preview_video_link,
+      }
+  );
+
+  delete adaptedFilm.name;
+  delete adaptedFilm.poster_image;
+  delete adaptedFilm.preview_image;
+  delete adaptedFilm.background_image;
+  delete adaptedFilm.background_color;
+  delete adaptedFilm.scores_count;
+  delete adaptedFilm.run_time;
+  delete adaptedFilm.is_favorite;
+  delete adaptedFilm.video_link;
+  delete adaptedFilm.preview_video_link;
+
+  return adaptedFilm;
+
+};
+
+fetch(`https://5.react.pages.academy/wtw/films/`)
+            .then((response) => response.json())
+            .then((films) => {
+              ReactDOM.render(
+                  <App
+                    films={films.map(adaptToCLient)}
+                  />,
+                  document.querySelector(`#root`)
+              );
+            });
