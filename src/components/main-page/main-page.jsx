@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SmallMovieCard from '../small-movie-card/small-movie-card';
+import MoviesList from '../movies-list/movies-list';
 import Logo from '../logo/logo';
 import {
   filmsTypeReview,
@@ -88,9 +88,7 @@ const MainPage = ({films}) => {
               <a href="#" className="catalog__genres-link">Thrillers</a>
             </li>
           </ul>
-          <div className="catalog__movies-list">
-            {films.map((film) => <SmallMovieCard key={film.id} film={film} />)}
-          </div>
+          <MoviesList films={films} />
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>
