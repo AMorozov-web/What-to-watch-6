@@ -3,22 +3,20 @@ import ReactDOM from 'react-dom';
 import App from './components/app/app';
 
 const adaptToCLient = (film) => {
-  const adaptedFilm = Object.assign(
-      {},
-      film,
-      {
-        title: film.name,
-        posterImage: film.poster_image,
-        previewImage: film.preview_image,
-        backgroundImage: film.background_image,
-        backgroundColor: film.background_color,
-        scoresCount: film.scores_count,
-        runTime: film.run_time,
-        isFavorite: film.is_favorite,
-        videoLink: film.video_link,
-        previewVideoLink: film.preview_video_link,
-      }
-  );
+  const adaptedFilm = {
+    ...film,
+    title: film.name,
+    posterImage: film.poster_image,
+    previewImage: film.preview_image,
+    backgroundImage: film.background_image,
+    backgroundColor: film.background_color,
+    scoresCount: film.scores_count,
+    runTime: film.run_time,
+    isFavorite: film.is_favorite,
+    videoLink: film.video_link,
+    previewVideoLink: film.preview_video_link,
+  };
+
 
   delete adaptedFilm.name;
   delete adaptedFilm.poster_image;
@@ -32,7 +30,6 @@ const adaptToCLient = (film) => {
   delete adaptedFilm.preview_video_link;
 
   return adaptedFilm;
-
 };
 
 fetch(`https://5.react.pages.academy/wtw/films/`)
