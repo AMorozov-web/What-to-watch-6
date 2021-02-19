@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
 import Logo from '../logo/logo';
-import {filmsTypeReview} from '../../consts';
+import {
+  filmTypeReview,
+  getRatingText,
+} from '../../consts';
 
 const FilmPage = ({films}) => {
   const id = +useParams().id;
@@ -15,14 +18,23 @@ const FilmPage = ({films}) => {
     director,
     starring,
     released,
+    backgroundImage,
+    backgroundColor,
+    posterImage,
   } = films.find((film) => film.id === id);
+
+  const cardStyle = {
+    backgroundColor,
+  };
+
+  const starrings = starring.join(`, `);
 
   return (
     <>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={cardStyle}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={backgroundImage} alt={title} />
           </div>
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header movie-card__head">
@@ -35,10 +47,10 @@ const FilmPage = ({films}) => {
           </header>
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button">
@@ -61,7 +73,7 @@ const FilmPage = ({films}) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width={218} height={327} />
+              <img src={posterImage} alt={`${title} poster`} width={218} height={327} />
             </div>
             <div className="movie-card__desc">
               <nav className="movie-nav movie-card__nav">
@@ -78,17 +90,16 @@ const FilmPage = ({films}) => {
                 </ul>
               </nav>
               <div className="movie-rating">
-                <div className="movie-rating__score">8,9</div>
+                <div className="movie-rating__score">{rating.toString().replace(`.`, `,`)}</div>
                 <p className="movie-rating__meta">
-                  <span className="movie-rating__level">Very good</span>
-                  <span className="movie-rating__count">240 ratings</span>
+                  <span className="movie-rating__level">{getRatingText(rating)}</span>
+                  <span className="movie-rating__count">{`${scoresCount} ratings`}</span>
                 </p>
               </div>
               <div className="movie-card__text">
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave`s friend and protege.</p>
-                <p>Gustave prides himself on providing first-class service to the hotel`s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave`s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-                <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-                <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+                <p>{description}</p>
+                <p className="movie-card__director"><strong>Director: {director}</strong></p>
+                <p className="movie-card__starring"><strong>Starring: {starrings}</strong></p>
               </div>
             </div>
           </div>
@@ -146,7 +157,7 @@ const FilmPage = ({films}) => {
 
 FilmPage.propTypes = {
   films: PropTypes.arrayOf(
-      filmsTypeReview.isRequired
+      filmTypeReview.isRequired
   ).isRequired,
 };
 

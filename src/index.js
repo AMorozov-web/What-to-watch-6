@@ -32,7 +32,7 @@ const adaptToCLient = (film) => {
   return adaptedFilm;
 };
 
-fetch(`https://5.react.pages.academy/wtw/films/`)
+fetch(`https://6.react.pages.academy/wtw/films/`)
             .then((response) => response.json())
             .then((films) => {
               ReactDOM.render(

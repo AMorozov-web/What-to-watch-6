@@ -9,7 +9,7 @@ import AddReviewPage from '../add-review-page/add-review-page';
 import PlayerPage from '../player-page/player-page';
 import NotFoundPage from '../not-found-page/not-found-page';
 import {
-  filmsTypeReview,
+  filmTypeReview,
 } from '../../consts';
 
 const App = ({films}) => {
@@ -45,7 +45,7 @@ const App = ({films}) => {
 
 App.propTypes = {
   films: PropTypes.arrayOf(
-      filmsTypeReview.isRequired
+      filmTypeReview.isRequired
   ).isRequired,
 };
 
