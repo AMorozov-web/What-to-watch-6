@@ -1,7 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {useParams} from 'react-router-dom';
 import Logo from '../logo/logo';
+import {filmsTypeReview} from '../../consts';
 
-const FilmPage = () => {
+const FilmPage = ({films}) => {
+  const id = +useParams().id;
+  const {
+    title,
+    genre,
+    rating,
+    scoresCount,
+    description,
+    director,
+    starring,
+    released,
+  } = films.find((film) => film.id === id);
+
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -127,6 +142,12 @@ const FilmPage = () => {
     </>
 
   );
+};
+
+FilmPage.propTypes = {
+  films: PropTypes.arrayOf(
+      filmsTypeReview.isRequired
+  ).isRequired,
 };
 
 export default FilmPage;

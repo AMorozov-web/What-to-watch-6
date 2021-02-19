@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  filmsTypeReview,
-} from '../../consts';
+import {Link} from 'react-router-dom';
+import {filmsTypeReview} from '../../consts';
 
 const MovieCard = ({film, handleMouseOver}) => {
+  const href = `/films/${film.id}`;
 
   return (
     <article className="small-movie-card catalog__movies-card" onMouseOver={() => handleMouseOver(film.id)}>
@@ -12,9 +12,9 @@ const MovieCard = ({film, handleMouseOver}) => {
         <img src={film.previewImage} alt={film.title} width={280} height={175} />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">
+        <Link className="small-movie-card__link" to={href}>
           {film.title}
-        </a>
+        </Link>
       </h3>
     </article>
   );
