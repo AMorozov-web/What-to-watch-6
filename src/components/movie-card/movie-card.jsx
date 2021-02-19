@@ -23,7 +23,7 @@ const MovieCard = ({film, handleMouseOver}) => {
 
 MovieCard.propTypes = {
   film: filmTypeReview.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
+  handleMouseOver: PropTypes.func,
 };
 
 export default MovieCard;

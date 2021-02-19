@@ -24,16 +24,16 @@ const App = ({films}) => {
           <SignInPage />
         </Route>
         <Route exact path="/mylist">
-          <MyListPage />
+          <MyListPage films={films}/>
         </Route>
         <Route exact path="/films/:id">
           <FilmPage films={films}/>
         </Route>
         <Route exact path="/films/:id/review">
-          <AddReviewPage />
+          <AddReviewPage films={films}/>
         </Route>
         <Route exact path="/player/:id">
-          <PlayerPage />
+          <PlayerPage films={films}/>
         </Route>
         <Route>
           <NotFoundPage />

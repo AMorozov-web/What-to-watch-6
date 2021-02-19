@@ -23,7 +23,7 @@ const FilmPage = ({films}) => {
     posterImage,
   } = films.find((film) => film.id === id);
 
-  const cardStyle = {
+  const style = {
     backgroundColor,
   };
 
@@ -31,7 +31,7 @@ const FilmPage = ({films}) => {
 
   return (
     <>
-      <section className="movie-card movie-card--full" style={cardStyle}>
+      <section className="movie-card movie-card--full" style={style}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
             <img src={backgroundImage} alt={title} />

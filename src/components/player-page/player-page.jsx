@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {useParams} from 'react-router-dom';
+import {filmTypeReview} from '../../consts';
 
-const PlayerPage = () => {
+const PlayerPage = ({films}) => {
+  const id = +useParams().id;
+  const {title, videoLink} = films.find((film) => film.id === id);
+
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg" />
+      <video src={videoLink} className="player__video" poster="img/player-poster.jpg" />
       <button type="button" className="player__exit">Exit</button>
       <div className="player__controls">
         <div className="player__controls-row">
@@ -20,7 +26,7 @@ const PlayerPage = () => {
             </svg>
             <span>Play</span>
           </button>
-          <div className="player__name">Transpotting</div>
+          <div className="player__name">{title}</div>
           <button type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width={27} height={27}>
               <use xlinkHref="#full-screen" />
@@ -31,6 +37,12 @@ const PlayerPage = () => {
       </div>
     </div>
   );
+};
+
+PlayerPage.propTypes = {
+  films: PropTypes.arrayOf(
+      filmTypeReview.isRequired
+  ).isRequired,
 };
 
 export default PlayerPage;

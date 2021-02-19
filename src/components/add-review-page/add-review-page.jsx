@@ -1,12 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {useParams} from 'react-router-dom';
 import Logo from '../logo/logo';
+import {filmTypeReview} from '../../consts';
 
-const AddReviewPage = () => {
+const AddReviewPage = ({films}) => {
+  const id = +useParams().id;
+  const {
+    title,
+    backgroundImage,
+    backgroundColor,
+    posterImage,
+  } = films.find((film) => film.id === id);
+
+  const style = {
+    backgroundColor,
+  };
+
   return (
-    <section className="movie-card movie-card--full">
+    <section className="movie-card movie-card--full" style={style}>
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={backgroundImage} alt={title} />
         </div>
         <h1 className="visually-hidden">WTW</h1>
         <header className="page-header">
@@ -28,7 +43,7 @@ const AddReviewPage = () => {
           </div>
         </header>
         <div className="movie-card__poster movie-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width={218} height={327} />
+          <img src={posterImage} alt={title} width={218} height={327} />
         </div>
       </div>
       <div className="add-review">
@@ -67,6 +82,12 @@ const AddReviewPage = () => {
       </div>
     </section>
   );
+};
+
+AddReviewPage.propTypes = {
+  films: PropTypes.arrayOf(
+      filmTypeReview.isRequired
+  ).isRequired,
 };
 
 export default AddReviewPage;
