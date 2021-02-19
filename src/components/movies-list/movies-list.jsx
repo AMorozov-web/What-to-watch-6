@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import SmallMovieCard from '../small-movie-card/small-movie-card';
+import MovieCard from '../movie-card/movie-card';
 import PropTypes from 'prop-types';
 import {filmsTypeReview} from '../../consts';
 
@@ -8,7 +8,7 @@ const MoviesList = ({films}) => {
 
   return (
     <div className="catalog__movies-list">
-      {films.map((film) => <SmallMovieCard key={film.id} film={film} handleMouseOver={setSelectedFilmId}/>)}
+      {films.map((film) => <MovieCard key={film.id} film={film} handleMouseOver={setSelectedFilmId}/>)}
     </div>
   );
 };

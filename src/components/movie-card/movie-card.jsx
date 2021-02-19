@@ -4,7 +4,7 @@ import {
   filmsTypeReview,
 } from '../../consts';
 
-const SmallMovieCard = ({film, handleMouseOver}) => {
+const MovieCard = ({film, handleMouseOver}) => {
 
   return (
     <article className="small-movie-card catalog__movies-card" onMouseOver={() => handleMouseOver(film.id)}>
@@ -21,9 +21,9 @@ const SmallMovieCard = ({film, handleMouseOver}) => {
 };
 
 
-SmallMovieCard.propTypes = {
+MovieCard.propTypes = {
   film: filmsTypeReview.isRequired,
   handleMouseOver: PropTypes.func.isRequired,
 };
 
-export default SmallMovieCard;
+export default MovieCard;
