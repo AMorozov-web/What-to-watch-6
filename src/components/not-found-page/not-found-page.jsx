@@ -22,7 +22,6 @@ const NotFoundPage = () => {
         </div>
       </footer>
     </div>
-
   );
 };
 

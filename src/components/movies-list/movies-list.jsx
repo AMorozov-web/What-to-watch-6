@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import MovieCard from '../movie-card/movie-card';
 import PropTypes from 'prop-types';
-import {filmTypeReview} from '../../consts';
+import {filmPropReview} from '../../consts';
 
 const MoviesList = ({films}) => {
   const [, setSelectedFilmId] = useState(null);
@@ -15,7 +15,7 @@ const MoviesList = ({films}) => {
 
 MoviesList.propTypes = {
   films: PropTypes.arrayOf(
-      filmTypeReview.isRequired
+      filmPropReview
   ).isRequired,
 };
 

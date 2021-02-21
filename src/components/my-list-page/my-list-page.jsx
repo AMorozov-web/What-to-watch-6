@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {filmTypeReview} from '../../consts';
+import {filmPropReview} from '../../consts';
 import Logo from '../logo/logo';
 import MoviesList from '../movies-list/movies-list';
 
@@ -34,7 +34,7 @@ const MyListPage = ({films}) => {
 
 MyListPage.propTypes = {
   films: PropTypes.arrayOf(
-      filmTypeReview.isRequired
+      filmPropReview
   ).isRequired,
 };
 

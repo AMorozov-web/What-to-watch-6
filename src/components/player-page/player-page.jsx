@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
-import {filmTypeReview} from '../../consts';
+import {filmPropReview} from '../../consts';
 
 const PlayerPage = ({films}) => {
   const id = +useParams().id;
@@ -41,7 +41,7 @@ const PlayerPage = ({films}) => {
 
 PlayerPage.propTypes = {
   films: PropTypes.arrayOf(
-      filmTypeReview.isRequired
+      filmPropReview
   ).isRequired,
 };
 

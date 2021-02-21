@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
 import Logo from '../logo/logo';
 import CommentForm from '../comments-form/comments-form';
-import {filmTypeReview} from '../../consts';
+import {filmPropReview} from '../../consts';
 
 const AddReviewPage = ({films}) => {
   const id = +useParams().id;
@@ -56,7 +56,7 @@ const AddReviewPage = ({films}) => {
 
 AddReviewPage.propTypes = {
   films: PropTypes.arrayOf(
-      filmTypeReview.isRequired
+      filmPropReview
   ).isRequired,
 };
 

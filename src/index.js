@@ -17,7 +17,6 @@ const adaptToCLient = (film) => {
     previewVideoLink: film.preview_video_link,
   };
 
-
   delete adaptedFilm.name;
   delete adaptedFilm.poster_image;
   delete adaptedFilm.preview_image;

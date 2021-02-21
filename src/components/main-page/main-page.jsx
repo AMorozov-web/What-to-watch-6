@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list';
 import Logo from '../logo/logo';
 import {
-  filmTypeReview,
+  filmPropReview,
 } from '../../consts';
 
 const MainPage = ({films}) => {
@@ -106,7 +106,7 @@ const MainPage = ({films}) => {
 
 MainPage.propTypes = {
   films: PropTypes.arrayOf(
-      filmTypeReview.isRequired
+      filmPropReview
   ).isRequired,
 };
 

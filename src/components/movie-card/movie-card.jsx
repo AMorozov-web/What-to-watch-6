@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {filmTypeReview} from '../../consts';
+import {filmPropReview} from '../../consts';
 
 const MovieCard = ({film, handleMouseOver}) => {
   const href = `/films/${film.id}`;
@@ -22,7 +22,7 @@ const MovieCard = ({film, handleMouseOver}) => {
 
 
 MovieCard.propTypes = {
-  film: filmTypeReview.isRequired,
+  film: filmPropReview,
   handleMouseOver: PropTypes.func,
 };
 

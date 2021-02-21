@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const filmTypeReview = PropTypes.shape({
+const filmPropReview = PropTypes.shape({
   backgroundColor: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -18,7 +18,7 @@ const filmTypeReview = PropTypes.shape({
   starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   title: PropTypes.string.isRequired,
   videoLink: PropTypes.string.isRequired,
-});
+}).isRequired;
 
 const getRatingText = (rating) => {
   switch (true) {
@@ -36,6 +36,6 @@ const getRatingText = (rating) => {
 };
 
 export {
-  filmTypeReview,
+  filmPropReview,
   getRatingText,
 };

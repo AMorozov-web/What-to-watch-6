@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
 import Logo from '../logo/logo';
 import {
-  filmTypeReview,
+  filmPropReview,
   getRatingText,
 } from '../../consts';
 
@@ -157,7 +157,7 @@ const FilmPage = ({films}) => {
 
 FilmPage.propTypes = {
   films: PropTypes.arrayOf(
-      filmTypeReview.isRequired
+      filmPropReview
   ).isRequired,
 };
 
