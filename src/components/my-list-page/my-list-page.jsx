@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {filmTypeReview} from '../../consts';
 import Logo from '../logo/logo';
-import MovieCard from '../movie-card/movie-card';
+import MoviesList from '../movies-list/movies-list';
 
 const MyListPage = ({films}) => {
+  const filmsInFavorite = films.filter((film) => film.isFavorite);
 
   return (
     <div className="user-page">
@@ -19,9 +20,7 @@ const MyListPage = ({films}) => {
       </header>
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <div className="catalog__movies-list">
-          {films.map((film) => film.isFavorite ? <MovieCard key={film.id} film={film}/> : ``)}
-        </div>
+        <MoviesList films={filmsInFavorite}/>
       </section>
       <footer className="page-footer">
         <Logo centered={true}/>
