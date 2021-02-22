@@ -11,7 +11,7 @@ const VideoPlayer = ({film, videoPlayerRef}) => {
 
 VideoPlayer.propTypes = {
   film: filmPropReview,
-  videoPlayerRef: PropTypes.node.isRequired,
+  videoPlayerRef: PropTypes.object.isRequired,
 };
 
 export default VideoPlayer;

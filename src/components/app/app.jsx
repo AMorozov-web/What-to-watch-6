@@ -8,9 +8,7 @@ import FilmPage from '../film-page/film-page';
 import AddReviewPage from '../add-review-page/add-review-page';
 import PlayerPage from '../player-page/player-page';
 import NotFoundPage from '../not-found-page/not-found-page';
-import {
-  filmPropReview,
-} from '../../consts';
+import {filmPropReview} from '../../consts';
 
 const App = ({films}) => {
 

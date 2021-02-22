@@ -8,7 +8,7 @@ const MoviesList = ({films}) => {
 
   return (
     <div className="catalog__movies-list">
-      {films.map((film) => <MovieCard key={film.id} film={film} handleMouseOver={setSelectedFilmId}/>)}
+      {films.map((film) => <MovieCard key={film.id} film={film} setSelectedFilmId={setSelectedFilmId}/>)}
     </div>
   );
 };

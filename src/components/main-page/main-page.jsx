@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list';
 import Logo from '../logo/logo';
-import {
-  filmPropReview,
-} from '../../consts';
+import {filmPropReview} from '../../consts';
 
 const MainPage = ({films}) => {
 

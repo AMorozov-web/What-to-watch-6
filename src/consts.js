@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+const PLAY_DELAY_IN_MS = 1000;
+
 const filmPropReview = PropTypes.shape({
   backgroundColor: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string.isRequired,
@@ -36,6 +38,7 @@ const getRatingText = (rating) => {
 };
 
 export {
+  PLAY_DELAY_IN_MS,
   filmPropReview,
   getRatingText,
 };
