@@ -1,0 +1,17 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import {filmPropReview} from '../../consts';
+
+const VideoPlayer = ({film, videoPlayerRef}) => {
+
+  return (
+    <video ref={videoPlayerRef} poster={film.previewImage} src={film.previewVideoLink} width="100%" muted />
+  );
+};
+
+VideoPlayer.propTypes = {
+  film: filmPropReview,
+  videoPlayerRef: PropTypes.node.isRequired,
+};
+
+export default VideoPlayer;
