@@ -11,7 +11,7 @@ const MovieCard = ({film, setSelectedFilmId}) => {
   const [playTimeout, setPlayTimeout] = useState();
   const videoPlayerRef = useRef();
 
-  const onMouseOver = () => {
+  const onMouseEnter = () => {
     setSelectedFilmId(film.id);
     setPlayTimeout(setTimeout(() => {
       setPlaying(true);
@@ -21,14 +21,21 @@ const MovieCard = ({film, setSelectedFilmId}) => {
   const onMouseLeave = () => {
     setPlaying(false);
     window.clearTimeout(playTimeout);
+    setPlayTimeout(null);
   };
 
-  useEffect(() => isPlaying ? videoPlayerRef.current.play() : videoPlayerRef.current.load(), [isPlaying]);
+  useEffect(() => {
+    if (isPlaying) {
+      videoPlayerRef.current.play();
+    } else {
+      videoPlayerRef.current.load();
+    }
+  }, [isPlaying]);
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseOver={() => onMouseOver()}
+      onMouseEnter={() => onMouseEnter()}
       onMouseLeave={() => onMouseLeave()}>
       <div className="small-movie-card__image">
         <VideoPlayer film={film} videoPlayerRef={videoPlayerRef} />
