@@ -7,9 +7,10 @@ import VideoPlayer from '../video-player/video-player';
 const MovieCard = ({film, setSelectedFilmId}) => {
   const href = `/films/${film.id}`;
 
-  const [isPlaying, setPlaying] = useState(false);
+  const [isPlaying, setPlaying] = useState(null);
   const [playTimeout, setPlayTimeout] = useState();
   const videoPlayerRef = useRef();
+  const initialRef = useRef(true);
 
   const onMouseEnter = () => {
     setSelectedFilmId(film.id);
@@ -25,11 +26,20 @@ const MovieCard = ({film, setSelectedFilmId}) => {
   };
 
   useEffect(() => {
-    if (isPlaying) {
-      videoPlayerRef.current.play();
+    if (initialRef.current) {
+      initialRef.current = false;
     } else {
-      videoPlayerRef.current.load();
+      if (isPlaying) {
+        videoPlayerRef.current.play();
+      } else {
+        videoPlayerRef.current.load();
+      }
     }
+
+    return () => {
+      videoPlayerRef.current.pause();
+      videoPlayerRef.current.oncanplaythrough = null;
+    };
   }, [isPlaying]);
 
   return (
