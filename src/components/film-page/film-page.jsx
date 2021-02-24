@@ -1,33 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
+import {filmPropReview} from '../../consts';
 import Logo from '../logo/logo';
-import {
-  filmPropReview,
-  getRatingText,
-} from '../../consts';
+import Tabs from '../tabs/tabs';
 
 const FilmPage = ({films}) => {
   const id = +useParams().id;
+  const selectedFilm = films.find((film) => film.id === id);
   const {
     title,
     genre,
-    rating,
-    scoresCount,
-    description,
-    director,
-    starring,
     released,
     backgroundImage,
     backgroundColor,
     posterImage,
-  } = films.find((film) => film.id === id);
+  } = selectedFilm;
 
   const style = {
     backgroundColor,
   };
-
-  const starrings = starring.join(`, `);
 
   return (
     <>
@@ -76,31 +68,7 @@ const FilmPage = ({films}) => {
               <img src={posterImage} alt={`${title} poster`} width={218} height={327} />
             </div>
             <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-              <div className="movie-rating">
-                <div className="movie-rating__score">{rating.toString().replace(`.`, `,`)}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{getRatingText(rating)}</span>
-                  <span className="movie-rating__count">{`${scoresCount} ratings`}</span>
-                </p>
-              </div>
-              <div className="movie-card__text">
-                <p>{description}</p>
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
-                <p className="movie-card__starring"><strong>Starring: {starrings}</strong></p>
-              </div>
+              <Tabs film={selectedFilm}/>
             </div>
           </div>
         </div>

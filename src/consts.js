@@ -27,24 +27,8 @@ const filmPropReview = PropTypes.shape({
   videoLink: PropTypes.string.isRequired,
 }).isRequired;
 
-const getRatingText = (rating) => {
-  switch (true) {
-    case (rating === 10):
-      return `Awesome`;
-    case (rating >= 8 && rating < 10):
-      return `Very good`;
-    case (rating >= 5 && rating < 8):
-      return `Good`;
-    case (rating >= 3 && rating < 5):
-      return `Normal`;
-    default:
-      return `Bad`;
-  }
-};
-
 export {
   PLAY_DELAY_IN_MS,
   filmPropReview,
-  getRatingText,
   TabTypes,
 };
