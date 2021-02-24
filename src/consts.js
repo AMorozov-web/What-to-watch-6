@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 
 const PLAY_DELAY_IN_MS = 1000;
+const TabTypes = {
+  OVERVIEW: `OVERVIEW`,
+  DETAILS: `DETAILS`,
+  REVIEWS: `REVIEWS`,
+};
 
 const filmPropReview = PropTypes.shape({
   backgroundColor: PropTypes.string.isRequired,
@@ -41,4 +46,5 @@ export {
   PLAY_DELAY_IN_MS,
   filmPropReview,
   getRatingText,
+  TabTypes,
 };
