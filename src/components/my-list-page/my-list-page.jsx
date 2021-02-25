@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {filmPropReview} from '../../consts';
-import Logo from '../logo/logo';
-import MoviesList from '../movies-list/movies-list';
+import {Logo} from '../logo/logo';
+import {MoviesList} from '../movies-list/movies-list';
 
 const MyListPage = ({films}) => {
   const filmsInFavorite = films.filter((film) => film.isFavorite);
@@ -38,4 +38,4 @@ MyListPage.propTypes = {
   ).isRequired,
 };
 
-export default MyListPage;
+export {MyListPage};

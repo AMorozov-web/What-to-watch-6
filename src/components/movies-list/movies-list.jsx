@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import MovieCard from '../movie-card/movie-card';
 import PropTypes from 'prop-types';
+import {MovieCard} from '../movie-card/movie-card';
 import {filmPropReview} from '../../consts';
 
 const MoviesList = ({films}) => {
@@ -19,4 +19,4 @@ MoviesList.propTypes = {
   ).isRequired,
 };
 
-export default MoviesList;
+export {MoviesList};

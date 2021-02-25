@@ -20,4 +20,4 @@ Logo.propTypes = {
   onMainPage: PropTypes.bool,
 };
 
-export default Logo;
+export {Logo};

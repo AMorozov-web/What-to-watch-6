@@ -62,4 +62,4 @@ const CommentForm = () => {
   );
 };
 
-export default CommentForm;
+export {CommentForm};

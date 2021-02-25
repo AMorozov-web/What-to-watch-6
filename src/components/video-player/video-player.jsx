@@ -14,4 +14,4 @@ VideoPlayer.propTypes = {
   videoPlayerRef: PropTypes.object.isRequired,
 };
 
-export default VideoPlayer;
+export {VideoPlayer};

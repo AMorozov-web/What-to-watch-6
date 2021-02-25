@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {filmPropReview, PLAY_DELAY_IN_MS} from '../../consts';
-import VideoPlayer from '../video-player/video-player';
+import {VideoPlayer} from '../video-player/video-player';
 
 const MovieCard = ({film, setSelectedFilmId}) => {
   const href = `/films/${film.id}`;
@@ -65,4 +65,4 @@ MovieCard.propTypes = {
   setSelectedFilmId: PropTypes.func.isRequired,
 };
 
-export default MovieCard;
+export {MovieCard};

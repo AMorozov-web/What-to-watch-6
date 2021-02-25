@@ -45,4 +45,4 @@ PlayerPage.propTypes = {
   ).isRequired,
 };
 
-export default PlayerPage;
+export {PlayerPage};

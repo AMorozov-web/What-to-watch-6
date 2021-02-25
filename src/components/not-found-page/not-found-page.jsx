@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Logo from '../logo/logo';
+import {Logo} from '../logo/logo';
 
 const NotFoundPage = () => {
   const style = {
@@ -44,4 +44,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export {NotFoundPage};

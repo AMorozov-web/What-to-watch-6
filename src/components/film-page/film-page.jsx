@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
 import {filmPropReview} from '../../consts';
-import Logo from '../logo/logo';
-import Tabs from '../tabs/tabs';
+import {Logo} from '../logo/logo';
+import {Tabs} from '../tabs/tabs';
 
 const FilmPage = ({films}) => {
   const id = +useParams().id;
@@ -129,4 +129,4 @@ FilmPage.propTypes = {
   ).isRequired,
 };
 
-export default FilmPage;
+export {FilmPage};

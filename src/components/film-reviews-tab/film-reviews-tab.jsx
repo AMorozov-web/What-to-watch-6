@@ -72,4 +72,4 @@ const FilmReviewsTab = () => {
   );
 };
 
-export default FilmReviewsTab;
+export {FilmReviewsTab};

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
-import Logo from '../logo/logo';
-import CommentForm from '../comments-form/comments-form';
+import {Logo} from '../logo/logo';
+import {CommentForm} from '../comments-form/comments-form';
 import {filmPropReview} from '../../consts';
 
 const AddReviewPage = ({films}) => {
@@ -60,4 +60,4 @@ AddReviewPage.propTypes = {
   ).isRequired,
 };
 
-export default AddReviewPage;
+export {AddReviewPage};

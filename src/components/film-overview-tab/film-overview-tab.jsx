@@ -49,4 +49,4 @@ FilmOverviewTab.propTypes = {
   film: filmPropReview,
 };
 
-export default FilmOverviewTab;
+export {FilmOverviewTab};
