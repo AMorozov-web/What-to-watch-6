@@ -1,6 +1,20 @@
 import React from 'react';
-import dayjs from 'dayjs';
-import {filmPropReview} from '../../consts';
+import {filmPropReview, MINUTES_IN_HOUR} from '../../consts';
+
+const getFormatName = (name) => {
+  return (
+    <>
+      {name} <br />
+    </>
+  );
+};
+
+const getFormatTime = (timeInMinutes) => {
+  const hours = Math.floor(+timeInMinutes / MINUTES_IN_HOUR);
+  const minutes = +timeInMinutes - hours * MINUTES_IN_HOUR;
+
+  return `${hours}h ${minutes.toString().padStart(2, 0)}m`;
+};
 
 const FilmDetailsTab = ({film}) => {
   const {
@@ -22,26 +36,14 @@ const FilmDetailsTab = ({film}) => {
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Starring</strong>
             <span className="movie-card__details-value">
-              {starring.map((star) => `${star} <br />`)}
-              { /* Bill Murray, <br />
-              Edward Norton, <br />
-              Jude Law, <br />
-              Willem Dafoe, <br />
-              Saoirse Ronan, <br />
-              Tony Revoloru, <br />
-              Tilda Swinton, <br />
-              Tom Wilkinson, <br />
-              Owen Wilkinson, <br />
-              Adrien Brody, <br />
-              Ralph Fiennes, <br />
-              Jeff Goldblum */ }
+              {starring.map((name) => getFormatName(name))}
             </span>
           </p>
         </div>
         <div className="movie-card__text-col">
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Run Time</strong>
-            <span className="movie-card__details-value">{dayjs(runTime).format(`H mm`)}</span>
+            <span className="movie-card__details-value">{getFormatTime(runTime)}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>

@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 
 const PLAY_DELAY_IN_MS = 1000;
+
+const MINUTES_IN_HOUR = 60;
+
 const TabTypes = {
   OVERVIEW: `OVERVIEW`,
   DETAILS: `DETAILS`,
@@ -29,6 +32,7 @@ const filmPropReview = PropTypes.shape({
 
 export {
   PLAY_DELAY_IN_MS,
+  MINUTES_IN_HOUR,
   filmPropReview,
   TabTypes,
 };
