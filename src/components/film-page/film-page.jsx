@@ -75,7 +75,7 @@ const FilmPage = ({films}) => {
         </div>
       </section>
       <div className="page-content">
-        <MoreLikeThis films={films} genre={genre}/>
+        <MoreLikeThis films={films} genre={genre} selectedFilmId={id}/>
         <footer className="page-footer">
           <Logo centered={true}/>
           <div className="copyright">
