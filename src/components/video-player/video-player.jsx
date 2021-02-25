@@ -5,7 +5,7 @@ import {filmPropReview} from '../../consts';
 const VideoPlayer = ({film, videoPlayerRef}) => {
 
   return (
-    <video ref={videoPlayerRef} poster={film.previewImage} src={film.previewVideoLink} width="100%" muted />
+    <video ref={videoPlayerRef} poster={film.previewImage} src={film.previewVideoLink} width="100%" height="100%" muted />
   );
 };
 

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {filmPropReview, TabTypes} from '../../consts';
 import FilmOverviewTab from '../film-overview-tab/film-overview-tab';
 import FilmDetailsTab from '../film-details-tab/film-details-tab';
+import FilmReviewsTab from '../film-reviews-tab/film-reviews-tab';
 
 const getTabByType = (film, type = TabTypes.OVERVIEW) => {
   switch (type) {
@@ -10,7 +11,7 @@ const getTabByType = (film, type = TabTypes.OVERVIEW) => {
     case TabTypes.DETAILS:
       return <FilmDetailsTab film={film} />;
     case TabTypes.REVIEWS:
-      return (``);
+      return <FilmReviewsTab film={film} />;
     default:
       return ``;
   }
