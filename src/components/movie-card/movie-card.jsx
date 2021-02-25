@@ -39,6 +39,8 @@ const MovieCard = ({film, setSelectedFilmId}) => {
     return () => {
       videoPlayerRef.current.pause();
       videoPlayerRef.current.oncanplaythrough = null;
+      videoPlayerRef.current.onplay = null;
+      videoPlayerRef.current.onpause = null;
     };
   }, [isPlaying]);
 
