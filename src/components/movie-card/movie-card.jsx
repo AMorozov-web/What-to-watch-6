@@ -10,13 +10,13 @@ const MovieCard = ({film}) => {
   const videoPlayerRef = useRef();
   const playerTimeoutRef = useRef();
 
-  const onMouseEnter = () => {
+  const handleMouseEnter = () => {
     playerTimeoutRef.current = setTimeout(() => {
       setPlaying(true);
     }, PLAY_DELAY_IN_MS);
   };
 
-  const onMouseLeave = () => {
+  const handleMouseLeave = () => {
     setPlaying(false);
     window.clearTimeout(playerTimeoutRef.current);
   };
@@ -32,14 +32,18 @@ const MovieCard = ({film}) => {
       videoPlayerRef.current.load();
     }
 
-    return () => window.clearTimeout(playerTimeoutRef.current);
+    return () => {
+      setPlaying(false);
+      window.clearTimeout(playerTimeoutRef.current);
+      playerTimeoutRef.current = null;
+    };
   }, [isPlaying]);
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseEnter={() => onMouseEnter()}
-      onMouseLeave={() => onMouseLeave()}>
+      onMouseEnter={() => handleMouseEnter()}
+      onMouseLeave={() => handleMouseLeave()}>
       <div className="small-movie-card__image">
         <VideoPlayer film={film} videoPlayerRef={videoPlayerRef} />
       </div>
