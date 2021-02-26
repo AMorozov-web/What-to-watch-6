@@ -8,20 +8,20 @@ const MovieCard = ({film, setSelectedFilmId}) => {
   const href = `/films/${film.id}`;
 
   const [isPlaying, setPlaying] = useState(null);
-  const [playTimeout, setPlayTimeout] = useState();
   const videoPlayerRef = useRef();
+  const playerTimeoutRef = useRef();
 
   const onMouseEnter = () => {
     setSelectedFilmId(film.id);
-    setPlayTimeout(setTimeout(() => {
+    playerTimeoutRef.current = setTimeout(() => {
       setPlaying(true);
-    }, PLAY_DELAY_IN_MS));
+    }, PLAY_DELAY_IN_MS);
   };
 
   const onMouseLeave = () => {
+    setSelectedFilmId(null);
     setPlaying(false);
-    window.clearTimeout(playTimeout);
-    setPlayTimeout(null);
+    window.clearTimeout(playerTimeoutRef.current);
   };
 
   useEffect(() => {
@@ -35,12 +35,7 @@ const MovieCard = ({film, setSelectedFilmId}) => {
       videoPlayerRef.current.load();
     }
 
-    return () => {
-      videoPlayerRef.current.pause();
-      videoPlayerRef.current.oncanplaythrough = null;
-      videoPlayerRef.current.onplay = null;
-      videoPlayerRef.current.onpause = null;
-    };
+    return () => window.clearTimeout(playerTimeoutRef.current);
   }, [isPlaying]);
 
   return (
