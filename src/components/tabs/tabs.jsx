@@ -20,7 +20,7 @@ const getTabByType = (film, type = TabTypes.OVERVIEW) => {
 const Tabs = ({film}) => {
   const [selectedTab, setSelectedTab] = useState(TabTypes.OVERVIEW);
 
-  const onCLick = (evt) => {
+  const onClick = (evt) => {
     evt.preventDefault();
     setSelectedTab(evt.target.textContent.toUpperCase());
   };
@@ -30,13 +30,13 @@ const Tabs = ({film}) => {
       <nav className="movie-nav movie-card__nav">
         <ul className="movie-nav__list">
           <li className={`movie-nav__item ${selectedTab === TabTypes.OVERVIEW ? `movie-nav__item--active` : ``}`}>
-            <a href="#" className="movie-nav__link" onClick={onCLick}>Overview</a>
+            <a href="#" className="movie-nav__link" onClick={onClick}>Overview</a>
           </li>
           <li className={`movie-nav__item ${selectedTab === TabTypes.DETAILS ? `movie-nav__item--active` : ``}`}>
-            <a href="#" className="movie-nav__link" onClick={onCLick}>Details</a>
+            <a href="#" className="movie-nav__link" onClick={onClick}>Details</a>
           </li>
           <li className={`movie-nav__item ${selectedTab === TabTypes.REVIEWS ? `movie-nav__item--active` : ``}`}>
-            <a href="#" className="movie-nav__link" onClick={onCLick}>Reviews</a>
+            <a href="#" className="movie-nav__link" onClick={onClick}>Reviews</a>
           </li>
         </ul>
       </nav>
