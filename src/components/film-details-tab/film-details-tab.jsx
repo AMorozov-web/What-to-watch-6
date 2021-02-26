@@ -3,9 +3,9 @@ import {filmPropReview, MINUTES_IN_HOUR} from '../../consts';
 
 const getFormatName = (name) => {
   return (
-    <>
+    <React.Fragment key={name}>
       {name} <br />
-    </>
+    </React.Fragment>
   );
 };
 
