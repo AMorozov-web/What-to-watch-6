@@ -1,10 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {filmPropReview, PLAY_DELAY_IN_MS} from '../../consts';
 import {VideoPlayer} from '../video-player/video-player';
 
-const MovieCard = ({film, setSelectedFilmId}) => {
+const MovieCard = ({film}) => {
   const href = `/films/${film.id}`;
 
   const [isPlaying, setPlaying] = useState(null);
@@ -12,14 +11,12 @@ const MovieCard = ({film, setSelectedFilmId}) => {
   const playerTimeoutRef = useRef();
 
   const onMouseEnter = () => {
-    setSelectedFilmId(film.id);
     playerTimeoutRef.current = setTimeout(() => {
       setPlaying(true);
     }, PLAY_DELAY_IN_MS);
   };
 
   const onMouseLeave = () => {
-    setSelectedFilmId(null);
     setPlaying(false);
     window.clearTimeout(playerTimeoutRef.current);
   };
@@ -58,7 +55,6 @@ const MovieCard = ({film, setSelectedFilmId}) => {
 
 MovieCard.propTypes = {
   film: filmPropReview,
-  setSelectedFilmId: PropTypes.func.isRequired,
 };
 
 export {MovieCard};
