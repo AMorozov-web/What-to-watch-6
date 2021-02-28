@@ -28,7 +28,7 @@ const MovieCard = ({film}) => {
 
     if (isPlaying) {
       videoPlayerRef.current.play();
-    } else if (!isPlaying) {
+    } else {
       videoPlayerRef.current.load();
     }
 
