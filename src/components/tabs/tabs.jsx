@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import {filmPropReview, TabTypes} from '../../consts';
+import {filmPropReview, TabType} from '../../consts';
 import {FilmOverviewTab} from '../film-overview-tab/film-overview-tab';
 import {FilmDetailsTab} from '../film-details-tab/film-details-tab';
 import {FilmReviewsTab} from '../film-reviews-tab/film-reviews-tab';
 
-const getTabByType = (film, type = TabTypes.OVERVIEW) => {
+const getTabByType = (film, type = TabType.OVERVIEW) => {
   switch (type) {
-    case TabTypes.OVERVIEW:
+    case TabType.OVERVIEW:
       return <FilmOverviewTab film={film} />;
-    case TabTypes.DETAILS:
+    case TabType.DETAILS:
       return <FilmDetailsTab film={film} />;
-    case TabTypes.REVIEWS:
+    case TabType.REVIEWS:
       return <FilmReviewsTab film={film} />;
     default:
       return ``;
@@ -18,7 +18,7 @@ const getTabByType = (film, type = TabTypes.OVERVIEW) => {
 };
 
 const Tabs = ({film}) => {
-  const [selectedTab, setSelectedTab] = useState(TabTypes.OVERVIEW);
+  const [selectedTab, setSelectedTab] = useState(TabType.OVERVIEW);
 
   const onClick = (evt) => {
     evt.preventDefault();
@@ -29,13 +29,13 @@ const Tabs = ({film}) => {
     <div className="movie-card__desc">
       <nav className="movie-nav movie-card__nav">
         <ul className="movie-nav__list">
-          <li className={`movie-nav__item ${selectedTab === TabTypes.OVERVIEW ? `movie-nav__item--active` : ``}`}>
+          <li className={`movie-nav__item ${selectedTab === TabType.OVERVIEW ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link" onClick={onClick}>Overview</a>
           </li>
-          <li className={`movie-nav__item ${selectedTab === TabTypes.DETAILS ? `movie-nav__item--active` : ``}`}>
+          <li className={`movie-nav__item ${selectedTab === TabType.DETAILS ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link" onClick={onClick}>Details</a>
           </li>
-          <li className={`movie-nav__item ${selectedTab === TabTypes.REVIEWS ? `movie-nav__item--active` : ``}`}>
+          <li className={`movie-nav__item ${selectedTab === TabType.REVIEWS ? `movie-nav__item--active` : ``}`}>
             <a href="#" className="movie-nav__link" onClick={onClick}>Reviews</a>
           </li>
         </ul>

@@ -4,7 +4,7 @@ const PLAY_DELAY_IN_MS = 1000;
 const MINUTES_IN_HOUR = 60;
 const SIMILAR_FILMS_COUNT = 4;
 
-const TabTypes = {
+const TabType = {
   OVERVIEW: `OVERVIEW`,
   DETAILS: `DETAILS`,
   REVIEWS: `REVIEWS`,
@@ -30,10 +30,34 @@ const filmPropReview = PropTypes.shape({
   videoLink: PropTypes.string.isRequired,
 }).isRequired;
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+const AppRoute = {
+  ROOT: `/`,
+  LOGIN: `/login`,
+  MY_LIST: `/mylist`,
+};
+
+const APIRoute = {
+  LOGIN: `/login`,
+  films: `/films`,
+};
+
+const Genre = {
+  ALL: `all`,
+};
+
 export {
   PLAY_DELAY_IN_MS,
   MINUTES_IN_HOUR,
   SIMILAR_FILMS_COUNT,
   filmPropReview,
-  TabTypes,
+  TabType,
+  AuthorizationStatus,
+  AppRoute,
+  APIRoute,
+  Genre,
 };
