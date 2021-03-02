@@ -49,7 +49,8 @@ const AppRoute = {
 
 const APIRoute = {
   LOGIN: `/login`,
-  films: `/films`,
+  FILMS: `/films`,
+  PROMO: `/promo`,
 };
 
 const Genre = {
