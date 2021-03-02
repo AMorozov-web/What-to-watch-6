@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 const PLAY_DELAY_IN_MS = 1000;
 const MINUTES_IN_HOUR = 60;
 const SIMILAR_FILMS_COUNT = 4;
+const BACKEND_URL = `https://6.react.pages.academy/wtw`;
+const REQUEST_TIMEOUT = 5000;
+
+const HttpCode = {
+  UNAUTHORIZED: 401
+};
 
 const TabType = {
   OVERVIEW: `OVERVIEW`,
@@ -60,4 +66,7 @@ export {
   AppRoute,
   APIRoute,
   Genre,
+  BACKEND_URL,
+  REQUEST_TIMEOUT,
+  HttpCode,
 };

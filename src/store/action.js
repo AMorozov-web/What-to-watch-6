@@ -1,30 +1,40 @@
+import {createAction} from '@reduxjs/toolkit';
+
 const ActionType = {
   CHANGE_GENRE: `filter/changeGenre`,
   LOAD_FILMS: `data/loadFilms`,
-  // LOAD_PROMO: `data/loadPromo`,
+  LOAD_PROMO: `data/loadPromo`,
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
 };
 
-const ActionCreator = {
-  changeGenre: (genre) => ({
-    type: ActionType.CHANGE_GENRE,
+const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
+  return {
     payload: genre,
-  }),
-  loadFilms: (films) => ({
-    type: ActionType.LOAD_FILMS,
+  };
+});
+
+const loadFilms = createAction(ActionType.LOAD_FILMS, (films) => {
+  return {
     payload: films,
-  }),
-  // loadPromo: (promo) => ({
-  //   type: ActionType.LOAD_PROMO,
-  //   payload: promo,
-  // }),
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
+  };
+});
+
+const loadPromo = createAction(ActionType.LOAD_PROMO, (promo) => {
+  return {
+    payload: promo,
+  };
+});
+
+const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => {
+  return {
     payload: status,
-  }),
-};
+  };
+});
 
 export {
   ActionType,
-  ActionCreator,
+  changeGenre,
+  loadFilms,
+  loadPromo,
+  requireAuthorization,
 };
