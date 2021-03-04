@@ -6,7 +6,7 @@ const initialState = {
   genre: Genre.ALL,
 };
 
-const genre = createReducer(initialState, (builder) => {
+const filter = createReducer(initialState, (builder) => {
   builder.addCase(changeGenre, (state, action) => {
     return {
       ...state,
@@ -15,4 +15,4 @@ const genre = createReducer(initialState, (builder) => {
   });
 });
 
-export {genre};
+export {filter};

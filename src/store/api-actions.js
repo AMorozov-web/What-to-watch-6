@@ -1,5 +1,5 @@
 import {loadFilms, loadPromo, requireAuthorization} from "./action";
-import {AuthorizationStatus, APIRoute} from "../const";
+import {AuthorizationStatus, APIRoute} from "../consts";
 
 export const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
