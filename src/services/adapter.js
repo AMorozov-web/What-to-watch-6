@@ -30,16 +30,16 @@ const adaptToCLient = (film) => {
 const adaptToServer = (film) => {
   const adaptedFilm = {
     ...film,
-    name: film.title,
-    poster_image: film.posterImage,
-    preview_image: film.previewImage,
-    background_image: film.backgroundImage,
-    background_color: film.backgroundColor,
-    scores_count: film.scoresCount,
-    run_time: film.runTime,
-    is_favorite: film.isFavorite,
-    video_link: film.videoLink,
-    preview_video_link: film.previewVideoLink,
+    [`name`]: film.title,
+    [`poster_image`]: film.posterImage,
+    [`preview_image`]: film.previewImage,
+    [`background_image`]: film.backgroundImage,
+    [`background_color`]: film.backgroundColor,
+    [`scores_count`]: film.scoresCount,
+    [`run_time`]: film.runTime,
+    [`is_favorite`]: film.isFavorite,
+    [`video_link`]: film.videoLink,
+    [`preview_video_link`]: film.previewVideoLink,
   };
 
   delete adaptedFilm.title;
