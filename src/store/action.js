@@ -1,4 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
+import {adaptToCLient} from '../services/adapter';
 
 const ActionType = {
   CHANGE_GENRE: `filter/changeGenre`,
@@ -15,7 +16,7 @@ const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
 
 const loadFilms = createAction(ActionType.LOAD_FILMS, (films) => {
   return {
-    payload: films,
+    payload: films.map(adaptToCLient),
   };
 });
 
