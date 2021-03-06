@@ -7,7 +7,7 @@ export const fetchFilms = () => (dispatch, _getState, api) => (
 );
 
 export const fetchPromo = () => (dispatch, _getState, api) => (
-  api.get(APIRoute.FILMS)
+  api.get(APIRoute.PROMO)
     .then(({data}) => dispatch(loadPromo(data)))
 );
 

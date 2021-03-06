@@ -22,7 +22,7 @@ const loadFilms = createAction(ActionType.LOAD_FILMS, (films) => {
 
 const loadPromo = createAction(ActionType.LOAD_PROMO, (promo) => {
   return {
-    payload: promo,
+    payload: adaptToCLient(promo),
   };
 });
 
