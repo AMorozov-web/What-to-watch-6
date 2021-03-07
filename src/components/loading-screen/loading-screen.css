@@ -1,5 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Julius+Sans+One);
 
+html {
+  background-color: #180202;
+}
+
+.loader {
+  z-index: -2;
+  display: block;
+  width: 100%;
+  height: 100vw;
+  color: #C9B37E;
+  background-color: #180202;
+}
+
 .eye{
   width: 20px; height: 8px;
   background-color: rgba(240,220,220,1);
@@ -14,7 +27,7 @@
   position: relative;
   margin: -250px auto;
   width: 80px; height: 80px;
-  background-color: #111;
+  background-color: #211F1F;
   border-radius:50px;
   box-shadow: inset -4px 2px 0px 0px rgba(240,220,220,1);
   animation:headAnim 1.5s infinite alternate;
@@ -25,7 +38,7 @@
   position: relative;
   margin: 90px auto;
   width: 140px; height: 120px;
-  background-color: #111;
+  background-color: #211F1F;
   border-radius: 50px/25px ;
   box-shadow: inset -5px 2px 0px 0px rgba(240,220,220,1);
   animation:bodyAnim 1.5s infinite alternate;
@@ -33,14 +46,14 @@
 }
 
 .circ{
+  position: fixed;
+  top: 20%;
+  left: calc(50% - 90px);
   backface-visibility: hidden;
   margin: 60px auto;
   width: 180px; height: 180px;
   background-color: transparent;
   border-radius: 0px 0px 50px 50px;
-  position: relative;
-  z-index: -1;
-  left: 0%; top: 20%;
   overflow: hidden;
 }
 
@@ -49,7 +62,7 @@
   margin-top: 140px;
   width: 120px;height: 120px;
   position: absolute;
-  background-color: #111;
+  background-color: #211F1F;
   border-radius:20px;
   box-shadow:-1px -4px 0px 0px rgba(240,220,220,1);
   transform:rotate(45deg);
@@ -67,14 +80,14 @@
   margin: -10px auto;
   -webkit-font-smoothing: antialiased;
   font-family: 'Julius Sans One', sans-serif;
-  font-size:28px;
-  font-weight:400;
-  color:#000000;
+  font-size: 28px;
+  font-weight: 400;
+  color: #F0DCDC;
   left: 2%; top: 5%;
-  animation:fontAnim 3.75s infinite;
-  transition-timing-function:ease-out;
+  animation: fontAnim 3.75s infinite;
+  transition-timing-function: ease-out;
   word-wrap: break-word;
-  display:block;
+  display: block;
   overflow: hidden;
 }
 
