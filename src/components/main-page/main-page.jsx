@@ -1,10 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {fetchFilms} from '../../store/api-actions';
 import {MoviesList} from '../movies-list/movies-list';
 import {Logo} from '../logo/logo';
-import {filmPropReview} from '../../consts';
+import {LoadingScreen} from '../loading-screen/loading-screen';
 
-const MainPage = ({films}) => {
+const MainPage = () => {
+  const {films, isFilmsLoaded} = useSelector((state) => state.DATA);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isFilmsLoaded) {
+      dispatch(fetchFilms());
+    }
+  }, [isFilmsLoaded]);
+
+  if (!isFilmsLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <>
@@ -102,10 +117,6 @@ const MainPage = ({films}) => {
   );
 };
 
-MainPage.propTypes = {
-  films: PropTypes.arrayOf(
-      filmPropReview
-  ).isRequired,
-};
+MainPage.propTypes = {};
 
 export {MainPage};

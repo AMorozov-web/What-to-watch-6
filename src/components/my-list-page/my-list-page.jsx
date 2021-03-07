@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {filmPropReview} from '../../consts';
+import {useSelector} from 'react-redux';
 import {Logo} from '../logo/logo';
 import {MoviesList} from '../movies-list/movies-list';
 
-const MyListPage = ({films}) => {
+const MyListPage = () => {
+  const {films} = useSelector((state) => state.DATA);
   const filmsInFavorite = films.filter((film) => film.isFavorite);
 
   return (
@@ -30,12 +30,6 @@ const MyListPage = ({films}) => {
       </footer>
     </div>
   );
-};
-
-MyListPage.propTypes = {
-  films: PropTypes.arrayOf(
-      filmPropReview
-  ).isRequired,
 };
 
 export {MyListPage};

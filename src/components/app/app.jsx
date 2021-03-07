@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import {MainPage} from '../main-page/main-page';
 import {SignInPage} from '../sign-in-page/sign-in-page';
@@ -8,30 +7,29 @@ import {FilmPage} from '../film-page/film-page';
 import {AddReviewPage} from '../add-review-page/add-review-page';
 import {PlayerPage} from '../player-page/player-page';
 import {NotFoundPage} from '../not-found-page/not-found-page';
-import {filmPropReview} from '../../consts';
 
-const App = ({films}) => {
+const App = () => {
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage films={films} />
+          <MainPage />
         </Route>
         <Route exact path="/login">
           <SignInPage />
         </Route>
         <Route exact path="/mylist">
-          <MyListPage films={films}/>
+          <MyListPage />
         </Route>
         <Route exact path="/films/:id">
-          <FilmPage films={films}/>
+          <FilmPage />
         </Route>
         <Route exact path="/films/:id/review">
-          <AddReviewPage films={films}/>
+          <AddReviewPage />
         </Route>
         <Route exact path="/player/:id">
-          <PlayerPage films={films}/>
+          <PlayerPage />
         </Route>
         <Route>
           <NotFoundPage />
@@ -41,10 +39,6 @@ const App = ({films}) => {
   );
 };
 
-App.propTypes = {
-  films: PropTypes.arrayOf(
-      filmPropReview
-  ).isRequired,
-};
+App.propTypes = {};
 
 export {App};

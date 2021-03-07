@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 import {Logo} from '../logo/logo';
 import {CommentForm} from '../comments-form/comments-form';
-import {filmPropReview} from '../../consts';
 
-const AddReviewPage = ({films}) => {
+const AddReviewPage = () => {
+  const {films} = useSelector((state) => state.DATA);
   const id = +useParams().id;
   const {
     title,
@@ -52,12 +52,6 @@ const AddReviewPage = ({films}) => {
       </div>
     </section>
   );
-};
-
-AddReviewPage.propTypes = {
-  films: PropTypes.arrayOf(
-      filmPropReview
-  ).isRequired,
 };
 
 export {AddReviewPage};

@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
-import {filmPropReview} from '../../consts';
+import {useSelector} from 'react-redux';
 
-const PlayerPage = ({films}) => {
+const PlayerPage = () => {
+  const {films} = useSelector((state) => state.DATA);
   const id = +useParams().id;
   const {title, videoLink} = films.find((film) => film.id === id);
 
@@ -37,12 +37,6 @@ const PlayerPage = ({films}) => {
       </div>
     </div>
   );
-};
-
-PlayerPage.propTypes = {
-  films: PropTypes.arrayOf(
-      filmPropReview
-  ).isRequired,
 };
 
 export {PlayerPage};
