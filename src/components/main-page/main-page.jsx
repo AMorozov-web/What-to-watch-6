@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchFilms} from '../../store/api-actions';
+import {selectData} from '../../store/reducers/data/selectors';
 import {MoviesList} from '../movies-list/movies-list';
 import {Logo} from '../logo/logo';
 import {LoadingScreen} from '../loading-screen/loading-screen';
 
 const MainPage = () => {
-  const {films, isFilmsLoaded} = useSelector((state) => state.DATA);
+  const {films, isFilmsLoaded} = useSelector(selectData);
   const dispatch = useDispatch();
 
   useEffect(() => {
