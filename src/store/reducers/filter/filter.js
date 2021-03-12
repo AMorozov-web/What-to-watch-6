@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {Genre} from '../../consts';
-import {changeGenre} from '../action';
+import {Genre} from '../../../consts';
+import {changeGenre} from '../../action';
 
 const initialState = {
   genre: Genre.ALL,

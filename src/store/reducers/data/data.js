@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {loadFilms, loadPromo} from '../action';
+import {loadFilms, loadPromo} from '../../action';
 
 const initialState = {
   films: [],
@@ -19,6 +19,4 @@ const data = createReducer(initialState, (builder) => {
   });
 });
 
-export {
-  data,
-};
+export {data};
