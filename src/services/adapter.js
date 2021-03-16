@@ -1,4 +1,4 @@
-const adaptToCLient = (film) => {
+const adaptToClient = (film) => {
   const adaptedFilm = {
     ...film,
     title: film.name,
@@ -57,6 +57,6 @@ const adaptToServer = (film) => {
 };
 
 export {
-  adaptToCLient,
+  adaptToClient,
   adaptToServer
 };
