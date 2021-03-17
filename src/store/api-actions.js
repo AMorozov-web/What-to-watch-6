@@ -1,5 +1,6 @@
-import {loadFilms, loadPromo, requireAuthorization} from "./action";
-import {AuthorizationStatus, APIRoute} from "../consts";
+import {loadFilms, loadPromo} from './reducers/data/action';
+import {requireAuthorization} from './reducers/user/action';
+import {AuthorizationStatus, APIRoute} from './consts';
 
 const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
