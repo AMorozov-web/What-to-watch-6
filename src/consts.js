@@ -57,6 +57,13 @@ const Genre = {
   ALL: `all`,
 };
 
+const ActionType = {
+  CHANGE_GENRE: `filter/changeGenre`,
+  LOAD_FILMS: `data/loadFilms`,
+  LOAD_PROMO: `data/loadPromo`,
+  REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
+};
+
 export {
   PLAY_DELAY_IN_MS,
   MINUTES_IN_HOUR,
@@ -70,4 +77,5 @@ export {
   BACKEND_URL,
   REQUEST_TIMEOUT,
   HttpCode,
+  ActionType,
 };

@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {Genre} from '../../../consts';
-import {loadFilms, loadPromo, changeGenre} from '../../action';
+import {loadFilms, loadPromo, changeGenre} from './action';
 
 const initialState = {
   films: [],

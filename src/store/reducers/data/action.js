@@ -1,12 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
-import {adaptToClient} from '../services/adapter';
-
-const ActionType = {
-  CHANGE_GENRE: `filter/changeGenre`,
-  LOAD_FILMS: `data/loadFilms`,
-  LOAD_PROMO: `data/loadPromo`,
-  REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
-};
+import {adaptToClient} from '../../../services/adapter';
+import {ActionType} from '../../../consts';
 
 const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
   return {
@@ -26,16 +20,8 @@ const loadPromo = createAction(ActionType.LOAD_PROMO, (promo) => {
   };
 });
 
-const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => {
-  return {
-    payload: status,
-  };
-});
-
 export {
-  ActionType,
   changeGenre,
   loadFilms,
   loadPromo,
-  requireAuthorization,
 };

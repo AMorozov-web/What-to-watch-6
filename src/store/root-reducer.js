@@ -4,8 +4,7 @@ import {user} from './reducers/user/user';
 
 const NameSpace = {
   DATA: `DATA`,
-  FILTER: `FILTER`,
-  USER: `USER`
+  USER: `USER`,
 };
 
 const rootReducer = combineReducers({

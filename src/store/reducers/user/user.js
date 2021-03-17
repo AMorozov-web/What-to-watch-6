@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {requireAuthorization} from '../../action';
 import {AuthorizationStatus} from '../../../consts';
+import {requireAuthorization} from './action';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
