@@ -1,6 +1,5 @@
 import {combineReducers} from 'redux';
 import {data} from './reducers/data/data';
-import {filter} from './reducers/filter/filter';
 import {user} from './reducers/user/user';
 
 const NameSpace = {
@@ -11,7 +10,6 @@ const NameSpace = {
 
 const rootReducer = combineReducers({
   [NameSpace.DATA]: data,
-  [NameSpace.FILTER]: filter,
   [NameSpace.USER]: user,
 });
 
