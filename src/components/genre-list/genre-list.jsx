@@ -1,32 +1,39 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {filmPropReview} from '../../consts';
+import {MAX_GENRES_COUNT, filmPropReview, Genre} from '../../consts';
+
+const capitalizeFirstLetter = (string) => {
+  return string && string[0].toUpperCase() + string.slice(1);
+};
 
 const GenreList = ({films}) => {
-  const [selectedGenre, setSelectedGenre] = useState();
+  const [selectedGenre, setSelectedGenre] = useState(Genre.ALL);
+
+  const genres = [Genre.ALL, ...(new Set(films.map((film) => film.genre.toLowerCase())))]
+                .slice(0, MAX_GENRES_COUNT);
 
   const selectGenre = (evt) => {
     evt.preventDefault();
-    selectGenre(evt.target.textContent.toUpperCase());
+    setSelectedGenre(evt.target.textContent.toLowerCase());
+  };
+
+  const getGenre = (genre) => {
+
+    return (
+      <li key={genre}
+        className={`catalog__genres-item ${selectedGenre === genre.toLowerCase() ? `catalog__genres-item--active` : ``}`}
+      >
+        <a href="" className="catalog__genres-link" onClick={selectGenre}>
+          {capitalizeFirstLetter(genre)}
+        </a>
+      </li>
+    );
   };
 
   return (
-    <div className="movie-card__desc">
-      <nav className="movie-nav movie-card__nav">
-        <ul className="movie-nav__list">
-          <li className={`movie-nav__item ${selectedTab === TabType.OVERVIEW ? `movie-nav__item--active` : ``}`}>
-            <a href="#" className="movie-nav__link" onClick={selectGenre}>Overview</a>
-          </li>
-          <li className={`movie-nav__item ${selectedTab === TabType.DETAILS ? `movie-nav__item--active` : ``}`}>
-            <a href="#" className="movie-nav__link" onClick={selectGenre}>Details</a>
-          </li>
-          <li className={`movie-nav__item ${selectedTab === TabType.REVIEWS ? `movie-nav__item--active` : ``}`}>
-            <a href="#" className="movie-nav__link" onClick={selectGenre}>Reviews</a>
-          </li>
-        </ul>
-      </nav>
-      {getTabByType(film, selectedTab)}
-    </div>
+    <ul className="catalog__genres-list">
+      {genres.map((genre) => getGenre(genre))}
+    </ul>
   );
 };
 

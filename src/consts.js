@@ -5,6 +5,7 @@ const MINUTES_IN_HOUR = 60;
 const SIMILAR_FILMS_COUNT = 4;
 const BACKEND_URL = `https://6.react.pages.academy/wtw`;
 const REQUEST_TIMEOUT = 5000;
+const MAX_GENRES_COUNT = 10;
 
 const HttpCode = {
   UNAUTHORIZED: 401
@@ -54,7 +55,7 @@ const APIRoute = {
 };
 
 const Genre = {
-  ALL: `all`,
+  ALL: `all genres`,
 };
 
 const ActionType = {
@@ -68,6 +69,8 @@ export {
   PLAY_DELAY_IN_MS,
   MINUTES_IN_HOUR,
   SIMILAR_FILMS_COUNT,
+  REQUEST_TIMEOUT,
+  MAX_GENRES_COUNT,
   filmPropReview,
   TabType,
   AuthorizationStatus,
@@ -75,7 +78,6 @@ export {
   APIRoute,
   Genre,
   BACKEND_URL,
-  REQUEST_TIMEOUT,
   HttpCode,
   ActionType,
 };
