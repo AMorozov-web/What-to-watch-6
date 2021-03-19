@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import {useSelector, useDispatch} from 'react-redux';
+import {selectData} from '../../store/reducers/data/selectors';
+import {changeGenre} from '../../store/reducers/data/action';
 import {MAX_GENRES_COUNT, filmPropReview, Genre} from '../../consts';
 
 const capitalizeFirstLetter = (string) => {
@@ -7,6 +10,9 @@ const capitalizeFirstLetter = (string) => {
 };
 
 const GenreList = ({films}) => {
+  const {genre} = useSelector(selectData);
+  const dispatch = useDispatch();
+
   const [selectedGenre, setSelectedGenre] = useState(Genre.ALL);
 
   const genres = [Genre.ALL, ...(new Set(films.map((film) => film.genre.toLowerCase())))]
@@ -15,16 +21,17 @@ const GenreList = ({films}) => {
   const selectGenre = (evt) => {
     evt.preventDefault();
     setSelectedGenre(evt.target.textContent.toLowerCase());
+    dispatch(changeGenre(evt.target.textContent.toLowerCase()));
   };
 
-  const getGenre = (genre) => {
+  const getGenre = (genr) => {
 
     return (
-      <li key={genre}
-        className={`catalog__genres-item ${selectedGenre === genre.toLowerCase() ? `catalog__genres-item--active` : ``}`}
+      <li key={genr}
+        className={`catalog__genres-item ${selectedGenre === genr.toLowerCase() ? `catalog__genres-item--active` : ``}`}
       >
         <a href="" className="catalog__genres-link" onClick={selectGenre}>
-          {capitalizeFirstLetter(genre)}
+          {capitalizeFirstLetter(genr)}
         </a>
       </li>
     );
@@ -32,7 +39,7 @@ const GenreList = ({films}) => {
 
   return (
     <ul className="catalog__genres-list">
-      {genres.map((genre) => getGenre(genre))}
+      {genres.map((genr) => getGenre(genr))}
     </ul>
   );
 };
