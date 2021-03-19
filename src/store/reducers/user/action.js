@@ -1,5 +1,8 @@
 import {createAction} from '@reduxjs/toolkit';
-import {ActionType} from '../../../consts';
+
+const ActionType = {
+  REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
+};
 
 const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => {
   return {

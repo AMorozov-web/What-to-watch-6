@@ -1,6 +1,11 @@
 import {createAction} from '@reduxjs/toolkit';
 import {adaptToClient} from '../../../services/adapter';
-import {ActionType} from '../../../consts';
+
+const ActionType = {
+  CHANGE_GENRE: `data/changeGenre`,
+  LOAD_FILMS: `data/loadFilms`,
+  LOAD_PROMO: `data/loadPromo`,
+};
 
 const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
   return {
