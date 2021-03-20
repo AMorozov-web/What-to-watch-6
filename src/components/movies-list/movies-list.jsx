@@ -1,18 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {useSelector} from 'react-redux';
-import {selectFilmsByGenre} from '../../store/reducers/data/selectors';
+import {useSelector, useDispatch} from 'react-redux';
+import {selectData, selectFilmsByGenre} from '../../store/reducers/data/selectors';
+import {setShownFilmsCount} from '../../store/reducers/data/action';
 import {filmPropReview} from '../../consts';
 import {MovieCard} from '../movie-card/movie-card';
 
-const MoviesList = ({films}) => {
+const MoviesList = ({films, count}) => {
   const filteredFilms = useSelector(selectFilmsByGenre);
+  const {filmsLimit} = useSelector(selectData);
+  const dispatch = useDispatch();
 
-  const filmsInList = !films ? filteredFilms : films;
+  const allFilms = (!films ? filteredFilms : films).map((film) => <MovieCard key={film.id} film={film} />);
+
+  const filmsInList = allFilms.slice(0, (count ? count : filmsLimit));
+
+  useEffect(() => {
+    dispatch(setShownFilmsCount(allFilms.length));
+  }, [allFilms.length]);
 
   return (
     <div className="catalog__movies-list">
-      {filmsInList.map((film) => <MovieCard key={film.id} film={film} />)}
+      {filmsInList}
     </div>
   );
 };
@@ -21,6 +30,7 @@ MoviesList.propTypes = {
   films: PropTypes.arrayOf(
       filmPropReview
   ),
+  count: PropTypes.number,
 };
 
 export {MoviesList};

@@ -1,6 +1,11 @@
 import {createAction} from '@reduxjs/toolkit';
 import {adaptToClient} from '../../../services/adapter';
-import {MAX_GENRES_COUNT, FILMS_IN_LIST_OFFSET, Genre} from '../../../consts';
+import {
+  MAX_GENRES_COUNT,
+  FILMS_IN_LIST_OFFSET,
+  FILMS_IN_LIST_LIMIT_MIN,
+  Genre,
+} from '../../../consts';
 
 const ActionType = {
   CHANGE_GENRE: `data/changeGenre`,
@@ -8,6 +13,7 @@ const ActionType = {
   LOAD_PROMO: `data/loadPromo`,
   COLLECT_GENRES: `data/collectGenres`,
   INCREASE_FILMS_LIMIT: `data/increaseFilmsLimit`,
+  INCREASE_SHOWN_FILMS_COUNT: `data/setShownFilmsCount`,
 };
 
 const loadFilms = createAction(ActionType.LOAD_FILMS, (films) => {
@@ -38,7 +44,13 @@ const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
 
 const increaseFilmsLimit = createAction(ActionType.INCREASE_FILMS_LIMIT, (limit) => {
   return {
-    payload: limit + FILMS_IN_LIST_OFFSET,
+    payload: limit ? limit + FILMS_IN_LIST_OFFSET : FILMS_IN_LIST_LIMIT_MIN,
+  };
+});
+
+const setShownFilmsCount = createAction(ActionType.INCREASE_SHOWN_FILMS_COUNT, (count) => {
+  return {
+    payload: count,
   };
 });
 
@@ -48,4 +60,5 @@ export {
   loadPromo,
   collectGenres,
   increaseFilmsLimit,
+  setShownFilmsCount,
 };

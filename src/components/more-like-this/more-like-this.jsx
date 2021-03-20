@@ -4,12 +4,12 @@ import {MoviesList} from '../movies-list/movies-list';
 import {filmPropReview, SIMILAR_FILMS_MAX_COUNT} from '../../consts';
 
 const MoreLikeThis = ({films, genre, selectedFilmId}) => {
-  const similarFilms = films.filter((film) => (film.genre === genre) && (film.id !== selectedFilmId)).slice(0, SIMILAR_FILMS_MAX_COUNT);
+  const similarFilms = films.filter((film) => (film.genre === genre) && (film.id !== selectedFilmId));
 
   return (
     <section className="catalog catalog--like-this">
       <h2 className="catalog__title">More like this</h2>
-      <MoviesList films={similarFilms}/>
+      <MoviesList films={similarFilms} count={SIMILAR_FILMS_MAX_COUNT}/>
     </section>
   );
 };

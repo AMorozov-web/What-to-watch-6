@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {selectData} from '../../store/reducers/data/selectors';
-import {changeGenre} from '../../store/reducers/data/action';
+import {changeGenre, increaseFilmsLimit} from '../../store/reducers/data/action';
 
 const capitalizeFirstLetter = (string) => {
   return string && string[0].toUpperCase() + string.slice(1);
@@ -14,6 +14,7 @@ const GenreList = () => {
   const selectGenre = (evt) => {
     evt.preventDefault();
     dispatch(changeGenre(evt.target.textContent.toLowerCase()));
+    dispatch(increaseFilmsLimit());
   };
 
   const getGenre = (genre) => {

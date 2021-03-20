@@ -1,6 +1,13 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {FILMS_IN_LIST_LIMIT_MIN, Genre} from '../../../consts';
-import {loadFilms, loadPromo, changeGenre, collectGenres, increaseFilmsLimit} from './action';
+import {
+  loadFilms,
+  loadPromo,
+  changeGenre,
+  collectGenres,
+  increaseFilmsLimit,
+  setShownFilmsCount
+} from './action';
 
 const initialState = {
   films: [],
@@ -9,7 +16,8 @@ const initialState = {
   isFilmsLoaded: false,
   isPromoLoaded: false,
   selectedGenre: Genre.ALL,
-  filmsLimitInList: FILMS_IN_LIST_LIMIT_MIN,
+  filmsLimit: FILMS_IN_LIST_LIMIT_MIN,
+  shownFilmsCount: 0,
 };
 
 const data = createReducer(initialState, (builder) => {
@@ -36,7 +44,13 @@ const data = createReducer(initialState, (builder) => {
   builder.addCase(increaseFilmsLimit, (state, action) => {
     return {
       ...state,
-      filmsLimitInList: action.payload,
+      filmsLimit: action.payload,
+    };
+  });
+  builder.addCase(setShownFilmsCount, (state, action) => {
+    return {
+      ...state,
+      shownFilmsCount: action.payload,
     };
   });
 });
