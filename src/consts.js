@@ -6,6 +6,8 @@ const SIMILAR_FILMS_MAX_COUNT = 4;
 const BACKEND_URL = `https://6.react.pages.academy/wtw`;
 const REQUEST_TIMEOUT = 5000;
 const MAX_GENRES_COUNT = 10;
+const FILMS_IN_LIST_LIMIT_MIN = 8;
+const FILMS_IN_LIST_OFFSET = 8;
 
 const HttpCode = {
   UNAUTHORIZED: 401
@@ -63,13 +65,15 @@ export {
   MINUTES_IN_HOUR,
   SIMILAR_FILMS_MAX_COUNT,
   REQUEST_TIMEOUT,
+  BACKEND_URL,
   MAX_GENRES_COUNT,
+  FILMS_IN_LIST_LIMIT_MIN,
+  FILMS_IN_LIST_OFFSET,
   filmPropReview,
   TabType,
   AuthorizationStatus,
   AppRoute,
   APIRoute,
   Genre,
-  BACKEND_URL,
   HttpCode,
 };
