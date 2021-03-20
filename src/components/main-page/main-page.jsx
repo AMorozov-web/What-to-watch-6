@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchFilms} from '../../store/api-actions';
+import {fetchFilms, fetchPromo} from '../../store/api-actions';
 import {selectData} from '../../store/reducers/data/selectors';
 import {MoviesList} from '../movies-list/movies-list';
 import {Logo} from '../logo/logo';
@@ -10,16 +10,17 @@ import {ShowMoreButton} from '../show-more-button/show-more-button';
 import {Promo} from '../promo/promo';
 
 const MainPage = () => {
-  const {isFilmsLoaded} = useSelector(selectData);
+  const {isFilmsLoaded, isPromoLoaded} = useSelector(selectData);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isFilmsLoaded) {
       dispatch(fetchFilms());
+      dispatch(fetchPromo());
     }
   }, [isFilmsLoaded]);
 
-  if (!isFilmsLoaded) {
+  if (!isFilmsLoaded || !isPromoLoaded) {
     return (
       <LoadingScreen />
     );
@@ -27,22 +28,7 @@ const MainPage = () => {
 
   return (
     <>
-      <section className="movie-card">
-        <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
-        </div>
-        <h1 className="visually-hidden">WTW</h1>
-        <header className="page-header movie-card__head">
-          <Logo onMainPage={true}/>
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width={63} height={63} />
-            </div>
-          </div>
-        </header>
-        <Promo />
-      </section>
-
+      <Promo />
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
