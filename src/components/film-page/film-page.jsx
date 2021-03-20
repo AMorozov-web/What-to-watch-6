@@ -1,12 +1,13 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
+import {selectData} from '../../store/reducers/data/selectors';
 import {Logo} from '../logo/logo';
 import {Tabs} from '../tabs/tabs';
 import {MoreLikeThis} from '../more-like-this/more-like-this';
 
 const FilmPage = () => {
-  const {films} = useSelector((state) => state.DATA);
+  const {films} = useSelector(selectData);
   const id = +useParams().id;
   const selectedFilm = films.find((film) => film.id === id);
   const {

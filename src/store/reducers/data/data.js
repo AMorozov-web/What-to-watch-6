@@ -7,7 +7,7 @@ const initialState = {
   promo: {},
   isFilmsLoaded: false,
   isPromoLoaded: false,
-  genre: Genre.ALL,
+  selectedGenre: Genre.ALL,
 };
 
 const data = createReducer(initialState, (builder) => {
@@ -22,7 +22,7 @@ const data = createReducer(initialState, (builder) => {
   builder.addCase(changeGenre, (state, action) => {
     return {
       ...state,
-      genre: action.payload,
+      selectedGenre: action.payload,
     };
   });
 });

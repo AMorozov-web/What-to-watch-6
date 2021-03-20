@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const PLAY_DELAY_IN_MS = 1000;
 const MINUTES_IN_HOUR = 60;
-const SIMILAR_FILMS_COUNT = 4;
+const SIMILAR_FILMS_MAX_COUNT = 4;
 const BACKEND_URL = `https://6.react.pages.academy/wtw`;
 const REQUEST_TIMEOUT = 5000;
 const MAX_GENRES_COUNT = 10;
@@ -61,7 +61,7 @@ const Genre = {
 export {
   PLAY_DELAY_IN_MS,
   MINUTES_IN_HOUR,
-  SIMILAR_FILMS_COUNT,
+  SIMILAR_FILMS_MAX_COUNT,
   REQUEST_TIMEOUT,
   MAX_GENRES_COUNT,
   filmPropReview,

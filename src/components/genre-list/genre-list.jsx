@@ -1,37 +1,37 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
+import React, {useMemo} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {selectData} from '../../store/reducers/data/selectors';
 import {changeGenre} from '../../store/reducers/data/action';
-import {MAX_GENRES_COUNT, filmPropReview, Genre} from '../../consts';
+import {MAX_GENRES_COUNT, Genre} from '../../consts';
 
 const capitalizeFirstLetter = (string) => {
   return string && string[0].toUpperCase() + string.slice(1);
 };
 
-const GenreList = ({films}) => {
-  const {genre} = useSelector(selectData);
+const GenreList = () => {
+  const {films, selectedGenre} = useSelector(selectData);
   const dispatch = useDispatch();
 
-  const [selectedGenre, setSelectedGenre] = useState(Genre.ALL);
+  const genres = useMemo(() => {
+    const genresFromFilms = new Set(films.map((film) => film.genre.toLowerCase()));
 
-  const genres = [Genre.ALL, ...(new Set(films.map((film) => film.genre.toLowerCase())))]
-                .slice(0, MAX_GENRES_COUNT);
+    return [Genre.ALL, ...genresFromFilms].slice(0, MAX_GENRES_COUNT);
+  },
+  [films]);
 
   const selectGenre = (evt) => {
     evt.preventDefault();
-    setSelectedGenre(evt.target.textContent.toLowerCase());
     dispatch(changeGenre(evt.target.textContent.toLowerCase()));
   };
 
-  const getGenre = (genr) => {
+  const getGenre = (genre) => {
 
     return (
-      <li key={genr}
-        className={`catalog__genres-item ${selectedGenre === genr.toLowerCase() ? `catalog__genres-item--active` : ``}`}
+      <li key={genre}
+        className={`catalog__genres-item ${selectedGenre === genre.toLowerCase() ? `catalog__genres-item--active` : ``}`}
       >
         <a href="" className="catalog__genres-link" onClick={selectGenre}>
-          {capitalizeFirstLetter(genr)}
+          {capitalizeFirstLetter(genre)}
         </a>
       </li>
     );
@@ -39,15 +39,9 @@ const GenreList = ({films}) => {
 
   return (
     <ul className="catalog__genres-list">
-      {genres.map((genr) => getGenre(genr))}
+      {genres.map((genre) => getGenre(genre))}
     </ul>
   );
-};
-
-GenreList.propTypes = {
-  films: PropTypes.arrayOf(
-      filmPropReview
-  ).isRequired,
 };
 
 export {GenreList};
