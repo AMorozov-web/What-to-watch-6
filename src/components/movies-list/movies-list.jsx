@@ -8,9 +8,11 @@ import {MovieCard} from '../movie-card/movie-card';
 const MoviesList = ({films}) => {
   const filteredFilms = useSelector(selectFilmsByGenre);
 
+  const filmsInList = !films ? filteredFilms : films;
+
   return (
     <div className="catalog__movies-list">
-      {films.map((film) => <MovieCard key={film.id} film={film} />)}
+      {filmsInList.map((film) => <MovieCard key={film.id} film={film} />)}
     </div>
   );
 };

@@ -1,23 +1,15 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {selectData} from '../../store/reducers/data/selectors';
 import {changeGenre} from '../../store/reducers/data/action';
-import {MAX_GENRES_COUNT, Genre} from '../../consts';
 
 const capitalizeFirstLetter = (string) => {
   return string && string[0].toUpperCase() + string.slice(1);
 };
 
 const GenreList = () => {
-  const {films, selectedGenre} = useSelector(selectData);
+  const {genres, selectedGenre} = useSelector(selectData);
   const dispatch = useDispatch();
-
-  const genres = useMemo(() => {
-    const genresFromFilms = new Set(films.map((film) => film.genre.toLowerCase()));
-
-    return [Genre.ALL, ...genresFromFilms].slice(0, MAX_GENRES_COUNT);
-  },
-  [films]);
 
   const selectGenre = (evt) => {
     evt.preventDefault();

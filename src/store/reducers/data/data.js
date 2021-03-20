@@ -1,9 +1,10 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {Genre} from '../../../consts';
-import {loadFilms, loadPromo, changeGenre} from './action';
+import {loadFilms, loadPromo, changeGenre, collectGenres} from './action';
 
 const initialState = {
   films: [],
+  genres: [],
   promo: {},
   isFilmsLoaded: false,
   isPromoLoaded: false,
@@ -23,6 +24,12 @@ const data = createReducer(initialState, (builder) => {
     return {
       ...state,
       selectedGenre: action.payload,
+    };
+  });
+  builder.addCase(collectGenres, (state, action) => {
+    return {
+      ...state,
+      genres: action.payload,
     };
   });
 });

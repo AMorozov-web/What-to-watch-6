@@ -8,7 +8,7 @@ import {LoadingScreen} from '../loading-screen/loading-screen';
 import {GenreList} from '../genre-list/genre-list';
 
 const MainPage = () => {
-  const {films, isFilmsLoaded} = useSelector(selectData);
+  const {isFilmsLoaded} = useSelector(selectData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const MainPage = () => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenreList />
-          <MoviesList films={films} />
+          <MoviesList />
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>
