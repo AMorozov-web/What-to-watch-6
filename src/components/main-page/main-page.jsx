@@ -6,6 +6,7 @@ import {MoviesList} from '../movies-list/movies-list';
 import {Logo} from '../logo/logo';
 import {LoadingScreen} from '../loading-screen/loading-screen';
 import {GenreList} from '../genre-list/genre-list';
+import {ShowMoreButton} from '../show-more-button/show-more-button';
 
 const MainPage = () => {
   const {isFilmsLoaded} = useSelector(selectData);
@@ -73,9 +74,7 @@ const MainPage = () => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenreList />
           <MoviesList />
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMoreButton />
         </section>
         <footer className="page-footer">
           <Logo onMainPage={true} centered={true}/>
