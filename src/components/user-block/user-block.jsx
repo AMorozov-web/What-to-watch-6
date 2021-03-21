@@ -5,7 +5,7 @@ import {redirectToRoute} from '../../store/middleware/action';
 import {AppRoute, AuthorizationStatus} from '../../consts';
 
 const UserBlock = () => {
-  const {autorizationStatus, authInfo} = useSelector(selectUser);
+  const {authorizationStatus, authInfo} = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const handleAvatarClick = (evt) => {
@@ -19,7 +19,7 @@ const UserBlock = () => {
 
   return (
     <div className="user-block">
-      {autorizationStatus === AuthorizationStatus.AUTH
+      {authorizationStatus === AuthorizationStatus.AUTH
         ?
         <div className="user-block__avatar">
           <img src={authInfo[`avatar_url`]} alt="User avatar" width={63} height={63} onClick={handleAvatarClick}/>

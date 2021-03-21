@@ -1,6 +1,7 @@
 import {loadFilms, loadPromo, collectGenres} from './reducers/data/action';
 import {requireAuthorization, setAuthInfo} from './reducers/user/action';
-import {AuthorizationStatus, APIRoute} from '../consts';
+import {redirectToRoute} from './middleware/action';
+import {AuthorizationStatus, APIRoute, AppRoute} from '../consts';
 
 const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
@@ -26,6 +27,9 @@ const login = ({login: email, password}) => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(setAuthInfo(data));
+    })
+    .then(() => {
+      dispatch(redirectToRoute(AppRoute.ROOT));
     })
 );
 
