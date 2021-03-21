@@ -6,7 +6,8 @@ import {
   changeGenre,
   collectGenres,
   increaseFilmsLimit,
-  setShownFilmsCount
+  setShownFilmsCount,
+  resetFilmsLimit,
 } from './action';
 
 const initialState = {
@@ -30,28 +31,19 @@ const data = createReducer(initialState, (builder) => {
     state.promo = action.payload;
   });
   builder.addCase(changeGenre, (state, action) => {
-    return {
-      ...state,
-      selectedGenre: action.payload,
-    };
+    state.selectedGenre = action.payload;
   });
   builder.addCase(collectGenres, (state, action) => {
-    return {
-      ...state,
-      genres: action.payload,
-    };
+    state.genres = action.payload;
   });
   builder.addCase(increaseFilmsLimit, (state, action) => {
-    return {
-      ...state,
-      filmsLimit: action.payload,
-    };
+    state.filmsLimit = state.filmsLimit + action.payload;
+  });
+  builder.addCase(resetFilmsLimit, (state, action) => {
+    state.filmsLimit = action.payload;
   });
   builder.addCase(setShownFilmsCount, (state, action) => {
-    return {
-      ...state,
-      shownFilmsCount: action.payload,
-    };
+    state.shownFilmsCount = action.payload;
   });
 });
 

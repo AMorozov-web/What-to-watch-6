@@ -13,6 +13,7 @@ const ActionType = {
   LOAD_PROMO: `data/loadPromo`,
   COLLECT_GENRES: `data/collectGenres`,
   INCREASE_FILMS_LIMIT: `data/increaseFilmsLimit`,
+  RESET_FILMS_LIMIT: `data/resetFilmsLimit`,
   INCREASE_SHOWN_FILMS_COUNT: `data/setShownFilmsCount`,
 };
 
@@ -42,9 +43,15 @@ const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
   };
 });
 
-const increaseFilmsLimit = createAction(ActionType.INCREASE_FILMS_LIMIT, (limit) => {
+const increaseFilmsLimit = createAction(ActionType.INCREASE_FILMS_LIMIT, () => {
   return {
-    payload: limit ? limit + FILMS_IN_LIST_OFFSET : FILMS_IN_LIST_LIMIT_MIN,
+    payload: FILMS_IN_LIST_OFFSET,
+  };
+});
+
+const resetFilmsLimit = createAction(ActionType.RESET_FILMS_LIMIT, () => {
+  return {
+    payload: FILMS_IN_LIST_LIMIT_MIN,
   };
 });
 
@@ -60,5 +67,6 @@ export {
   loadPromo,
   collectGenres,
   increaseFilmsLimit,
+  resetFilmsLimit,
   setShownFilmsCount,
 };

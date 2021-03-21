@@ -9,7 +9,7 @@ const ShowMoreButton = () => {
 
   const increaseLimit = (evt) => {
     evt.preventDefault();
-    dispatch(increaseFilmsLimit(filmsLimit));
+    dispatch(increaseFilmsLimit());
   };
 
   if (filmsLimit >= shownFilmsCount) {
