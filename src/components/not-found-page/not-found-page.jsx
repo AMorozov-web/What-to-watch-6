@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {Logo} from '../logo/logo';
 
 const NotFoundPage = () => {
@@ -17,10 +16,8 @@ const NotFoundPage = () => {
       display: `flex`,
       justifyContent: `center`,
       alignItems: `center`,
+      width: `auto`,
       height: `54px`,
-      color: `#d9cd8d`,
-      textDecoration: `none`,
-      border: `1px solid rgba(223,207,119,.36)`,
       borderRadius: `8px`,
     },
   };
@@ -33,12 +30,13 @@ const NotFoundPage = () => {
       <div className="sign-in user-page__content" style={styles.pageContent}>
         <h1 style={styles.h1}>404.</h1>
         <h2 style={styles.h2}>Page Not Found</h2>
-        <Link
-          to="/"
+        <a
+          href="/"
+          className="logo__link"
           style={styles.link}
         >
           <span>Go to Main page</span>
-        </Link>
+        </a>
       </div>
       <footer className="page-footer">
         <Logo centered={true}/>
