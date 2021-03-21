@@ -1,5 +1,5 @@
 import {loadFilms, loadPromo, collectGenres} from './reducers/data/action';
-import {requireAuthorization} from './reducers/user/action';
+import {requireAuthorization, setAuthInfo} from './reducers/user/action';
 import {AuthorizationStatus, APIRoute} from '../consts';
 
 const fetchFilms = () => (dispatch, _getState, api) => (
@@ -23,7 +23,10 @@ const checkAuth = () => (dispatch, _getState, api) => (
 
 const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
-    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(({data}) => {
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH));
+      dispatch(setAuthInfo(data));
+    })
 );
 
 export {

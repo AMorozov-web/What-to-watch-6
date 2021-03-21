@@ -48,6 +48,9 @@ const AppRoute = {
   ROOT: `/`,
   LOGIN: `/login`,
   MY_LIST: `/mylist`,
+  FILM_INFO: `/films/:id`,
+  FILM_PLAYER: `/player/:id`,
+  FILM_ADD_REVIEW: `/films/:id/review`,
 };
 
 const APIRoute = {

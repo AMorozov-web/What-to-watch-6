@@ -2,6 +2,7 @@ import {createAction} from '@reduxjs/toolkit';
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
+  SET_AUTH_INFO: `user/setAuthenticationInfo`,
 };
 
 const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => {
@@ -10,6 +11,13 @@ const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (st
   };
 });
 
+const setAuthInfo = createAction(ActionType.SET_AUTH_INFO, (status) => {
+  return {
+    payload: status,
+  };
+});
+
 export {
   requireAuthorization,
+  setAuthInfo,
 };
