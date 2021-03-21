@@ -9,6 +9,7 @@ import {
   increaseFilmsLimit,
   setShownFilmsCount,
   resetFilmsLimit,
+  loadReviewsById,
 } from './action';
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   genres: [],
   promo: {},
   favorites: [],
+  reviewsForSelectedFilm: [],
   isFilmsLoaded: false,
   isPromoLoaded: false,
   isFavoritesLoaded: false,
@@ -36,6 +38,9 @@ const data = createReducer(initialState, (builder) => {
   builder.addCase(loadFavorites, (state, action) => {
     state.isFavoritesLoaded = true;
     state.favorites = action.payload;
+  });
+  builder.addCase(loadReviewsById, (state, action) => {
+    state.reviewsForSelectedFilm = action.payload;
   });
   builder.addCase(changeGenre, (state, action) => {
     state.selectedGenre = action.payload;

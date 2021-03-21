@@ -1,8 +1,9 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import {selectData} from '../../store/reducers/data/selectors';
 import {selectUser} from '../../store/reducers/user/selectors';
+import {fetchReviewsById} from '../../store/api-actions';
 import {Logo} from '../logo/logo';
 import {Tabs} from '../tabs/tabs';
 import {MoreLikeThis} from '../more-like-this/more-like-this';
@@ -13,12 +14,18 @@ import {AuthorizationStatus} from '../../consts';
 const FilmPage = () => {
   const {films} = useSelector(selectData);
   const {authorizationStatus} = useSelector(selectUser);
+  const dispatch = useDispatch();
   const id = +useParams().id;
+
   const selectedFilm = films.find((film) => film.id === id);
 
   if (!selectedFilm) {
     return <NotFoundPage />;
   }
+
+  useEffect(() => {
+    dispatch(fetchReviewsById(id));
+  }, []);
 
   const {
     title,

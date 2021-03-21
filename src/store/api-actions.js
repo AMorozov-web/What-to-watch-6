@@ -1,4 +1,4 @@
-import {loadFilms, loadPromo, collectGenres, loadFavorites} from './reducers/data/action';
+import {loadFilms, loadPromo, collectGenres, loadFavorites, loadReviewsById} from './reducers/data/action';
 import {requireAuthorization, setAuthInfo} from './reducers/user/action';
 import {redirectToRoute} from './middleware/action';
 import {AuthorizationStatus, APIRoute, AppRoute} from '../consts';
@@ -19,6 +19,11 @@ const fetchPromo = () => (dispatch, _getState, api) => (
 const fetchFavorites = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FAVORITE)
     .then(({data}) => dispatch(loadFavorites(data)))
+);
+
+const fetchReviewsById = (id) => (dispatch, _getState, api) => (
+  api.get(`/comments/${id}`)
+    .then(({data}) => dispatch(loadReviewsById(data)))
 );
 
 const checkAuth = () => (dispatch, _getState, api) => (
@@ -42,6 +47,7 @@ export {
   fetchFilms,
   fetchPromo,
   fetchFavorites,
+  fetchReviewsById,
   login,
   checkAuth,
 };

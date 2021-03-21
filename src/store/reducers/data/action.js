@@ -16,6 +16,7 @@ const ActionType = {
   INCREASE_FILMS_LIMIT: `data/increaseFilmsLimit`,
   RESET_FILMS_LIMIT: `data/resetFilmsLimit`,
   INCREASE_SHOWN_FILMS_COUNT: `data/setShownFilmsCount`,
+  LOAD_REVIEWS_BY_ID: `data/loadReviewsById`,
 };
 
 const loadFilms = createAction(ActionType.LOAD_FILMS, (films) => {
@@ -33,6 +34,12 @@ const loadPromo = createAction(ActionType.LOAD_PROMO, (promo) => {
 const loadFavorites = createAction(ActionType.LOAD_FAVORITES, (favorites) => {
   return {
     payload: favorites,
+  };
+});
+
+const loadReviewsById = createAction(ActionType.LOAD_REVIEWS_BY_ID, (reviews) => {
+  return {
+    payload: reviews,
   };
 });
 
@@ -73,6 +80,7 @@ export {
   loadFilms,
   loadPromo,
   loadFavorites,
+  loadReviewsById,
   collectGenres,
   increaseFilmsLimit,
   resetFilmsLimit,
