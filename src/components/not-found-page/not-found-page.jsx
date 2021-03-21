@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom';
 import {Logo} from '../logo/logo';
 
 const NotFoundPage = () => {
-  const style = {
+  const styles = {
+    pageContent: {
+      maxWidth: `360px`,
+    },
     h1: {
       textAlign: `center`,
     },
@@ -27,10 +30,13 @@ const NotFoundPage = () => {
       <header className="page-header user-page__head">
         <Logo />
       </header>
-      <div className="sign-in user-page__content">
-        <h1 style={style.h1}>404.</h1>
-        <h2 style={style.h2}>Page Not Found</h2>
-        <Link to="/" style={style.link}>
+      <div className="sign-in user-page__content" style={styles.pageContent}>
+        <h1 style={styles.h1}>404.</h1>
+        <h2 style={styles.h2}>Page Not Found</h2>
+        <Link
+          to="/"
+          style={styles.link}
+        >
           <span>Go to Main page</span>
         </Link>
       </div>

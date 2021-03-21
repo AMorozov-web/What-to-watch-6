@@ -5,11 +5,17 @@ import {selectData} from '../../store/reducers/data/selectors';
 import {Logo} from '../logo/logo';
 import {Tabs} from '../tabs/tabs';
 import {MoreLikeThis} from '../more-like-this/more-like-this';
+import {NotFoundPage} from '../not-found-page/not-found-page';
 
 const FilmPage = () => {
   const {films} = useSelector(selectData);
   const id = +useParams().id;
   const selectedFilm = films.find((film) => film.id === id);
+
+  if (!selectedFilm) {
+    return <NotFoundPage />;
+  }
+
   const {
     title,
     genre,
