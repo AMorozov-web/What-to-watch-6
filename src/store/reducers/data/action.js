@@ -11,6 +11,7 @@ const ActionType = {
   CHANGE_GENRE: `data/changeGenre`,
   LOAD_FILMS: `data/loadFilms`,
   LOAD_PROMO: `data/loadPromo`,
+  LOAD_FAVORITES: `data/loadFavorites`,
   COLLECT_GENRES: `data/collectGenres`,
   INCREASE_FILMS_LIMIT: `data/increaseFilmsLimit`,
   RESET_FILMS_LIMIT: `data/resetFilmsLimit`,
@@ -26,6 +27,12 @@ const loadFilms = createAction(ActionType.LOAD_FILMS, (films) => {
 const loadPromo = createAction(ActionType.LOAD_PROMO, (promo) => {
   return {
     payload: adaptToClient(promo),
+  };
+});
+
+const loadFavorites = createAction(ActionType.LOAD_FAVORITES, (favorites) => {
+  return {
+    payload: favorites,
   };
 });
 
@@ -65,6 +72,7 @@ export {
   changeGenre,
   loadFilms,
   loadPromo,
+  loadFavorites,
   collectGenres,
   increaseFilmsLimit,
   resetFilmsLimit,

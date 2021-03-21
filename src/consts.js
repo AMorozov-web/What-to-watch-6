@@ -57,6 +57,7 @@ const APIRoute = {
   LOGIN: `/login`,
   FILMS: `/films`,
   PROMO: `/films/promo`,
+  FAVORITE: `/favorite`,
 };
 
 const Genre = {

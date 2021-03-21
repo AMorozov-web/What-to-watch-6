@@ -3,6 +3,7 @@ import {FILMS_IN_LIST_LIMIT_MIN, Genre} from '../../../consts';
 import {
   loadFilms,
   loadPromo,
+  loadFavorites,
   changeGenre,
   collectGenres,
   increaseFilmsLimit,
@@ -14,8 +15,10 @@ const initialState = {
   films: [],
   genres: [],
   promo: {},
+  favorites: [],
   isFilmsLoaded: false,
   isPromoLoaded: false,
+  isFavoritesLoaded: false,
   selectedGenre: Genre.ALL,
   filmsLimit: FILMS_IN_LIST_LIMIT_MIN,
   shownFilmsCount: 0,
@@ -29,6 +32,10 @@ const data = createReducer(initialState, (builder) => {
   builder.addCase(loadPromo, (state, action) => {
     state.isPromoLoaded = true;
     state.promo = action.payload;
+  });
+  builder.addCase(loadFavorites, (state, action) => {
+    state.isFavoritesLoaded = true;
+    state.favorites = action.payload;
   });
   builder.addCase(changeGenre, (state, action) => {
     state.selectedGenre = action.payload;

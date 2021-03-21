@@ -47,6 +47,4 @@ const MainPage = () => {
   );
 };
 
-MainPage.propTypes = {};
-
 export {MainPage};
