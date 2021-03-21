@@ -2,13 +2,17 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import {selectData} from '../../store/reducers/data/selectors';
+import {selectUser} from '../../store/reducers/user/selectors';
 import {Logo} from '../logo/logo';
 import {Tabs} from '../tabs/tabs';
 import {MoreLikeThis} from '../more-like-this/more-like-this';
 import {NotFoundPage} from '../not-found-page/not-found-page';
+import {UserBlock} from '../user-block/user-block';
+import {AuthorizationStatus} from '../../consts';
 
 const FilmPage = () => {
   const {films} = useSelector(selectData);
+  const {authorizationStatus} = useSelector(selectUser);
   const id = +useParams().id;
   const selectedFilm = films.find((film) => film.id === id);
 
@@ -39,11 +43,7 @@ const FilmPage = () => {
           <h1 className="visually-hidden">WTW</h1>
           <header className="page-header movie-card__head">
             <Logo />
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width={63} height={63} />
-              </div>
-            </div>
+            <UserBlock />
           </header>
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -65,7 +65,11 @@ const FilmPage = () => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {authorizationStatus === AuthorizationStatus.AUTH
+                  ?
+                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  : ``
+                }
               </div>
             </div>
           </div>
