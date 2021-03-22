@@ -1,23 +1,30 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
+import {useDispatch} from 'react-redux';
+import {sendReview} from '../../store/api-actions';
+import {redirectToRoute} from '../../store/middleware/action';
 
-const CommentForm = () => {
-  const [userForm, setUserForm] = useState({
+const CommentForm = ({id}) => {
+  const dispatch = useDispatch();
+  const [review, setReview] = useState({
     rating: 0,
-    text: ``,
+    comment: ``,
   });
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-  };
 
   const handleRatingChange = (evt) => {
     const {name, defaultValue} = evt.target;
-    setUserForm({...userForm, [name]: defaultValue});
+    setReview({...review, [name]: defaultValue});
   };
 
   const handleTextChange = (evt) => {
     const {value} = evt.target;
-    setUserForm({...userForm, text: value});
+    setReview({...review, comment: value});
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(sendReview(id, review));
+    dispatch(redirectToRoute(`/films/${id}`));
   };
 
   return (
@@ -60,6 +67,10 @@ const CommentForm = () => {
       </div>
     </form>
   );
+};
+
+CommentForm.propTypes = {
+  id: PropTypes.number.isRequired,
 };
 
 export {CommentForm};

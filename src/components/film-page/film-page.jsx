@@ -4,12 +4,13 @@ import {useParams} from 'react-router-dom';
 import {selectData} from '../../store/reducers/data/selectors';
 import {selectUser} from '../../store/reducers/user/selectors';
 import {fetchReviewsById} from '../../store/api-actions';
+import {redirectToRoute} from '../../store/middleware/action';
+import {AuthorizationStatus} from '../../consts';
 import {Logo} from '../logo/logo';
 import {Tabs} from '../tabs/tabs';
 import {MoreLikeThis} from '../more-like-this/more-like-this';
 import {NotFoundPage} from '../not-found-page/not-found-page';
 import {UserBlock} from '../user-block/user-block';
-import {AuthorizationStatus} from '../../consts';
 
 const FilmPage = () => {
   const {films} = useSelector(selectData);
@@ -38,6 +39,11 @@ const FilmPage = () => {
 
   const style = {
     backgroundColor,
+  };
+
+  const handleAddReviewClick = (evt) => {
+    evt.preventDefault();
+    dispatch(redirectToRoute(`/films/${id}/review`));
   };
 
   return (
@@ -74,7 +80,9 @@ const FilmPage = () => {
                 </button>
                 {authorizationStatus === AuthorizationStatus.AUTH
                   ?
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  <a href="add-review.html" className="btn movie-card__button" onClick={handleAddReviewClick}>
+                    Add review
+                  </a>
                   : ``
                 }
               </div>

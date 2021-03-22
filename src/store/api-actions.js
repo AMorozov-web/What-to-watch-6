@@ -1,4 +1,10 @@
-import {loadFilms, loadPromo, collectGenres, loadFavorites, loadReviewsById} from './reducers/data/action';
+import {
+  loadFilms,
+  loadPromo,
+  collectGenres,
+  loadFavorites,
+  loadReviewsById,
+} from './reducers/data/action';
 import {requireAuthorization, setAuthInfo} from './reducers/user/action';
 import {redirectToRoute} from './middleware/action';
 import {AuthorizationStatus, APIRoute, AppRoute} from '../consts';
@@ -43,6 +49,11 @@ const login = ({login: email, password}) => (dispatch, _getState, api) => (
     })
 );
 
+const sendReview = (id, sendData) => (dispatch, _getState, api) => (
+  api.post(`/comments/${id}`, sendData)
+    .then(({data}) => dispatch(loadReviewsById(data)))
+);
+
 export {
   fetchFilms,
   fetchPromo,
@@ -50,4 +61,5 @@ export {
   fetchReviewsById,
   login,
   checkAuth,
+  sendReview,
 };

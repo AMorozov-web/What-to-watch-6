@@ -1,11 +1,15 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {redirectToRoute} from '../../store/middleware/action';
+import {AppRoute} from '../../consts';
 import {Logo} from '../logo/logo';
 import {CommentForm} from '../comments-form/comments-form';
+import {UserBlock} from '../user-block/user-block';
 
 const AddReviewPage = () => {
   const {films} = useSelector((state) => state.DATA);
+  const dispatch = useDispatch();
   const id = +useParams().id;
   const {
     title,
@@ -16,6 +20,11 @@ const AddReviewPage = () => {
 
   const style = {
     backgroundColor,
+  };
+
+  const handleLinkClick = (evt) => {
+    evt.preventDefault();
+    dispatch(redirectToRoute(AppRoute.ROOT));
   };
 
   return (
@@ -30,25 +39,21 @@ const AddReviewPage = () => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <a href="movie-page.html" className="breadcrumbs__link" onClick={handleLinkClick}>The Grand Budapest Hotel</a>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
               </li>
             </ul>
           </nav>
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width={63} height={63} />
-            </div>
-          </div>
+          <UserBlock />
         </header>
         <div className="movie-card__poster movie-card__poster--small">
           <img src={posterImage} alt={title} width={218} height={327} />
         </div>
       </div>
       <div className="add-review">
-        <CommentForm />
+        <CommentForm id={id} />
       </div>
     </section>
   );
