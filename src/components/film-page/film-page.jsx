@@ -25,7 +25,7 @@ const FilmPage = () => {
 
   useEffect(() => {
     dispatch(fetchReviewsById(id));
-  }, []);
+  }, [id]);
 
   const {
     title,

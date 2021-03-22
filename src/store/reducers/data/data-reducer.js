@@ -21,6 +21,7 @@ const initialState = {
   isFilmsLoaded: false,
   isPromoLoaded: false,
   isFavoritesLoaded: false,
+  isReviewsLoaded: false,
   selectedGenre: Genre.ALL,
   filmsLimit: FILMS_IN_LIST_LIMIT_MIN,
   shownFilmsCount: 0,
@@ -40,6 +41,7 @@ const data = createReducer(initialState, (builder) => {
     state.favorites = action.payload;
   });
   builder.addCase(loadReviewsById, (state, action) => {
+    state.isReviewsLoaded = true;
     state.reviewsForSelectedFilm = action.payload;
   });
   builder.addCase(changeGenre, (state, action) => {

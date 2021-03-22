@@ -19,7 +19,7 @@ const Review = ({review}) => {
         <footer className="review__details">
           <cite className="review__author">{name}</cite>
           <time className="review__date" dateTime={dayjs(date).format(`YYYY-MM-DD`)}>
-            December 24, 2016{dayjs(date).format(`MMMM DD, YYYY`)}
+            {dayjs(date).format(`MMMM DD, YYYY`)}
           </time>
         </footer>
       </blockquote>
