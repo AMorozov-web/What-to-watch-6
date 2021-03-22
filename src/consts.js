@@ -75,6 +75,13 @@ const Genre = {
   ALL: `all genres`,
 };
 
+const ReviewValidation = {
+  MIN_RATING: 1,
+  MAX_RATING: 10,
+  MIN_TEXT_LENGTH: 50,
+  MAX_TEXT_LENGTH: 400,
+};
+
 export {
   PLAY_DELAY_IN_MS,
   MINUTES_IN_HOUR,
@@ -92,4 +99,5 @@ export {
   APIRoute,
   Genre,
   HttpCode,
+  ReviewValidation,
 };

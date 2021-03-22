@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import {sendReview} from '../../store/api-actions';
 import {redirectToRoute} from '../../store/middleware/action';
+import {ReviewValidation} from '../../consts';
 
 const CommentForm = ({id}) => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const CommentForm = ({id}) => {
     rating: 0,
     comment: ``,
   });
+  const [isCommentValid, setCommentValid] = useState(false);
 
   const handleRatingChange = (evt) => {
     const {name, defaultValue} = evt.target;
@@ -26,6 +28,13 @@ const CommentForm = ({id}) => {
     dispatch(sendReview(id, review));
     dispatch(redirectToRoute(`/films/${id}`));
   };
+
+  useEffect(() => {
+    const isRatingValid = review.rating >= ReviewValidation.MIN_RATING && review.rating <= ReviewValidation.MAX_RATING;
+    const isTextValid = review.comment >= ReviewValidation.MIN_TEXT_LENGTH && review.comment <= ReviewValidation.MAX_TEXT_LENGTH;
+
+    setCommentValid(isRatingValid && isTextValid);
+  }, [review]);
 
   return (
     <form onSubmit={handleSubmit} className="add-review__form">
@@ -62,7 +71,7 @@ const CommentForm = ({id}) => {
           defaultValue={``}
           onChange={handleTextChange}/>
         <div className="add-review__submit">
-          <button className="add-review__btn" type="submit">Post</button>
+          <button className="add-review__btn" type="submit" disabled={!isCommentValid}>Post</button>
         </div>
       </div>
     </form>
