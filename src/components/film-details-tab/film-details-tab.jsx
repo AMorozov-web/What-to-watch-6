@@ -1,5 +1,5 @@
 import React from 'react';
-import {filmPropReview, MINUTES_IN_HOUR} from '../../consts';
+import {filmPropValidation, MINUTES_IN_HOUR} from '../../consts';
 
 const getFormatName = (name) => {
   return (
@@ -60,7 +60,7 @@ const FilmDetailsTab = ({film}) => {
 };
 
 FilmDetailsTab.propTypes = {
-  film: filmPropReview,
+  film: filmPropValidation,
 };
 
 export {FilmDetailsTab};

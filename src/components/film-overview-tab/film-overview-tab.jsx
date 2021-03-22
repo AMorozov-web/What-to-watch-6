@@ -1,5 +1,5 @@
 import React from 'react';
-import {filmPropReview} from '../../consts';
+import {filmPropValidation} from '../../consts';
 
 const getRatingText = (rating) => {
   switch (true) {
@@ -46,7 +46,7 @@ const FilmOverviewTab = ({film}) => {
 };
 
 FilmOverviewTab.propTypes = {
-  film: filmPropReview,
+  film: filmPropValidation,
 };
 
 export {FilmOverviewTab};

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {filmPropReview} from '../../consts';
+import {filmPropValidation} from '../../consts';
 
 const VideoPlayer = ({film, videoPlayerRef}) => {
 
@@ -17,7 +17,7 @@ const VideoPlayer = ({film, videoPlayerRef}) => {
 };
 
 VideoPlayer.propTypes = {
-  film: filmPropReview,
+  film: filmPropValidation,
   videoPlayerRef: PropTypes.object.isRequired,
 };
 

@@ -19,7 +19,7 @@ const TabType = {
   REVIEWS: `REVIEWS`,
 };
 
-const filmPropReview = PropTypes.shape({
+const filmPropValidation = PropTypes.shape({
   backgroundColor: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -37,6 +37,17 @@ const filmPropReview = PropTypes.shape({
   starring: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   title: PropTypes.string.isRequired,
   videoLink: PropTypes.string.isRequired,
+}).isRequired;
+
+const reviewPropValidation = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  rating: PropTypes.number.isRequired,
+  comment: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 }).isRequired;
 
 const AuthorizationStatus = {
@@ -73,7 +84,8 @@ export {
   MAX_GENRES_COUNT,
   FILMS_IN_LIST_LIMIT_MIN,
   FILMS_IN_LIST_OFFSET,
-  filmPropReview,
+  filmPropValidation,
+  reviewPropValidation,
   TabType,
   AuthorizationStatus,
   AppRoute,

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {filmPropReview, TabType} from '../../consts';
+import {filmPropValidation, TabType} from '../../consts';
 import {FilmOverviewTab} from '../film-overview-tab/film-overview-tab';
 import {FilmDetailsTab} from '../film-details-tab/film-details-tab';
 import {FilmReviewsTab} from '../film-reviews-tab/film-reviews-tab';
@@ -46,7 +46,7 @@ const Tabs = ({film}) => {
 };
 
 Tabs.propTypes = {
-  film: filmPropReview,
+  film: filmPropValidation,
 };
 
 export {Tabs};

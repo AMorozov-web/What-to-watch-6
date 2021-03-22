@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {filmPropReview, PLAY_DELAY_IN_MS} from '../../consts';
+import {filmPropValidation, PLAY_DELAY_IN_MS} from '../../consts';
 import {VideoPlayer} from '../video-player/video-player';
 
 const MovieCard = ({film}) => {
@@ -58,7 +58,7 @@ const MovieCard = ({film}) => {
 
 
 MovieCard.propTypes = {
-  film: filmPropReview,
+  film: filmPropValidation,
 };
 
 export {MovieCard};

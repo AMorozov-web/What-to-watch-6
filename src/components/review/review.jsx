@@ -1,7 +1,8 @@
 import React from 'react';
 import dayjs from 'dayjs';
+import {reviewPropValidation} from '../../consts';
 
-const Review = (review) => {
+const Review = ({review}) => {
   const {
     user: {
       name,
@@ -27,6 +28,10 @@ const Review = (review) => {
       </div>
     </div>
   );
+};
+
+Review.propTypes = {
+  review: reviewPropValidation,
 };
 
 export {Review};

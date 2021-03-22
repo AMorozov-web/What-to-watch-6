@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {MoviesList} from '../movies-list/movies-list';
-import {filmPropReview, SIMILAR_FILMS_MAX_COUNT} from '../../consts';
+import {filmPropValidation, SIMILAR_FILMS_MAX_COUNT} from '../../consts';
 
 const MoreLikeThis = ({films, genre, selectedFilmId}) => {
   const similarFilms = films.filter((film) => (film.genre === genre) && (film.id !== selectedFilmId));
@@ -16,7 +16,7 @@ const MoreLikeThis = ({films, genre, selectedFilmId}) => {
 
 MoreLikeThis.propTypes = {
   films: PropTypes.arrayOf(
-      filmPropReview
+      filmPropValidation
   ).isRequired,
   genre: PropTypes.string.isRequired,
   selectedFilmId: PropTypes.number,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {useSelector, useDispatch} from 'react-redux';
 import {selectData, selectFilmsByGenre} from '../../store/reducers/data/selectors';
 import {setShownFilmsCount} from '../../store/reducers/data/action';
-import {filmPropReview} from '../../consts';
+import {filmPropValidation} from '../../consts';
 import {MovieCard} from '../movie-card/movie-card';
 
 const MoviesList = ({films, count}) => {
@@ -28,7 +28,7 @@ const MoviesList = ({films, count}) => {
 
 MoviesList.propTypes = {
   films: PropTypes.arrayOf(
-      filmPropReview
+      filmPropValidation
   ),
   count: PropTypes.number,
 };
