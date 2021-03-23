@@ -24,7 +24,7 @@ const Review = ({review}) => {
         </footer>
       </blockquote>
       <div className="review__rating">
-        {rating.toString().replace(`.`, `,`)}
+        {rating.toString().padEnd(3, `,0`).replace(`.`, `,`)}
       </div>
     </div>
   );
