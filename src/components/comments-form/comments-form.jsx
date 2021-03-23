@@ -31,7 +31,8 @@ const CommentForm = ({id}) => {
 
   useEffect(() => {
     const isRatingValid = review.rating >= ReviewValidation.MIN_RATING && review.rating <= ReviewValidation.MAX_RATING;
-    const isTextValid = review.comment >= ReviewValidation.MIN_TEXT_LENGTH && review.comment <= ReviewValidation.MAX_TEXT_LENGTH;
+    const isTextValid = review.comment.length >= ReviewValidation.MIN_TEXT_LENGTH
+                      && review.comment.length <= ReviewValidation.MAX_TEXT_LENGTH;
 
     setCommentValid(isRatingValid && isTextValid);
   }, [review]);
