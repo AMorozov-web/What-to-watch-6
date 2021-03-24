@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {selectData} from '../../store/reducers/data/selectors';
+import {selectReviews, selectReviewsLoaded} from '../../store/reducers/data/selectors';
 import {Review} from '../review/review';
 
 const getReviews = (reviews) => reviews.map((review) => {
@@ -8,7 +8,8 @@ const getReviews = (reviews) => reviews.map((review) => {
 });
 
 const FilmReviewsTab = () => {
-  const {reviewsForSelectedFilm, isReviewsLoaded} = useSelector(selectData);
+  const reviewsForSelectedFilm = useSelector(selectReviews);
+  const isReviewsLoaded = useSelector(selectReviewsLoaded);
 
   const style = {
     display: `flex`,

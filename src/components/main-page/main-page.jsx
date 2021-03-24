@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchFilms, fetchPromo} from '../../store/api-actions';
-import {selectData} from '../../store/reducers/data/selectors';
+import {selectFilmsLoaded, selectPromoLoaded} from '../../store/reducers/data/selectors';
 import {MoviesList} from '../movies-list/movies-list';
 import {Logo} from '../logo/logo';
 import {LoadingScreen} from '../loading-screen/loading-screen';
@@ -10,7 +10,8 @@ import {ShowMoreButton} from '../show-more-button/show-more-button';
 import {Promo} from '../promo/promo';
 
 const MainPage = () => {
-  const {isFilmsLoaded, isPromoLoaded} = useSelector(selectData);
+  const isFilmsLoaded = useSelector(selectFilmsLoaded);
+  const isPromoLoaded = useSelector(selectPromoLoaded);
   const dispatch = useDispatch();
 
   useEffect(() => {

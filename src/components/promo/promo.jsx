@@ -1,11 +1,11 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {selectData} from '../../store/reducers/data/selectors';
+import {selectPromo} from '../../store/reducers/data/selectors';
 import {Logo} from '../logo/logo';
 import {UserBlock} from '../user-block/user-block';
 
 const Promo = () => {
-  const {promo} = useSelector(selectData);
+  const promo = useSelector(selectPromo);
   const {
     title,
     genre,

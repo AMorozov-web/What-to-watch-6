@@ -1,10 +1,11 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
+import {selectAllFilms} from '../../store/reducers/data/selectors';
 import {Logo} from '../logo/logo';
 import {MoviesList} from '../movies-list/movies-list';
 
 const MyListPage = () => {
-  const {films} = useSelector((state) => state.DATA);
+  const films = useSelector(selectAllFilms);
   const filmsInFavorite = films.filter((film) => film.isFavorite);
 
   return (

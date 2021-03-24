@@ -1,15 +1,14 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {redirectToRoute} from '../../store/middleware/action';
+import {Link, useParams} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {selectAllFilms} from '../../store/reducers/data/selectors';
 import {AppRoute} from '../../consts';
 import {Logo} from '../logo/logo';
 import {CommentForm} from '../comments-form/comments-form';
 import {UserBlock} from '../user-block/user-block';
 
 const AddReviewPage = () => {
-  const {films} = useSelector((state) => state.DATA);
-  const dispatch = useDispatch();
+  const films = useSelector(selectAllFilms);
   const id = +useParams().id;
   const {
     title,
@@ -20,11 +19,6 @@ const AddReviewPage = () => {
 
   const style = {
     backgroundColor,
-  };
-
-  const handleLinkClick = (evt) => {
-    evt.preventDefault();
-    dispatch(redirectToRoute(AppRoute.ROOT));
   };
 
   return (
@@ -39,7 +33,7 @@ const AddReviewPage = () => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link" onClick={handleLinkClick}>The Grand Budapest Hotel</a>
+                <Link to={AppRoute.ROOT} className="breadcrumbs__link" >The Grand Budapest Hotel</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>

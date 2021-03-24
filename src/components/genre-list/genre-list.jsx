@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {selectData} from '../../store/reducers/data/selectors';
+import {selectGenres, selectGenre} from '../../store/reducers/data/selectors';
 import {changeGenre, resetFilmsLimit} from '../../store/reducers/data/action';
 
 const capitalizeFirstLetter = (string) => {
@@ -8,10 +8,11 @@ const capitalizeFirstLetter = (string) => {
 };
 
 const GenreList = () => {
-  const {genres, selectedGenre} = useSelector(selectData);
+  const genres = useSelector(selectGenres);
+  const selectedGenre = useSelector(selectGenre);
   const dispatch = useDispatch();
 
-  const selectGenre = (evt) => {
+  const changeSelectedGenre = (evt) => {
     evt.preventDefault();
     dispatch(changeGenre(evt.target.textContent.toLowerCase()));
     dispatch(resetFilmsLimit());
@@ -23,7 +24,7 @@ const GenreList = () => {
       <li key={genre}
         className={`catalog__genres-item ${selectedGenre === genre.toLowerCase() ? `catalog__genres-item--active` : ``}`}
       >
-        <a href="" className="catalog__genres-link" onClick={selectGenre}>
+        <a href="" className="catalog__genres-link" onClick={changeSelectedGenre}>
           {capitalizeFirstLetter(genre)}
         </a>
       </li>

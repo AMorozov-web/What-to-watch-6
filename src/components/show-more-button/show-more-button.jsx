@@ -1,10 +1,11 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {selectData} from '../../store/reducers/data/selectors';
+import {selectFilmsCount, selectFilmsLimit} from '../../store/reducers/data/selectors';
 import {increaseFilmsLimit} from '../../store/reducers/data/action';
 
 const ShowMoreButton = () => {
-  const {filmsLimit, shownFilmsCount} = useSelector(selectData);
+  const filmsLimit = useSelector(selectFilmsLimit);
+  const shownFilmsCount = useSelector(selectFilmsCount);
   const dispatch = useDispatch();
 
   const increaseLimit = (evt) => {

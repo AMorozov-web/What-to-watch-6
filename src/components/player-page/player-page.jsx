@@ -1,9 +1,10 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
 import {useSelector} from 'react-redux';
+import {selectAllFilms} from '../../store/reducers/data/selectors';
 
 const PlayerPage = () => {
-  const {films} = useSelector((state) => state.DATA);
+  const films = useSelector(selectAllFilms);
   const id = +useParams().id;
   const {title, videoLink} = films.find((film) => film.id === id);
 

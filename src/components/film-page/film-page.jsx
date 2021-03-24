@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
-import {selectData} from '../../store/reducers/data/selectors';
-import {selectUser} from '../../store/reducers/user/selectors';
+import {selectAllFilms} from '../../store/reducers/data/selectors';
+import {selectAuthStatus} from '../../store/reducers/user/selectors';
 import {fetchReviewsById} from '../../store/api-actions';
 import {redirectToRoute} from '../../store/middleware/action';
 import {AuthorizationStatus} from '../../consts';
@@ -13,8 +13,8 @@ import {NotFoundPage} from '../not-found-page/not-found-page';
 import {UserBlock} from '../user-block/user-block';
 
 const FilmPage = () => {
-  const {films} = useSelector(selectData);
-  const {authorizationStatus} = useSelector(selectUser);
+  const films = useSelector(selectAllFilms);
+  const authorizationStatus = useSelector(selectAuthStatus);
   const dispatch = useDispatch();
   const id = +useParams().id;
 

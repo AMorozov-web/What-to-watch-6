@@ -1,11 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {selectUser} from '../../store/reducers/user/selectors';
+import {selectAuthInfo, selectAuthStatus} from '../../store/reducers/user/selectors';
 import {redirectToRoute} from '../../store/middleware/action';
 import {AppRoute, AuthorizationStatus} from '../../consts';
 
 const UserBlock = () => {
-  const {authorizationStatus, authInfo} = useSelector(selectUser);
+  const authorizationStatus = useSelector(selectAuthStatus);
+  const authInfo = useSelector(selectAuthInfo);
   const dispatch = useDispatch();
 
   const handleAvatarClick = (evt) => {
