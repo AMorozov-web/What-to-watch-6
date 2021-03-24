@@ -1,12 +1,13 @@
 import React, {useState, useRef, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {redirectToRoute} from '../../store/middleware/action';
 import {filmPropValidation, PLAY_DELAY_IN_MS} from '../../consts';
 import {VideoPlayer} from '../video-player/video-player';
 
 const MovieCard = ({film}) => {
-  const href = `/films/${film.id}`;
-
   const [isPlaying, setPlaying] = useState(null);
+  const dispatch = useDispatch();
   const videoPlayerRef = useRef();
   const playerTimeoutRef = useRef();
 
@@ -19,6 +20,10 @@ const MovieCard = ({film}) => {
   const handleMouseLeave = () => {
     setPlaying(false);
     window.clearTimeout(playerTimeoutRef.current);
+  };
+
+  const handleCardClick = () => {
+    dispatch(redirectToRoute(`/films/${film.id}`));
   };
 
   useEffect(() => {
@@ -44,12 +49,13 @@ const MovieCard = ({film}) => {
     <article
       className="small-movie-card catalog__movies-card"
       onMouseEnter={() => handleMouseEnter()}
-      onMouseLeave={() => handleMouseLeave()}>
+      onMouseLeave={() => handleMouseLeave()}
+      onClick={() => handleCardClick()}>
       <div className="small-movie-card__image">
         <VideoPlayer film={film} videoPlayerRef={videoPlayerRef} />
       </div>
       <h3 className="small-movie-card__title">
-        <Link className="small-movie-card__link" to={href}>
+        <Link className="small-movie-card__link" to={`/films/${film.id}`}>
           {film.title}
         </Link>
       </h3>
