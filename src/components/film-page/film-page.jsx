@@ -37,6 +37,7 @@ const FilmPage = () => {
     backgroundImage,
     backgroundColor,
     posterImage,
+    isFavorite,
   } = selectedFilm;
 
   const style = {
@@ -69,7 +70,7 @@ const FilmPage = () => {
               </p>
               <div className="movie-card__buttons">
                 <PlayMovieButton />
-                <MyListButton />
+                <MyListButton isFavorite={isFavorite} id={id} />
                 {authorizationStatus === AuthorizationStatus.AUTH
                   ?
                   <a href="add-review.html" className="btn movie-card__button" onClick={handleAddReviewClick}>

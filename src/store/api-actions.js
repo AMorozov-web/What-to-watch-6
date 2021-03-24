@@ -57,6 +57,10 @@ const sendReview = (id, sendData) => (dispatch, _getState, api) => (
     .then(({data}) => dispatch(loadReviewsById(data)))
 );
 
+const changeFilmFavoriteStatus = (id, status) => (dispatch, _getState, api) => {
+  api.post(`/favorite/${id}/${status ? 1 : 0}`)
+};
+
 export {
   fetchFilms,
   fetchPromo,
@@ -65,4 +69,5 @@ export {
   login,
   checkAuth,
   sendReview,
+  changeFilmFavoriteStatus,
 };
