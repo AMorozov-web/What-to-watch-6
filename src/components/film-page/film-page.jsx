@@ -11,6 +11,8 @@ import {Tabs} from '../tabs/tabs';
 import {MoreLikeThis} from '../more-like-this/more-like-this';
 import {NotFoundPage} from '../not-found-page/not-found-page';
 import {UserBlock} from '../user-block/user-block';
+import {MyListButton} from '../my-list-button/my-list-button';
+import {PlayMovieButton} from '../play-movie-button/play-movie-button';
 
 const FilmPage = () => {
   const films = useSelector(selectAllFilms);
@@ -66,18 +68,8 @@ const FilmPage = () => {
                 <span className="movie-card__year">{released}</span>
               </p>
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width={19} height={19}>
-                    <use xlinkHref="#play-s" />
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width={19} height={20}>
-                    <use xlinkHref="#add" />
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <PlayMovieButton />
+                <MyListButton />
                 {authorizationStatus === AuthorizationStatus.AUTH
                   ?
                   <a href="add-review.html" className="btn movie-card__button" onClick={handleAddReviewClick}>
