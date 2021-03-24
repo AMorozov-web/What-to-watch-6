@@ -23,7 +23,7 @@ const MovieCard = ({film}) => {
 
   useEffect(() => {
     if (isPlaying === null) {
-      return () => {};
+      return;
     }
 
     if (isPlaying) {
@@ -31,13 +31,14 @@ const MovieCard = ({film}) => {
     } else {
       videoPlayerRef.current.load();
     }
+  }, [isPlaying]);
 
+  useEffect(() => {
     return () => {
-      setPlaying(false);
       window.clearTimeout(playerTimeoutRef.current);
       playerTimeoutRef.current = null;
     };
-  }, [isPlaying]);
+  }, []);
 
   return (
     <article
