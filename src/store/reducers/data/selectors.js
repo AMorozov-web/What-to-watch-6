@@ -1,7 +1,6 @@
 import {createSelector} from 'reselect';
 import {Genre} from '../../../consts';
 
-const selectData = (state) => state.DATA;
 const selectAllFilms = (state) => state.DATA.films;
 const selectPromo = (state) => state.DATA.promo;
 const selectGenre = (state) => state.DATA.selectedGenre;
@@ -21,7 +20,6 @@ const selectFilmsByGenre = createSelector(
 );
 
 export {
-  selectData,
   selectAllFilms,
   selectGenre,
   selectFilmsLoaded,
