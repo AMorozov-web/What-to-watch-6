@@ -39,7 +39,9 @@ const checkAuth = () => (dispatch, _getState, api) => (
       dispatch(requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(setAuthInfo(data));
     })
-    .catch(() => {})
+    .catch(() => {
+      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+    })
 );
 
 const login = ({login: email, password}) => (dispatch, _getState, api) => (
