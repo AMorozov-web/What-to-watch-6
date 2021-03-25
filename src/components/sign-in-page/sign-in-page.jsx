@@ -61,7 +61,7 @@ const SignInPage = () => {
         </form>
       </div>
       <footer className="page-footer">
-        <Logo centered={true}/>
+        <Logo centered />
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>
         </div>

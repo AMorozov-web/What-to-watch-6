@@ -93,7 +93,7 @@ const FilmPage = () => {
       <div className="page-content">
         <MoreLikeThis genre={genre} selectedFilmId={id}/>
         <footer className="page-footer">
-          <Logo centered={true}/>
+          <Logo centered/>
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
           </div>

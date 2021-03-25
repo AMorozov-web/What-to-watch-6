@@ -21,7 +21,7 @@ const Promo = () => {
       </div>
       <h1 className="visually-hidden">WTW</h1>
       <header className="page-header movie-card__head">
-        <Logo onMainPage={true}/>
+        <Logo onMainPage />
         <UserBlock />
       </header>
       <div className="movie-card__wrap">

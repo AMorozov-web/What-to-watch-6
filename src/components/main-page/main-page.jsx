@@ -38,7 +38,7 @@ const MainPage = () => {
           <ShowMoreButton />
         </section>
         <footer className="page-footer">
-          <Logo onMainPage={true} centered={true}/>
+          <Logo onMainPage centered />
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
           </div>
