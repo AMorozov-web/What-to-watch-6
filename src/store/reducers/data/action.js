@@ -17,6 +17,7 @@ const ActionType = {
   RESET_FILMS_LIMIT: `data/resetFilmsLimit`,
   INCREASE_SHOWN_FILMS_COUNT: `data/setShownFilmsCount`,
   LOAD_REVIEWS_BY_ID: `data/loadReviewsById`,
+  UPDATE_FAVORITE_STATUS: `data/updateFavoriteStatus`,
 };
 
 const loadFilms = createAction(ActionType.LOAD_FILMS, (films) => {
@@ -75,6 +76,20 @@ const setShownFilmsCount = createAction(ActionType.INCREASE_SHOWN_FILMS_COUNT, (
   };
 });
 
+const updateFavoriteStatus = createAction(ActionType.UPDATE_FAVORITE_STATUS, (films, film) => {
+  const updatedFilms = films.map((item) => {
+    if (item.id === adaptToClient(film).id) {
+      return adaptToClient(film);
+    }
+
+    return item;
+  });
+
+  return {
+    payload: updatedFilms,
+  };
+});
+
 export {
   changeGenre,
   loadFilms,
@@ -85,4 +100,5 @@ export {
   increaseFilmsLimit,
   resetFilmsLimit,
   setShownFilmsCount,
+  updateFavoriteStatus,
 };
