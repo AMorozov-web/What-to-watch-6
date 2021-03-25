@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
+import {selectAllFilms} from '../../store/reducers/data/selectors';
+import {SIMILAR_FILMS_MAX_COUNT} from '../../consts';
 import {MoviesList} from '../movies-list/movies-list';
-import {filmPropValidation, SIMILAR_FILMS_MAX_COUNT} from '../../consts';
 
-const MoreLikeThis = ({films, genre, selectedFilmId}) => {
+const MoreLikeThis = ({genre, selectedFilmId}) => {
+  const films = useSelector(selectAllFilms);
   const similarFilms = films.filter((film) => (film.genre === genre) && (film.id !== selectedFilmId));
 
   return (
@@ -15,9 +18,6 @@ const MoreLikeThis = ({films, genre, selectedFilmId}) => {
 };
 
 MoreLikeThis.propTypes = {
-  films: PropTypes.arrayOf(
-      filmPropValidation
-  ).isRequired,
   genre: PropTypes.string.isRequired,
   selectedFilmId: PropTypes.number,
 };

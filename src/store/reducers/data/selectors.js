@@ -19,6 +19,16 @@ const selectFilmsByGenre = createSelector(
       selectedGenre === Genre.ALL ? films : films.filter((film) => film.genre.toLowerCase() === selectedGenre)
 );
 
+const selectFilmById = (id) => createSelector(
+    selectAllFilms,
+    (films) => films.find((film) => film.id === id)
+);
+
+const selectFavoriteStatusById = (id) => createSelector(
+    selectFilmById(id),
+    (film) => film.isFavorite
+);
+
 export {
   selectAllFilms,
   selectGenre,
@@ -30,5 +40,7 @@ export {
   selectFilmsLimit,
   selectPromo,
   selectFilmsCount,
+  selectFilmById,
+  selectFavoriteStatusById,
   selectFilmsByGenre,
 };

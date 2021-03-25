@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {changeFilmFavoriteStatus} from '../../store/api-actions';
+import {selectFavoriteStatusById} from '../../store/reducers/data/selectors';
 
-const MyListButton = ({isFavorite, id}) => {
+const MyListButton = ({id}) => {
+  const isFavorite = useSelector(selectFavoriteStatusById(id));
   const dispatch = useDispatch();
 
   const handleMyListButtonClick = (evt) => {
@@ -34,7 +36,6 @@ const MyListButton = ({isFavorite, id}) => {
 };
 
 MyListButton.propTypes = {
-  isFavorite: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
 };
 

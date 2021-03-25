@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
-import {selectAllFilms} from '../../store/reducers/data/selectors';
+import {selectFilmById} from '../../store/reducers/data/selectors';
 import {selectAuthStatus} from '../../store/reducers/user/selectors';
 import {fetchReviewsById} from '../../store/api-actions';
 import {redirectToRoute} from '../../store/middleware/action';
@@ -15,12 +15,10 @@ import {MyListButton} from '../my-list-button/my-list-button';
 import {PlayMovieButton} from '../play-movie-button/play-movie-button';
 
 const FilmPage = () => {
-  const films = useSelector(selectAllFilms);
+  const id = +useParams().id;
+  const selectedFilm = useSelector(selectFilmById(id));
   const authorizationStatus = useSelector(selectAuthStatus);
   const dispatch = useDispatch();
-  const id = +useParams().id;
-
-  const selectedFilm = films.find((film) => film.id === id);
 
   if (!selectedFilm) {
     return <NotFoundPage />;
@@ -37,7 +35,6 @@ const FilmPage = () => {
     backgroundImage,
     backgroundColor,
     posterImage,
-    isFavorite,
   } = selectedFilm;
 
   const style = {
@@ -70,7 +67,7 @@ const FilmPage = () => {
               </p>
               <div className="movie-card__buttons">
                 <PlayMovieButton />
-                <MyListButton isFavorite={isFavorite} id={id} />
+                <MyListButton id={id} />
                 {authorizationStatus === AuthorizationStatus.AUTH
                   ?
                   <a href="add-review.html" className="btn movie-card__button" onClick={handleAddReviewClick}>
@@ -94,7 +91,7 @@ const FilmPage = () => {
         </div>
       </section>
       <div className="page-content">
-        <MoreLikeThis films={films} genre={genre} selectedFilmId={id}/>
+        <MoreLikeThis genre={genre} selectedFilmId={id}/>
         <footer className="page-footer">
           <Logo centered={true}/>
           <div className="copyright">

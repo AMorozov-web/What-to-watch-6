@@ -77,9 +77,11 @@ const setShownFilmsCount = createAction(ActionType.INCREASE_SHOWN_FILMS_COUNT, (
 });
 
 const updateFavoriteStatus = createAction(ActionType.UPDATE_FAVORITE_STATUS, (films, film) => {
+  const adaptedFilm = adaptToClient(film);
+
   const updatedFilms = films.map((item) => {
-    if (item.id === adaptToClient(film).id) {
-      return adaptToClient(film);
+    if (item.id === adaptedFilm.id) {
+      return adaptedFilm;
     }
 
     return item;
