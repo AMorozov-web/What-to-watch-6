@@ -13,6 +13,7 @@ const ActionType = {
   LOAD_PROMO: `data/loadPromo`,
   LOAD_FAVORITES: `data/loadFavorites`,
   COLLECT_GENRES: `data/collectGenres`,
+  COLLECT_STATUSES: `data/collectStatuses`,
   INCREASE_FILMS_LIMIT: `data/increaseFilmsLimit`,
   RESET_FILMS_LIMIT: `data/resetFilmsLimit`,
   INCREASE_SHOWN_FILMS_COUNT: `data/setShownFilmsCount`,
@@ -49,6 +50,19 @@ const collectGenres = createAction(ActionType.COLLECT_GENRES, (films) => {
 
   return {
     payload: [Genre.ALL, ...genresFromFilms].slice(0, MAX_GENRES_COUNT),
+  };
+});
+
+const collectStatuses = createAction(ActionType.COLLECT_STATUSES, (films) => {
+  const statusesFromFilms = films.map((film) => {
+    return {
+      id: film.id,
+      isFavorite: film.isFavorite,
+    };
+  });
+
+  return {
+    payload: statusesFromFilms,
   };
 });
 
@@ -99,6 +113,7 @@ export {
   loadFavorites,
   loadReviewsById,
   collectGenres,
+  collectStatuses,
   increaseFilmsLimit,
   resetFilmsLimit,
   setShownFilmsCount,
