@@ -7,6 +7,7 @@ import {filmPropValidation} from '../../consts';
 import {MovieCard} from '../movie-card/movie-card';
 
 const MoviesList = ({films, count, onFavoritesPage}) => {
+
   if (onFavoritesPage && !films) {
     return ``;
   }

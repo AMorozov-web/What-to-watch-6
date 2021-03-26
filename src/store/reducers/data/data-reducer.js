@@ -10,7 +10,6 @@ import {
   setShownFilmsCount,
   resetFilmsLimit,
   loadReviewsById,
-  updateFavoriteStatus,
 } from './action';
 
 const initialState = {
@@ -59,9 +58,6 @@ const data = createReducer(initialState, (builder) => {
   });
   builder.addCase(setShownFilmsCount, (state, action) => {
     state.shownFilmsCount = action.payload;
-  });
-  builder.addCase(updateFavoriteStatus, (state, action) => {
-    state.favorites = action.payload;
   });
 });
 

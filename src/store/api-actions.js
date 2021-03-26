@@ -4,7 +4,6 @@ import {
   collectGenres,
   loadFavorites,
   loadReviewsById,
-  updateFavoriteStatus,
 } from './reducers/data/action';
 import {requireAuthorization, setAuthInfo} from './reducers/user/action';
 import {redirectToRoute} from './middleware/action';
@@ -60,12 +59,9 @@ const sendReview = (id, sendData) => (dispatch, _getState, api) => (
     .then(({data}) => dispatch(loadReviewsById(data)))
 );
 
-const changeFilmFavoriteStatus = (id, status) => (dispatch, getState, api) => (
+const changeFilmFavoriteStatus = (id, status) => (dispatch, _getState, api) => (
   api.post(`/favorite/${id}/${status ? 1 : 0}`)
-    .then(({data}) => {
-      const favorites = getState().DATA.favorites;
-      dispatch(updateFavoriteStatus(favorites, data));
-    })
+    .then(() => dispatch(fetchFavorites()))
 );
 
 export {
