@@ -6,7 +6,11 @@ import {setShownFilmsCount} from '../../store/reducers/data/action';
 import {filmPropValidation} from '../../consts';
 import {MovieCard} from '../movie-card/movie-card';
 
-const MoviesList = ({films, count}) => {
+const MoviesList = ({films, count, onFavoritesPage}) => {
+  if (onFavoritesPage && !films) {
+    return ``;
+  }
+
   const filteredFilms = useSelector(selectFilmsByGenre);
   const filmsLimit = useSelector(selectFilmsLimit);
   const dispatch = useDispatch();
@@ -31,6 +35,7 @@ MoviesList.propTypes = {
       filmPropValidation
   ),
   count: PropTypes.number,
+  onFavoritesPage: PropTypes.bool,
 };
 
 export {MoviesList};

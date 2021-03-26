@@ -1,13 +1,28 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {selectAllFilms} from '../../store/reducers/data/selectors';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchFavorites} from '../../store/api-actions';
+import {selectFavorites, selectFavoritesLoaded} from '../../store/reducers/data/selectors';
+import {LoadingScreen} from '../loading-screen/loading-screen';
 import {Logo} from '../logo/logo';
 import {MoviesList} from '../movies-list/movies-list';
 import {UserBlock} from '../user-block/user-block';
 
 const MyListPage = () => {
-  const films = useSelector(selectAllFilms);
-  const filmsInFavorite = films.filter((film) => film.isFavorite);
+  const favoriteFilms = useSelector(selectFavorites);
+  const isFavoritesLoaded = useSelector(selectFavoritesLoaded);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isFavoritesLoaded) {
+      dispatch(fetchFavorites());
+    }
+  }, [isFavoritesLoaded]);
+
+  if (!isFavoritesLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <div className="user-page">
@@ -18,7 +33,7 @@ const MyListPage = () => {
       </header>
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <MoviesList films={filmsInFavorite}/>
+        <MoviesList films={favoriteFilms}/>
       </section>
       <footer className="page-footer">
         <Logo centered />

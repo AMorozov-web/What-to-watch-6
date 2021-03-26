@@ -2,6 +2,7 @@ import {createSelector} from 'reselect';
 import {Genre} from '../../../consts';
 
 const selectAllFilms = (state) => state.DATA.films;
+const selectFavorites = (state) => state.DATA.favorites;
 const selectPromo = (state) => state.DATA.promo;
 const selectGenre = (state) => state.DATA.selectedGenre;
 const selectGenres = (state) => state.DATA.genres;
@@ -10,6 +11,7 @@ const selectFilmsCount = (state) => state.DATA.shownFilmsCount;
 const selectReviews = (state) => state.DATA.reviewsForSelectedFilm;
 const selectFilmsLoaded = (state) => state.DATA.isFilmsLoaded;
 const selectPromoLoaded = (state) => state.DATA.isPromoLoaded;
+const selectFavoritesLoaded = (state) => state.DATA.isFavoritesLoaded;
 const selectReviewsLoaded = (state) => state.DATA.isReviewsLoaded;
 
 const selectFilmsByGenre = createSelector(
@@ -25,15 +27,17 @@ const selectFilmById = (id) => createSelector(
 );
 
 const selectFavoriteStatusById = (id) => createSelector(
-    selectFilmById(id),
-    (film) => film.isFavorite
+    selectFavorites,
+    (favorites) => favorites.some((item) => item.id === id)
 );
 
 export {
   selectAllFilms,
+  selectFavorites,
   selectGenre,
   selectFilmsLoaded,
   selectPromoLoaded,
+  selectFavoritesLoaded,
   selectReviewsLoaded,
   selectReviews,
   selectGenres,

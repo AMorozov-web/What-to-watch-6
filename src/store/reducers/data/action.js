@@ -35,7 +35,7 @@ const loadPromo = createAction(ActionType.LOAD_PROMO, (promo) => {
 
 const loadFavorites = createAction(ActionType.LOAD_FAVORITES, (favorites) => {
   return {
-    payload: favorites,
+    payload: favorites.map(adaptToClient),
   };
 });
 
@@ -90,19 +90,12 @@ const setShownFilmsCount = createAction(ActionType.INCREASE_SHOWN_FILMS_COUNT, (
   };
 });
 
-const updateFavoriteStatus = createAction(ActionType.UPDATE_FAVORITE_STATUS, (films, film) => {
+const updateFavoriteStatus = createAction(ActionType.UPDATE_FAVORITE_STATUS, (favorites, film) => {
   const adaptedFilm = adaptToClient(film);
-
-  const updatedFilms = films.map((item) => {
-    if (item.id === adaptedFilm.id) {
-      return adaptedFilm;
-    }
-
-    return item;
-  });
+  const status = film.isFavorite;
 
   return {
-    payload: updatedFilms,
+    payload: status ? [adaptedFilm, ...favorites] : favorites.map((item) => item.id !== film.id)
   };
 });
 

@@ -63,8 +63,8 @@ const sendReview = (id, sendData) => (dispatch, _getState, api) => (
 const changeFilmFavoriteStatus = (id, status) => (dispatch, getState, api) => (
   api.post(`/favorite/${id}/${status ? 1 : 0}`)
     .then(({data}) => {
-      const films = getState().DATA.films;
-      dispatch(updateFavoriteStatus(films, data));
+      const favorites = getState().DATA.favorites;
+      dispatch(updateFavoriteStatus(favorites, data));
     })
 );
 

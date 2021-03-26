@@ -61,7 +61,7 @@ const data = createReducer(initialState, (builder) => {
     state.shownFilmsCount = action.payload;
   });
   builder.addCase(updateFavoriteStatus, (state, action) => {
-    state.films = action.payload;
+    state.favorites = action.payload;
   });
 });
 
