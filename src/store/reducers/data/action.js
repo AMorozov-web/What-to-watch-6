@@ -54,19 +54,6 @@ const collectGenres = createAction(ActionType.COLLECT_GENRES, (films) => {
   };
 });
 
-const collectStatuses = createAction(ActionType.COLLECT_STATUSES, (films) => {
-  const statusesFromFilms = films.map((film) => {
-    return {
-      id: film.id,
-      isFavorite: film.isFavorite,
-    };
-  });
-
-  return {
-    payload: statusesFromFilms,
-  };
-});
-
 const changeGenre = createAction(ActionType.CHANGE_GENRE, (genre) => {
   return {
     payload: genre,
@@ -98,7 +85,6 @@ export {
   loadFavorites,
   loadReviewsById,
   collectGenres,
-  collectStatuses,
   increaseFilmsLimit,
   resetFilmsLimit,
   setShownFilmsCount,
