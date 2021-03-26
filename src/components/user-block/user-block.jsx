@@ -1,17 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectAuthInfo, selectAuthStatus} from '../../store/reducers/user/selectors';
 import {redirectToRoute} from '../../store/middleware/action';
 import {AppRoute, AuthorizationStatus} from '../../consts';
 
-const UserBlock = () => {
+const UserBlock = ({onMyListPage}) => {
   const authorizationStatus = useSelector(selectAuthStatus);
   const authInfo = useSelector(selectAuthInfo);
   const dispatch = useDispatch();
 
   const handleAvatarClick = (evt) => {
     evt.preventDefault();
-    dispatch(redirectToRoute(AppRoute.MY_LIST));
+
+    if (!onMyListPage) {
+      dispatch(redirectToRoute(AppRoute.MY_LIST));
+    }
   };
   const handleLinkClick = (evt) => {
     evt.preventDefault();
@@ -30,6 +34,10 @@ const UserBlock = () => {
       }
     </div>
   );
+};
+
+UserBlock.propTypes = {
+  onMyListPage: PropTypes.bool,
 };
 
 export {UserBlock};
