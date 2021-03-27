@@ -6,6 +6,7 @@ import {filmPropValidation, PLAY_DELAY_IN_MS} from '../../consts';
 import {VideoPlayer} from '../video-player/video-player';
 
 const MovieCard = ({film}) => {
+  const {id} = film;
   const [isPlaying, setPlaying] = useState(null);
   const dispatch = useDispatch();
   const videoPlayerRef = useRef();
@@ -23,7 +24,7 @@ const MovieCard = ({film}) => {
   };
 
   const handleCardClick = () => {
-    dispatch(redirectToRoute(`/films/${film.id}`));
+    dispatch(redirectToRoute(`/films/${id}`));
   };
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const MovieCard = ({film}) => {
       onMouseLeave={() => handleMouseLeave()}
       onClick={() => handleCardClick()}>
       <div className="small-movie-card__image">
-        <VideoPlayer film={film} videoPlayerRef={videoPlayerRef} />
+        <VideoPlayer id={id} videoPlayerRef={videoPlayerRef} />
       </div>
       <h3 className="small-movie-card__title">
         <Link className="small-movie-card__link" to={`/films/${film.id}`}>
