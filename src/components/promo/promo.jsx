@@ -2,11 +2,13 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {selectPromo} from '../../store/reducers/data/selectors';
 import {Logo} from '../logo/logo';
+import {MyListButton} from '../my-list-button/my-list-button';
 import {UserBlock} from '../user-block/user-block';
 
 const Promo = () => {
   const promo = useSelector(selectPromo);
   const {
+    id,
     title,
     genre,
     released,
@@ -42,12 +44,7 @@ const Promo = () => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width={19} height={20}>
-                  <use xlinkHref="#add" />
-                </svg>
-                <span>My list</span>
-              </button>
+              <MyListButton id={id} />
             </div>
           </div>
         </div>
