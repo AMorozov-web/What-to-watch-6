@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
-import {selectFilmById} from '../../store/reducers/data/selectors';
+import {selectFilmById, selectFilmsLoaded} from '../../store/reducers/data/selectors';
 import {selectAuthStatus} from '../../store/reducers/user/selectors';
-import {fetchReviewsById} from '../../store/api-actions';
+import {fetchFilms, fetchReviewsById} from '../../store/api-actions';
 import {redirectToRoute} from '../../store/middleware/action';
 import {AuthorizationStatus} from '../../consts';
 import {Logo} from '../logo/logo';
@@ -13,20 +13,34 @@ import {NotFoundPage} from '../not-found-page/not-found-page';
 import {UserBlock} from '../user-block/user-block';
 import {MyListButton} from '../my-list-button/my-list-button';
 import {PlayMovieButton} from '../play-movie-button/play-movie-button';
+import {LoadingScreen} from '../loading-screen/loading-screen';
 
 const FilmPage = () => {
   const id = +useParams().id;
+  const isFilmsLoaded = useSelector(selectFilmsLoaded);
   const selectedFilm = useSelector(selectFilmById(id));
   const authorizationStatus = useSelector(selectAuthStatus);
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    if (!isFilmsLoaded) {
+      dispatch(fetchFilms());
+    }
+  }, [isFilmsLoaded]);
+
+  useEffect(() => {
+    dispatch(fetchReviewsById(id));
+  }, [id]);
+
+  if (!isFilmsLoaded) {
+    return <LoadingScreen />;
+  }
 
   if (!selectedFilm) {
     return <NotFoundPage />;
   }
 
-  useEffect(() => {
-    dispatch(fetchReviewsById(id));
-  }, [id]);
 
   const {
     title,

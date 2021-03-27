@@ -17,9 +17,14 @@ const MainPage = () => {
   useEffect(() => {
     if (!isFilmsLoaded) {
       dispatch(fetchFilms());
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isPromoLoaded) {
       dispatch(fetchPromo());
     }
-  }, [isFilmsLoaded]);
+  }, []);
 
   if (!isFilmsLoaded || !isPromoLoaded) {
     return (
