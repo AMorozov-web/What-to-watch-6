@@ -80,7 +80,7 @@ const FilmPage = () => {
                 <span className="movie-card__year">{released}</span>
               </p>
               <div className="movie-card__buttons">
-                <PlayMovieButton />
+                <PlayMovieButton id={id}/>
                 <MyListButton id={id} />
                 {authorizationStatus === AuthorizationStatus.AUTH
                   ?

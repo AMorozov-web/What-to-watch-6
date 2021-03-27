@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import {selectPromo} from '../../store/reducers/data/selectors';
 import {Logo} from '../logo/logo';
 import {MyListButton} from '../my-list-button/my-list-button';
+import {PlayMovieButton} from '../play-movie-button/play-movie-button';
 import {UserBlock} from '../user-block/user-block';
 
 const Promo = () => {
@@ -38,12 +39,7 @@ const Promo = () => {
               <span className="movie-card__year">{released}</span>
             </p>
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
-                <svg viewBox="0 0 19 19" width={19} height={19}>
-                  <use xlinkHref="#play-s" />
-                </svg>
-                <span>Play</span>
-              </button>
+              <PlayMovieButton id={id}/>
               <MyListButton id={id} />
             </div>
           </div>
