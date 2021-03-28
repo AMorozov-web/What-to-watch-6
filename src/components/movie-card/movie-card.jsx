@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {redirectToRoute} from '../../store/middleware/action';
 import {filmPropValidation, PLAY_DELAY_IN_MS} from '../../consts';
-import {VideoPlayer} from '../video-player/video-player';
+import {MemoizedVideoPlayer} from '../video-player/video-player';
 
 const MovieCard = ({film}) => {
   const {id} = film;
@@ -53,7 +53,7 @@ const MovieCard = ({film}) => {
       onMouseLeave={() => handleMouseLeave()}
       onClick={() => handleCardClick()}>
       <div className="small-movie-card__image">
-        <VideoPlayer id={id} videoPlayerRef={videoPlayerRef} />
+        <MemoizedVideoPlayer id={id} videoPlayerRef={videoPlayerRef} />
       </div>
       <h3 className="small-movie-card__title">
         <Link className="small-movie-card__link" to={`/films/${film.id}`}>

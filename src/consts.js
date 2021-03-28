@@ -8,6 +8,8 @@ const REQUEST_TIMEOUT = 5000;
 const MAX_GENRES_COUNT = 10;
 const FILMS_IN_LIST_LIMIT_MIN = 8;
 const FILMS_IN_LIST_OFFSET = 8;
+const REFRESH_INTERVAL_IN_SECOND = 1;
+const HUNDRED_PERCENT = 100;
 
 const HttpCode = {
   UNAUTHORIZED: 401
@@ -91,6 +93,8 @@ export {
   MAX_GENRES_COUNT,
   FILMS_IN_LIST_LIMIT_MIN,
   FILMS_IN_LIST_OFFSET,
+  REFRESH_INTERVAL_IN_SECOND,
+  HUNDRED_PERCENT,
   filmPropValidation,
   reviewPropValidation,
   TabType,
