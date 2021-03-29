@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect, Route} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
@@ -8,18 +8,16 @@ import {checkAuth} from '../../store/api-actions';
 import {LoadingScreen} from '../loading-screen/loading-screen';
 
 const PrivateRoute = ({render, path, exact}) => {
-  const [isChecked, setChecked] = useState(false);
   const authorizationStatus = useSelector(selectAuthStatus);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    Promise.allSettled([dispatch(checkAuth())])
-    .then(() => {
-      setChecked(true);
-    });
+    if (authorizationStatus === AuthorizationStatus.UNKNOWN) {
+      dispatch(checkAuth());
+    }
   }, []);
 
-  if (!isChecked) {
+  if (authorizationStatus === AuthorizationStatus.UNKNOWN) {
     return <LoadingScreen />;
   }
 

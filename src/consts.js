@@ -53,6 +53,7 @@ const reviewPropValidation = PropTypes.shape({
 }).isRequired;
 
 const AuthorizationStatus = {
+  UNKNOWN: `UNKNOWN`,
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
