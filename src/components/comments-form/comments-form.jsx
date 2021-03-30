@@ -3,7 +3,19 @@ import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import {sendReview} from '../../store/api-actions';
 import {redirectToRoute} from '../../store/middleware/action';
-import {ReviewValidation} from '../../consts';
+import {RATING_STARS_COUNT, ReviewTextValidation} from '../../consts';
+
+const getStar = (value) => {
+
+  return (
+    <React.Fragment key={`star-${value}`}>
+      <input className="rating__input" id={`star-${value}`} type="radio" name="rating" defaultValue={value} />
+      <label className="rating__label" htmlFor={`star-${value}`}>{`Rating ${value}`}</label>
+    </React.Fragment>
+  );
+};
+
+const ratingStars = Array(RATING_STARS_COUNT).fill().map((_, i) => getStar(i));
 
 const CommentForm = ({id}) => {
   const dispatch = useDispatch();
@@ -14,8 +26,8 @@ const CommentForm = ({id}) => {
   const [isCommentValid, setCommentValid] = useState(false);
 
   const handleRatingChange = (evt) => {
-    const {name, defaultValue} = evt.target;
-    setReview({...review, [name]: defaultValue});
+    const {defaultValue} = evt.target;
+    setReview({...review, rating: defaultValue});
   };
 
   const handleTextChange = (evt) => {
@@ -30,9 +42,9 @@ const CommentForm = ({id}) => {
   };
 
   useEffect(() => {
-    const isRatingValid = review.rating >= ReviewValidation.MIN_RATING && review.rating <= ReviewValidation.MAX_RATING;
-    const isTextValid = review.comment.length >= ReviewValidation.MIN_TEXT_LENGTH
-                      && review.comment.length <= ReviewValidation.MAX_TEXT_LENGTH;
+    const isRatingValid = review.rating !== 0;
+    const isTextValid = review.comment.length >= ReviewTextValidation.MIN_TEXT_LENGTH
+                      && review.comment.length <= ReviewTextValidation.MAX_TEXT_LENGTH;
 
     setCommentValid(isRatingValid && isTextValid);
   }, [review]);
@@ -40,27 +52,8 @@ const CommentForm = ({id}) => {
   return (
     <form onSubmit={handleSubmit} className="add-review__form">
       <div className="rating">
-        <div className="rating__stars">
-          <input className="rating__input" id="star-1" type="radio" name="rating" defaultValue={1} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-1">Rating 1</label>
-          <input className="rating__input" id="star-2" type="radio" name="rating" defaultValue={2} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-2">Rating 2</label>
-          <input className="rating__input" id="star-3" type="radio" name="rating" defaultValue={3} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-3">Rating 3</label>
-          <input className="rating__input" id="star-4" type="radio" name="rating" defaultValue={4} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-4">Rating 4</label>
-          <input className="rating__input" id="star-5" type="radio" name="rating" defaultValue={5} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-5">Rating 5</label>
-          <input className="rating__input" id="star-6" type="radio" name="rating" defaultValue={6} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-6">Rating 6</label>
-          <input className="rating__input" id="star-7" type="radio" name="rating" defaultValue={7} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-7">Rating 7</label>
-          <input className="rating__input" id="star-8" type="radio" name="rating" defaultValue={8} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-8">Rating 8</label>
-          <input className="rating__input" id="star-9" type="radio" name="rating" defaultValue={9} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-9">Rating 9</label>
-          <input className="rating__input" id="star-10" type="radio" name="rating" defaultValue={10} onChange={handleRatingChange}/>
-          <label className="rating__label" htmlFor="star-10">Rating 10</label>
+        <div className="rating__stars" onChange={handleRatingChange}>
+          {ratingStars}
         </div>
       </div>
       <div className="add-review__text">
@@ -69,7 +62,8 @@ const CommentForm = ({id}) => {
           name="review-text"
           id="review-text"
           placeholder="Review text"
-          defaultValue={``}
+          minLength={ReviewTextValidation.MIN_TEXT_LENGTH}
+          maxLength={ReviewTextValidation.MAX_TEXT_LENGTH}
           onChange={handleTextChange}/>
         <div className="add-review__submit">
           <button className="add-review__btn" type="submit" disabled={!isCommentValid}>Post</button>

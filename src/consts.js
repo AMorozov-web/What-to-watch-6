@@ -10,6 +10,7 @@ const FILMS_IN_LIST_LIMIT_MIN = 8;
 const FILMS_IN_LIST_OFFSET = 8;
 const REFRESH_INTERVAL_IN_SECOND = 1;
 const HUNDRED_PERCENT = 100;
+const RATING_STARS_COUNT = 10;
 
 const HttpCode = {
   UNAUTHORIZED: 401
@@ -78,9 +79,7 @@ const Genre = {
   ALL: `all genres`,
 };
 
-const ReviewValidation = {
-  MIN_RATING: 1,
-  MAX_RATING: 10,
+const ReviewTextValidation = {
   MIN_TEXT_LENGTH: 50,
   MAX_TEXT_LENGTH: 400,
 };
@@ -96,6 +95,7 @@ export {
   FILMS_IN_LIST_OFFSET,
   REFRESH_INTERVAL_IN_SECOND,
   HUNDRED_PERCENT,
+  RATING_STARS_COUNT,
   filmPropValidation,
   reviewPropValidation,
   TabType,
@@ -104,5 +104,5 @@ export {
   APIRoute,
   Genre,
   HttpCode,
-  ReviewValidation,
+  ReviewTextValidation,
 };
