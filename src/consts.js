@@ -57,6 +57,7 @@ const AuthorizationStatus = {
   UNKNOWN: `UNKNOWN`,
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
+  ERROR: `ERROR`,
 };
 
 const AppRoute = {
@@ -73,6 +74,7 @@ const APIRoute = {
   FILMS: `/films`,
   PROMO: `/films/promo`,
   FAVORITE: `/favorite`,
+  LOGOUT: `/logout`,
 };
 
 const Genre = {

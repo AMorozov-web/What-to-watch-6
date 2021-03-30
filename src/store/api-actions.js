@@ -52,6 +52,15 @@ const login = ({login: email, password}) => (dispatch, _getState, api) => (
     .then(() => {
       dispatch(redirectToRoute(AppRoute.ROOT));
     })
+    .catch(() => {
+      dispatch(requireAuthorization(AuthorizationStatus.ERROR));
+    })
+);
+
+const logout = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.LOGOUT)
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
+    .catch(() => {})
 );
 
 const changeFilmFavoriteStatus = (id, status) => (dispatch, _getState, api) => (
@@ -79,6 +88,7 @@ export {
   fetchFavorites,
   fetchReviewsById,
   login,
+  logout,
   checkAuth,
   sendReview,
   changeFilmFavoriteStatus,

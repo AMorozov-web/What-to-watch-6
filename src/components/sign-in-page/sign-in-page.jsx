@@ -1,9 +1,12 @@
 import React, {useRef} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../../store/api-actions';
+import {selectAuthStatus} from '../../store/reducers/user/selectors';
+import {AuthorizationStatus} from '../../consts';
 import {Logo} from '../logo/logo';
 
 const SignInPage = () => {
+  const authorizationStatus = useSelector(selectAuthStatus);
   const loginRef = useRef();
   const passwordRef = useRef();
 
@@ -30,6 +33,12 @@ const SignInPage = () => {
           className="sign-in__form"
           onSubmit={handleSubmit}
         >
+          {
+            authorizationStatus === AuthorizationStatus.ERROR &&
+              <div className="sign-in__message">
+                <p>We can’t recognize this email <br /> and password combination. Please try again.</p>
+              </div>
+          }
           <div className="sign-in__fields">
             <div className="sign-in__field">
               <input
