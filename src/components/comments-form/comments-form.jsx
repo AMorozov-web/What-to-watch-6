@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectErrorMessage} from '../../store/reducers/user/selectors';
 import {sendReview} from '../../store/api-actions';
-import {redirectToRoute} from '../../store/middleware/action';
 import {RATING_STARS_COUNT, ReviewTextValidation} from '../../consts';
 
 const getStar = (value) => {
@@ -18,12 +18,25 @@ const getStar = (value) => {
 const ratingStars = Array(RATING_STARS_COUNT).fill().map((_, i) => getStar(i));
 
 const CommentForm = ({id}) => {
-  const dispatch = useDispatch();
+  const errorMessage = useSelector(selectErrorMessage);
   const [review, setReview] = useState({
     rating: 0,
     comment: ``,
   });
   const [isCommentValid, setCommentValid] = useState(false);
+  const dispatch = useDispatch();
+
+  const styles = {
+    display: `block`,
+    width: `auto`,
+    minHeight: `40px`,
+    marginTop: `20px`,
+    padding: `10px`,
+    textAlign: `center`,
+    color: `rgba(252, 7, 7, 0.7)`,
+    border: `2px solid rgba(252, 7, 7, 0.5)`,
+    borderRadius: `8px`,
+  };
 
   const handleRatingChange = (evt) => {
     const {defaultValue} = evt.target;
@@ -38,7 +51,6 @@ const CommentForm = ({id}) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch(sendReview(id, review));
-    dispatch(redirectToRoute(`/films/${id}`));
   };
 
   useEffect(() => {
@@ -69,6 +81,7 @@ const CommentForm = ({id}) => {
           <button className="add-review__btn" type="submit" disabled={!isCommentValid}>Post</button>
         </div>
       </div>
+      {errorMessage && <p style={styles}>{`${errorMessage}. Please try again later`}</p>}
     </form>
   );
 };

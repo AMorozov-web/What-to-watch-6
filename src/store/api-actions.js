@@ -5,7 +5,7 @@ import {
   loadFavorites,
   loadReviewsById,
 } from './reducers/data/action';
-import {requireAuthorization, setAuthInfo} from './reducers/user/action';
+import {requireAuthorization, setAuthInfo, setErrorMessage, setFormDisabled} from './reducers/user/action';
 import {redirectToRoute} from './middleware/action';
 import {AuthorizationStatus, APIRoute, AppRoute} from '../consts';
 
@@ -54,15 +54,24 @@ const login = ({login: email, password}) => (dispatch, _getState, api) => (
     })
 );
 
-const sendReview = (id, sendData) => (dispatch, _getState, api) => (
-  api.post(`/comments/${id}`, sendData)
-    .then(({data}) => dispatch(loadReviewsById(data)))
-);
-
 const changeFilmFavoriteStatus = (id, status) => (dispatch, _getState, api) => (
   api.post(`/favorite/${id}/${status ? 1 : 0}`)
-    .then(() => dispatch(fetchFavorites()))
+  .then(() => dispatch(fetchFavorites()))
 );
+
+const sendReview = (id, sendData) => (dispatch, _getState, api) => {
+  dispatch(setFormDisabled(true));
+
+  return api.post(`/comments/${id}`, sendData)
+    .then(() => {
+      dispatch(setFormDisabled(false));
+      dispatch(redirectToRoute(`/films/${id}`));
+    })
+    .catch(({message}) => {
+      dispatch(setFormDisabled(false));
+      dispatch(setErrorMessage(message));
+    });
+};
 
 export {
   fetchFilms,
