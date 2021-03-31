@@ -1,3 +1,5 @@
+import {AuthorizationStatus, FILMS_IN_LIST_LIMIT_MIN, Genre} from './consts';
+
 const filmMocks = [
   {
     description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
@@ -116,6 +118,30 @@ const filmMocks = [
   },
 ];
 
+const promoMock = {
+  description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
+  rating: 4.1,
+  director: `Martin Scorsese`,
+  starring: [
+    `Leonardo DiCaprio`,
+    `Emily Mortimer`,
+    `Mark Ruffalo`
+  ],
+  genre: `Thriller`,
+  released: 2010,
+  id: 5,
+  title: `Shutter Island`,
+  posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Shutter_Island.jpg`,
+  previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/shutter-island.jpg`,
+  backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Shutter_Island.jpg`,
+  backgroundColor: `#977461`,
+  scoresCount: 1002557,
+  runTime: 138,
+  isFavorite: false,
+  videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+  previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+};
+
 const reviewsMocks = [
   {
     id: 1,
@@ -149,7 +175,110 @@ const reviewsMocks = [
   }
 ];
 
+const favoritesMock = [
+  {
+    description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
+    rating: 4.1,
+    director: `Martin Scorsese`,
+    starring: [
+      `Leonardo DiCaprio`,
+      `Emily Mortimer`,
+      `Mark Ruffalo`
+    ],
+    genre: `Thriller`,
+    released: 2010,
+    id: 5,
+    title: `Shutter Island`,
+    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Shutter_Island.jpg`,
+    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/shutter-island.jpg`,
+    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Shutter_Island.jpg`,
+    backgroundColor: `#977461`,
+    scoresCount: 1002557,
+    runTime: 138,
+    isFavorite: true,
+    videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+    previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  },
+  {
+    description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
+    rating: 4.1,
+    director: `Martin Scorsese`,
+    starring: [
+      `Leonardo DiCaprio`,
+      `Emily Mortimer`,
+      `Mark Ruffalo`
+    ],
+    genre: `Thriller`,
+    released: 2010,
+    id: 6,
+    title: `Shutter Island`,
+    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Shutter_Island.jpg`,
+    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/shutter-island.jpg`,
+    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Shutter_Island.jpg`,
+    backgroundColor: `#977461`,
+    scoresCount: 1002557,
+    runTime: 138,
+    isFavorite: true,
+    videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+    previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  },
+  {
+    description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
+    rating: 4.1,
+    director: `Martin Scorsese`,
+    starring: [
+      `Leonardo DiCaprio`,
+      `Emily Mortimer`,
+      `Mark Ruffalo`
+    ],
+    genre: `Thriller`,
+    released: 2010,
+    id: 7,
+    title: `Shutter Island`,
+    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Shutter_Island.jpg`,
+    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/shutter-island.jpg`,
+    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Shutter_Island.jpg`,
+    backgroundColor: `#977461`,
+    scoresCount: 1002557,
+    runTime: 138,
+    isFavorite: true,
+    videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+    previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  }
+];
+
+const storeMock = {
+  DATA: {
+    films: filmMocks,
+    genres: [`genreOne`, `genreTwo`, `genreThree`],
+    promo: promoMock,
+    favorites: favoritesMock,
+    reviewsForSelectedFilm: [],
+    isFilmsLoaded: true,
+    isPromoLoaded: true,
+    isFavoritesLoaded: true,
+    isReviewsLoaded: true,
+    selectedGenre: Genre.ALL,
+    filmsLimit: FILMS_IN_LIST_LIMIT_MIN,
+    shownFilmsCount: 8,
+  },
+  USER: {
+    authorizationStatus: AuthorizationStatus.AUTH,
+    authInfo: {
+      [`avatar_url`]: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg`,
+      email: `user@mail.ru`,
+      id: 1,
+      name: `UserOne`,
+    },
+    errorMessage: null,
+    isFormDisabled: false,
+  },
+};
+
 export {
   filmMocks,
+  promoMock,
+  favoritesMock,
   reviewsMocks,
+  storeMock,
 };
