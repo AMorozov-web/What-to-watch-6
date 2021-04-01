@@ -32,6 +32,7 @@ const setErrorMessage = createAction(ActionType.SET_ERROR_MESSAGE, (errorMessage
 });
 
 export {
+  ActionType,
   requireAuthorization,
   setAuthInfo,
   setFormDisabled,
