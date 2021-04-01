@@ -20,7 +20,7 @@ const filmMocks = [
     backgroundColor: `#F1E9CE`,
     scoresCount: 48798,
     runTime: 113,
-    isFavorite: false,
+    isFavorite: true,
     videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
@@ -43,7 +43,7 @@ const filmMocks = [
     backgroundColor: `#EBC996`,
     scoresCount: 207824,
     runTime: 119,
-    isFavorite: false,
+    isFavorite: true,
     videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
@@ -66,7 +66,7 @@ const filmMocks = [
     backgroundColor: `#AD9F8B`,
     scoresCount: 165106,
     runTime: 91,
-    isFavorite: false,
+    isFavorite: true,
     videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
     previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
   },
@@ -89,7 +89,7 @@ const filmMocks = [
     backgroundColor: `#BDAD8F`,
     scoresCount: 764976,
     runTime: 122,
-    isFavorite: false,
+    isFavorite: true,
     videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
     previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
@@ -112,34 +112,34 @@ const filmMocks = [
     backgroundColor: `#977461`,
     scoresCount: 1002557,
     runTime: 138,
-    isFavorite: false,
+    isFavorite: true,
     videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
     previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
 ];
 
 const promoMock = {
-  description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
-  rating: 4.1,
-  director: `Martin Scorsese`,
+  description: `Vicenarian Richard travels to Thailand and finds himself in possession of a strange map. Rumours state that it leads to a solitary beach paradise, a tropical bliss. Excited and intrigued, he sets out to find it.`,
+  rating: 3.3,
+  director: `Danny Boyle`,
   starring: [
     `Leonardo DiCaprio`,
-    `Emily Mortimer`,
-    `Mark Ruffalo`
+    `Daniel York`,
+    `Patcharawan Patarakijjanon`
   ],
-  genre: `Thriller`,
-  released: 2010,
-  id: 5,
-  title: `Shutter Island`,
-  posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Shutter_Island.jpg`,
-  previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/shutter-island.jpg`,
-  backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Shutter_Island.jpg`,
-  backgroundColor: `#977461`,
-  scoresCount: 1002557,
-  runTime: 138,
-  isFavorite: false,
-  videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
-  previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  genre: `Adventure`,
+  released: 2000,
+  id: 2,
+  title: `Beach`,
+  posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/beach.jpg`,
+  previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/beach.jpg`,
+  backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/beach.jpg`,
+  backgroundColor: `#EBC996`,
+  scoresCount: 207824,
+  runTime: 119,
+  isFavorite: true,
+  videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+  previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 };
 
 const reviewsMocks = [
@@ -177,6 +177,98 @@ const reviewsMocks = [
 
 const favoritesMock = [
   {
+    description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
+    rating: 3.3,
+    director: `Justin Kurzel`,
+    starring: [
+      `Michael Fassbender`,
+      `Marion Cotillard`,
+      `Jack Madigan`
+    ],
+    genre: `Drama`,
+    released: 2015,
+    id: 1,
+    title: `Macbeth`,
+    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Macbeth.jpg`,
+    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/macbeth.jpg`,
+    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Macbeth.jpg`,
+    backgroundColor: `#F1E9CE`,
+    scoresCount: 48798,
+    runTime: 113,
+    isFavorite: true,
+    videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+    previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    description: `Vicenarian Richard travels to Thailand and finds himself in possession of a strange map. Rumours state that it leads to a solitary beach paradise, a tropical bliss. Excited and intrigued, he sets out to find it.`,
+    rating: 3.3,
+    director: `Danny Boyle`,
+    starring: [
+      `Leonardo DiCaprio`,
+      `Daniel York`,
+      `Patcharawan Patarakijjanon`
+    ],
+    genre: `Adventure`,
+    released: 2000,
+    id: 2,
+    title: `Beach`,
+    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/beach.jpg`,
+    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/beach.jpg`,
+    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/beach.jpg`,
+    backgroundColor: `#EBC996`,
+    scoresCount: 207824,
+    runTime: 119,
+    isFavorite: true,
+    videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+    previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    description: `A year after their father's funeral, three brothers travel across India by train in an attempt to bond with each other.`,
+    rating: 3.6,
+    director: `Wes Anderson`,
+    starring: [
+      `Owen Wilson`,
+      `Adrien Brody`,
+      `Jason Schwartzman`
+    ],
+    genre: `Adventure`,
+    released: 2007,
+    id: 3,
+    title: `Dardjeeling Limited`,
+    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Dardjeeling_Limited.jpg`,
+    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/dardjeeling_limited.jpg`,
+    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Dardjeeling_Limited.jpg`,
+    backgroundColor: `#AD9F8B`,
+    scoresCount: 165106,
+    runTime: 91,
+    isFavorite: true,
+    videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+    previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  },
+  {
+    description: `Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.`,
+    rating: 4.1,
+    director: `Ethan Coen`,
+    starring: [
+      `Tommy Lee Jones`,
+      `Javier Bardem`,
+      `Josh Brolin`
+    ],
+    genre: `Crime`,
+    released: 2007,
+    id: 4,
+    title: `No Country for Old Men`,
+    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/No_Country_for_Old_Men.jpg`,
+    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/no-country-for-old-men.jpg`,
+    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/No_Country_for_Old_Men.jpg`,
+    backgroundColor: `#BDAD8F`,
+    scoresCount: 764976,
+    runTime: 122,
+    isFavorite: true,
+    videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+    previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
+  },
+  {
     description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
     rating: 4.1,
     director: `Martin Scorsese`,
@@ -199,52 +291,6 @@ const favoritesMock = [
     videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
     previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
-  {
-    description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
-    rating: 4.1,
-    director: `Martin Scorsese`,
-    starring: [
-      `Leonardo DiCaprio`,
-      `Emily Mortimer`,
-      `Mark Ruffalo`
-    ],
-    genre: `Thriller`,
-    released: 2010,
-    id: 6,
-    title: `Shutter Island`,
-    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Shutter_Island.jpg`,
-    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/shutter-island.jpg`,
-    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Shutter_Island.jpg`,
-    backgroundColor: `#977461`,
-    scoresCount: 1002557,
-    runTime: 138,
-    isFavorite: true,
-    videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
-    previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  },
-  {
-    description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.`,
-    rating: 4.1,
-    director: `Martin Scorsese`,
-    starring: [
-      `Leonardo DiCaprio`,
-      `Emily Mortimer`,
-      `Mark Ruffalo`
-    ],
-    genre: `Thriller`,
-    released: 2010,
-    id: 7,
-    title: `Shutter Island`,
-    posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Shutter_Island.jpg`,
-    previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/shutter-island.jpg`,
-    backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Shutter_Island.jpg`,
-    backgroundColor: `#977461`,
-    scoresCount: 1002557,
-    runTime: 138,
-    isFavorite: true,
-    videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
-    previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  }
 ];
 
 const storeMock = {
@@ -253,7 +299,7 @@ const storeMock = {
     genres: [`genreOne`, `genreTwo`, `genreThree`],
     promo: promoMock,
     favorites: favoritesMock,
-    reviewsForSelectedFilm: [],
+    reviewsForSelectedFilm: reviewsMocks,
     isFilmsLoaded: true,
     isPromoLoaded: true,
     isFavoritesLoaded: true,
