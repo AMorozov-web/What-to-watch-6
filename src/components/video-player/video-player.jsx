@@ -2,9 +2,14 @@ import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 import {selectFilmById} from '../../store/reducers/data/selectors';
+import {NotFoundPage} from '../not-found-page/not-found-page';
 
 const VideoPlayer = ({id, videoPlayerRef, onPlayerPage, onFilmLoaded}) => {
   const film = useSelector(selectFilmById(id));
+
+  if (!film) {
+    return <NotFoundPage />;
+  }
 
   return (
     <video

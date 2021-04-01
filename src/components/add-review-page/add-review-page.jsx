@@ -6,16 +6,23 @@ import {AppRoute} from '../../consts';
 import {Logo} from '../logo/logo';
 import {CommentForm} from '../comments-form/comments-form';
 import {UserBlock} from '../user-block/user-block';
+import {NotFoundPage} from '../not-found-page/not-found-page';
 
 const AddReviewPage = () => {
   const films = useSelector(selectAllFilms);
   const id = +useParams().id;
+  const reviewedFilm = films.find((film) => film.id === id);
+
+  if (!reviewedFilm) {
+    return <NotFoundPage />;
+  }
+
   const {
     title,
     backgroundImage,
     backgroundColor,
     posterImage,
-  } = films.find((film) => film.id === id);
+  } = reviewedFilm;
 
   const style = {
     backgroundColor,

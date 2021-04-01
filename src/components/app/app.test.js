@@ -67,9 +67,9 @@ describe(`Test App routing`, () => {
     expect(screen.getByText(/My list/i)).toBeInTheDocument();
   });
 
-  it(`When user navigate to /films/:id`, () => {
+  it(`When user navigate to /films/:id and film with this id exists`, () => {
     const history = createMemoryHistory();
-    history.push(AppRoute.FILM_INFO);
+    history.push(`/films/1`);
 
     render(
         <redux.Provider store={mockStore(store)}>
@@ -85,9 +85,25 @@ describe(`Test App routing`, () => {
     expect(screen.getByText(/More like this/i)).toBeInTheDocument();
   });
 
-  it(`When user navigate to /films/:id/review`, () => {
+  it(`When user navigate to /films/:id and film with this id not exists`, () => {
     const history = createMemoryHistory();
-    history.push(AppRoute.FILM_ADD_REVIEW);
+    history.push(`/films/non-existent-id`);
+
+    render(
+        <redux.Provider store={mockStore(store)}>
+          <Router history={history}>
+            <App />
+          </Router>
+        </redux.Provider>
+    );
+
+    expect(screen.getByText(/Page not found/i)).toBeInTheDocument();
+    expect(screen.getByText(/Go to Main page/i)).toBeInTheDocument();
+  });
+
+  it(`When user navigate to /films/:id/review and film with this id exists`, () => {
+    const history = createMemoryHistory();
+    history.push(`films/1/review`);
 
     render(
         <redux.Provider store={mockStore(store)}>
@@ -101,9 +117,25 @@ describe(`Test App routing`, () => {
     expect(screen.getByText(/Post/i)).toBeInTheDocument();
   });
 
-  it(`When user navigate to /player/:id`, () => {
+  it(`When user navigate to /films/:id/review and film with this id not exists`, () => {
     const history = createMemoryHistory();
-    history.push(AppRoute.FILM_PLAYER);
+    history.push(`films/non-existent-id/review`);
+
+    render(
+        <redux.Provider store={mockStore(store)}>
+          <Router history={history}>
+            <App />
+          </Router>
+        </redux.Provider>
+    );
+
+    expect(screen.getByText(/Page not found/i)).toBeInTheDocument();
+    expect(screen.getByText(/Go to Main page/i)).toBeInTheDocument();
+  });
+
+  it(`When user navigate to /player/:id and film with this id exists`, () => {
+    const history = createMemoryHistory();
+    history.push(`/player/1`);
 
     render(
         <redux.Provider store={mockStore(store)}>
@@ -115,6 +147,22 @@ describe(`Test App routing`, () => {
 
     expect(screen.getByText(/Full screen/i)).toBeInTheDocument();
     expect(screen.getByText(/Exit/i)).toBeInTheDocument();
+  });
+
+  it(`When user navigate to /player/:id and film with this id not exists`, () => {
+    const history = createMemoryHistory();
+    history.push(`/player/non-existent-id`);
+
+    render(
+        <redux.Provider store={mockStore(store)}>
+          <Router history={history}>
+            <App />
+          </Router>
+        </redux.Provider>
+    );
+
+    expect(screen.getByText(/Page not found/i)).toBeInTheDocument();
+    expect(screen.getByText(/Go to Main page/i)).toBeInTheDocument();
   });
 
   it(`When user navigate to unknown route`, () => {
