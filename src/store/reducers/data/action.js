@@ -13,7 +13,6 @@ const ActionType = {
   LOAD_PROMO: `data/loadPromo`,
   LOAD_FAVORITES: `data/loadFavorites`,
   COLLECT_GENRES: `data/collectGenres`,
-  COLLECT_STATUSES: `data/collectStatuses`,
   INCREASE_FILMS_LIMIT: `data/increaseFilmsLimit`,
   RESET_FILMS_LIMIT: `data/resetFilmsLimit`,
   INCREASE_SHOWN_FILMS_COUNT: `data/setShownFilmsCount`,
@@ -79,6 +78,7 @@ const setShownFilmsCount = createAction(ActionType.INCREASE_SHOWN_FILMS_COUNT, (
 });
 
 export {
+  ActionType,
   changeGenre,
   loadFilms,
   loadPromo,
