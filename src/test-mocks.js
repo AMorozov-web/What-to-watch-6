@@ -293,7 +293,30 @@ const favoritesMock = [
   },
 ];
 
-const storeMock = {
+const storeInitialMock = {
+  DATA: {
+    films: [],
+    genres: [],
+    promo: {},
+    favorites: [],
+    reviewsForSelectedFilm: [],
+    isFilmsLoaded: false,
+    isPromoLoaded: false,
+    isFavoritesLoaded: false,
+    isReviewsLoaded: false,
+    selectedGenre: Genre.ALL,
+    filmsLimit: FILMS_IN_LIST_LIMIT_MIN,
+    shownFilmsCount: 0,
+  },
+  USER: {
+    authorizationStatus: AuthorizationStatus.UNKNOWN,
+    authInfo: {},
+    errorMessage: null,
+    isFormDisabled: false,
+  },
+};
+
+const storeFilledMock = {
   DATA: {
     films: filmMocks,
     genres: [`genreOne`, `genreTwo`, `genreThree`],
@@ -326,5 +349,6 @@ export {
   promoMock,
   favoritesMock,
   reviewsMocks,
-  storeMock,
+  storeInitialMock,
+  storeFilledMock,
 };

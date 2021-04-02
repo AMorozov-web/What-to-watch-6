@@ -5,7 +5,7 @@ import {createMemoryHistory} from 'history';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as redux from 'react-redux';
-import {storeMock} from '../../test-mocks';
+import {storeFilledMock} from '../../test-mocks';
 import {createAPI} from '../../services/api';
 import {AppRoute} from '../../consts';
 import {App} from './app';
@@ -13,7 +13,7 @@ import {App} from './app';
 const api = createAPI(() => {});
 const middleware = [thunk.withExtraArgument(api)];
 const mockStore = configureStore(middleware);
-const store = storeMock;
+const store = storeFilledMock;
 
 describe(`Test App routing`, () => {
   jest.spyOn(redux, `useDispatch`);
