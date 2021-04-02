@@ -344,6 +344,141 @@ const storeFilledMock = {
   },
 };
 
+const filmsResponseMock = [
+  {
+    "name": `name`,
+    "poster_image": `poster_image`,
+    "preview_image": `preview_image`,
+    "background_image": `background_image`,
+    "background_color": `background_color`,
+    "description": `description`,
+    "rating": 0,
+    "scores_count": 0,
+    "director": `director`,
+    "starring": [],
+    "run_time": 0,
+    "genre": `genre`,
+    "released": 0,
+    "id": 1,
+    "is_favorite": false,
+    "video_link": `video_link`,
+    "preview_video_link": `preview_video_link`,
+  }
+];
+
+const adaptedFilmsResponseMock = [
+  {
+    title: `name`,
+    posterImage: `poster_image`,
+    previewImage: `preview_image`,
+    backgroundImage: `background_image`,
+    backgroundColor: `background_color`,
+    description: `description`,
+    rating: 0,
+    scoresCount: 0,
+    director: `director`,
+    starring: [],
+    runTime: 0,
+    genre: `genre`,
+    released: 0,
+    id: 1,
+    isFavorite: false,
+    videoLink: `video_link`,
+    previewVideoLink: `preview_video_link`,
+  }
+];
+
+const collectedGenresMock = [Genre.ALL, `genre`];
+
+const promoResponseMock = {
+  "name": `name`,
+  "poster_image": `poster_image`,
+  "preview_image": `preview_image`,
+  "background_image": `background_image`,
+  "background_color": `background_color`,
+  "description": `description`,
+  "rating": 0,
+  "scores_count": 0,
+  "director": `director`,
+  "starring": [],
+  "run_time": 0,
+  "genre": `genre`,
+  "released": 0,
+  "id": 1,
+  "is_favorite": false,
+  "video_link": `video_link`,
+  "preview_video_link": `preview_video_link`,
+};
+
+const adaptedPromoResponseMock = {
+  title: `name`,
+  posterImage: `poster_image`,
+  previewImage: `preview_image`,
+  backgroundImage: `background_image`,
+  backgroundColor: `background_color`,
+  description: `description`,
+  rating: 0,
+  scoresCount: 0,
+  director: `director`,
+  starring: [],
+  runTime: 0,
+  genre: `genre`,
+  released: 0,
+  id: 1,
+  isFavorite: false,
+  videoLink: `video_link`,
+  previewVideoLink: `preview_video_link`,
+};
+
+const favoritesResponseMock = [
+  {
+    "name": `name`,
+    "poster_image": `poster_image`,
+    "preview_image": `preview_image`,
+    "background_image": `background_image`,
+    "background_color": `background_color`,
+    "description": `description`,
+    "rating": 0,
+    "scores_count": 0,
+    "director": `director`,
+    "starring": [],
+    "run_time": 0,
+    "genre": `genre`,
+    "released": 0,
+    "id": 1,
+    "is_favorite": true,
+    "video_link": `video_link`,
+    "preview_video_link": `preview_video_link`,
+  }
+];
+
+const adaptedFavoritesResponseMock = [
+  {
+    title: `name`,
+    posterImage: `poster_image`,
+    previewImage: `preview_image`,
+    backgroundImage: `background_image`,
+    backgroundColor: `background_color`,
+    description: `description`,
+    rating: 0,
+    scoresCount: 0,
+    director: `director`,
+    starring: [],
+    runTime: 0,
+    genre: `genre`,
+    released: 0,
+    id: 1,
+    isFavorite: true,
+    videoLink: `video_link`,
+    previewVideoLink: `preview_video_link`,
+  }
+];
+
+const commentToSendMock = {
+  rating: 5,
+  comment: `this is the comment text`,
+};
+
 export {
   filmMocks,
   promoMock,
@@ -351,4 +486,12 @@ export {
   reviewsMocks,
   storeInitialMock,
   storeFilledMock,
+  filmsResponseMock,
+  adaptedFilmsResponseMock,
+  collectedGenresMock,
+  promoResponseMock,
+  adaptedPromoResponseMock,
+  favoritesResponseMock,
+  adaptedFavoritesResponseMock,
+  commentToSendMock,
 };
