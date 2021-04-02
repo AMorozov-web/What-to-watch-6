@@ -239,6 +239,7 @@ describe(`Api-actions testing`, () => {
     return changeStatusAction(changeStatusDispatch, getState, api)
     .then(() => favoritesLoadingAction(loadFavoritesDispatch, getState, api))
     .then(() => {
+      expect(changeStatusDispatch).toHaveBeenCalledTimes(1);
       expect(loadFavoritesDispatch).toHaveBeenCalledTimes(1);
       expect(loadFavoritesDispatch).toHaveBeenNthCalledWith(1, {
         type: DataActionType.LOAD_FAVORITES,
