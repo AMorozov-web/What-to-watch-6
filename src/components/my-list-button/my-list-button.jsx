@@ -20,13 +20,14 @@ const MyListButton = ({id}) => {
     <button
       className="btn btn--list movie-card__button"
       type="button"
-      onClick={handleMyListButtonClick}>
+      onClick={handleMyListButtonClick}
+      data-testid="my-list-button">
       {isFavorite ?
-        <svg viewBox="0 0 18 14" width={18} height={14}>
+        <svg viewBox="0 0 18 14" width={18} height={14} data-testid="in-favorite">
           <use xlinkHref="#in-list" />
         </svg>
         :
-        <svg viewBox="0 0 19 20" width={19} height={20}>
+        <svg viewBox="0 0 19 20" width={19} height={20} data-testid="not-in-favorite">
           <use xlinkHref="#add" />
         </svg>
       }
