@@ -37,7 +37,7 @@ const FilmReviewsTab = () => {
       reviewsForSelectedFilm.length);
 
   return (
-    <div className="movie-card__reviews movie-card__row">
+    <div className="movie-card__reviews movie-card__row" data-testid="reviews">
       <div className="movie-card__reviews-col">
         {getReviews(firstColumnReviews)}
       </div>

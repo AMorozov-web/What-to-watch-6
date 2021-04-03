@@ -13,8 +13,8 @@ const Review = ({review}) => {
   } = review;
 
   return (
-    <div className="review">
-      <blockquote className="review__quote">
+    <div className="review" data-testid="review">
+      <blockquote className="review__quote" data-testid="review__quote">
         <p className="review__text">{comment}</p>
         <footer className="review__details">
           <cite className="review__author">{name}</cite>
