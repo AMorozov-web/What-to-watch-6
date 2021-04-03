@@ -11,7 +11,7 @@ const MoreLikeThis = ({genre, selectedFilmId}) => {
 
   return (
     <section className="catalog catalog--like-this">
-      <h2 className="catalog__title">More like this</h2>
+      <h2 className="catalog__title" data-testid="like-this">More like this</h2>
       <MoviesList films={similarFilms} count={SIMILAR_FILMS_MAX_COUNT}/>
     </section>
   );
