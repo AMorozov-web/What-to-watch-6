@@ -36,7 +36,7 @@ const MainPage = () => {
     <>
       <Promo />
       <div className="page-content">
-        <section className="catalog">
+        <section className="catalog" data-testid="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenreList />
           <MoviesList />
