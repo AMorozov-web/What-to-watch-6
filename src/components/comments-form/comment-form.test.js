@@ -14,17 +14,18 @@ const api = createAPI(() => {});
 const middleware = [thunk.withExtraArgument(api)];
 const mockStore = configureStore(middleware);
 
-const store = mockStore({
-  USER: {
-    errorMessage: null,
-  },
-});
-
 describe(`Add-review form testing`, () => {
 
   it(`Component is render correctly`, () => {
     const history = createMemoryHistory();
     const exampleId = 1;
+    const store = mockStore({
+      USER: {
+        errorMessage: null,
+      },
+    });
+
+    store.dispatch = jest.fn();
 
     render(
         <redux.Provider store={store}>
@@ -40,9 +41,16 @@ describe(`Add-review form testing`, () => {
   });
 
   it(`Component submit data when submit-btn is clicked`, () => {
-    const dispatch = jest.spyOn(redux, `useDispatch`);
     const history = createMemoryHistory();
     const exampleId = 1;
+
+    const store = mockStore({
+      USER: {
+        errorMessage: null,
+      },
+    });
+
+    store.dispatch = jest.fn();
 
     render(
         <redux.Provider store={store}>
@@ -56,7 +64,9 @@ describe(`Add-review form testing`, () => {
     userEvent.type(screen.getByTestId(`add-review-textarea`), `Checking text-area`);
     expect(screen.getByDisplayValue(/Checking text-area/i)).toBeInTheDocument();
     fireEvent.submit(screen.getByTestId(`add-review-form`));
-    expect(dispatch).toBeCalled();
+    expect(store.dispatch).toBeCalled();
+    const action = store.dispatch.mock.calls[0][0];
+    expect(action).toBeInstanceOf(Function);
   });
 });
 
