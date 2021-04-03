@@ -10,7 +10,6 @@ import {AppRoute} from '../../consts';
 const mockStore = configureStore({});
 
 describe(`Add-review page testing`, () => {
-  jest.spyOn(redux, `useSelector`);
 
   it(`Component with correct data is render correctly`, () => {
     const store = mockStore(storeFilledMock);

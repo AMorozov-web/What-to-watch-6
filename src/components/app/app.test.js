@@ -16,8 +16,6 @@ const mockStore = configureStore(middleware);
 const store = storeFilledMock;
 
 describe(`Test App routing`, () => {
-  jest.spyOn(redux, `useDispatch`);
-  jest.spyOn(redux, `useSelector`);
 
   it(`When user navigate to /`, () => {
     const history = createMemoryHistory();
