@@ -221,14 +221,12 @@ describe(`Api-actions testing`, () => {
 
   it(`should make a correct call to /favorite/:id/:status`, () => {
     const apiMock = new MockAdapter(api);
-    const changeStatusDispatch = jest.fn();
-    const loadFavoritesDispatch = jest.fn();
+    const dispatch = jest.fn();
     const getState = () => {};
     const exampleId = 1;
     const exampleStatus = 1;
     const exampleResponse = {response: `response body`};
     const changeStatusAction = changeFilmFavoriteStatus(exampleId, exampleStatus);
-    const favoritesLoadingAction = fetchFavorites();
 
     apiMock
       .onPost(`/favorite/${exampleId}/${exampleStatus}`)
@@ -236,15 +234,22 @@ describe(`Api-actions testing`, () => {
       .onGet(APIRoute.FAVORITE)
       .reply(200, favoritesResponseMock);
 
-    return changeStatusAction(changeStatusDispatch, getState, api)
-    .then(() => favoritesLoadingAction(loadFavoritesDispatch, getState, api))
-    .then(() => {
-      expect(changeStatusDispatch).toHaveBeenCalledTimes(1);
-      expect(loadFavoritesDispatch).toHaveBeenCalledTimes(1);
-      expect(loadFavoritesDispatch).toHaveBeenNthCalledWith(1, {
-        type: DataActionType.LOAD_FAVORITES,
-        payload: adaptedFavoritesResponseMock,
+    return changeStatusAction(dispatch, getState, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+
+        const favoritesAction = dispatch.mock.calls[0][0];
+
+        expect(favoritesAction).toBeInstanceOf(Function);
+
+        return favoritesAction(dispatch, getState, api)
+          .then(() => {
+            expect(dispatch).toHaveBeenCalledTimes(2);
+            expect(dispatch).toHaveBeenNthCalledWith(2, {
+              type: DataActionType.LOAD_FAVORITES,
+              payload: adaptedFavoritesResponseMock,
+            });
+          });
       });
-    });
   });
 });
