@@ -51,7 +51,8 @@ const MovieCard = ({film}) => {
       className="small-movie-card catalog__movies-card"
       onMouseEnter={() => handleMouseEnter()}
       onMouseLeave={() => handleMouseLeave()}
-      onClick={() => handleCardClick()}>
+      onClick={() => handleCardClick()}
+      data-testid="movie-card">
       <div className="small-movie-card__image">
         <MemoizedVideoPlayer id={id} videoPlayerRef={videoPlayerRef} />
       </div>
