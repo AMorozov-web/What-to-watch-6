@@ -1,7 +1,7 @@
 
 import {data} from './data-reducer';
 import {ActionType} from './action';
-import {favoritesMock, filmMocks, promoMock, reviewsMocks, storeInitialMock} from '../../../test-mocks';
+import {favoritesMock, filmsMocks, promoMock, reviewsMocks, storeInitialMock} from '../../../test-mocks';
 import {FILMS_IN_LIST_LIMIT_MIN, FILMS_IN_LIST_OFFSET, Genre} from '../../../consts';
 
 describe(`Data-reducer works correctly`, () => {
@@ -19,11 +19,11 @@ describe(`Data-reducer works correctly`, () => {
 
     const action = {
       type: ActionType.LOAD_FILMS,
-      payload: filmMocks,
+      payload: filmsMocks,
     };
 
     expect(data(state, action))
-      .toEqual({films: filmMocks, isFilmsLoaded: true});
+      .toEqual({films: filmsMocks, isFilmsLoaded: true});
   });
 
   it(`should update promo and isPromoLoaded by the received value`, () => {

@@ -1,6 +1,6 @@
 import {AuthorizationStatus, FILMS_IN_LIST_LIMIT_MIN, Genre} from './consts';
 
-const filmMocks = [
+const filmsMocks = [
   {
     description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
     rating: 3.3,
@@ -117,6 +117,30 @@ const filmMocks = [
     previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
 ];
+
+const oneFilmMock = {
+  description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
+  rating: 3.3,
+  director: `Justin Kurzel`,
+  starring: [
+    `Michael Fassbender`,
+    `Marion Cotillard`,
+    `Jack Madigan`
+  ],
+  genre: `Drama`,
+  released: 2015,
+  id: 1,
+  title: `Macbeth`,
+  posterImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/poster/Macbeth.jpg`,
+  previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/preview/macbeth.jpg`,
+  backgroundImage: `https://assets.htmlacademy.ru/intensives/javascript-3/film/background/Macbeth.jpg`,
+  backgroundColor: `#F1E9CE`,
+  scoresCount: 48798,
+  runTime: 113,
+  isFavorite: true,
+  videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+  previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+};
 
 const promoMock = {
   description: `Vicenarian Richard travels to Thailand and finds himself in possession of a strange map. Rumours state that it leads to a solitary beach paradise, a tropical bliss. Excited and intrigued, he sets out to find it.`,
@@ -318,7 +342,7 @@ const storeInitialMock = {
 
 const storeFilledMock = {
   DATA: {
-    films: filmMocks,
+    films: filmsMocks,
     genres: [`genreOne`, `genreTwo`, `genreThree`],
     promo: promoMock,
     favorites: favoritesMock,
@@ -480,7 +504,8 @@ const commentToSendMock = {
 };
 
 export {
-  filmMocks,
+  filmsMocks,
+  oneFilmMock,
   promoMock,
   favoritesMock,
   reviewsMocks,

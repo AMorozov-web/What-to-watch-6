@@ -62,7 +62,7 @@ const CommentForm = ({id}) => {
   }, [review]);
 
   return (
-    <form onSubmit={handleSubmit} className="add-review__form">
+    <form onSubmit={handleSubmit} className="add-review__form" data-testid={`add-review-form`}>
       <div className="rating">
         <div className="rating__stars" onChange={handleRatingChange}>
           {ratingStars}
@@ -76,7 +76,8 @@ const CommentForm = ({id}) => {
           placeholder="Review text"
           minLength={ReviewTextValidation.MIN_TEXT_LENGTH}
           maxLength={ReviewTextValidation.MAX_TEXT_LENGTH}
-          onChange={handleTextChange}/>
+          onChange={handleTextChange}
+          data-testid={`add-review-textarea`}/>
         <div className="add-review__submit">
           <button className="add-review__btn" type="submit" disabled={!isCommentValid}>Post</button>
         </div>

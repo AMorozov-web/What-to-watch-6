@@ -14,11 +14,11 @@ describe(`Add-review page testing`, () => {
 
   it(`Component with correct data is render correctly`, () => {
     const store = mockStore(storeFilledMock);
-    const correctID = 1;
+    const correctId = 1;
 
     render(
         <redux.Provider store={store}>
-          <MemoryRouter initialEntries={[`/films/${correctID}/review`]}>
+          <MemoryRouter initialEntries={[`/films/${correctId}/review`]}>
             <Route path={AppRoute.FILM_ADD_REVIEW}>
               <AddReviewPage />
             </Route>
@@ -32,11 +32,11 @@ describe(`Add-review page testing`, () => {
 
   it(`Component with uncorrect data is render Not Found`, () => {
     const store = mockStore(storeFilledMock);
-    const uncorrectID = `uncorrect-id`;
+    const uncorrectId = `uncorrect-id`;
 
     render(
         <redux.Provider store={store}>
-          <MemoryRouter initialEntries={[`/films/${uncorrectID}/review`]}>
+          <MemoryRouter initialEntries={[`/films/${uncorrectId}/review`]}>
             <Route path={AppRoute.FILM_ADD_REVIEW}>
               <AddReviewPage />
             </Route>
