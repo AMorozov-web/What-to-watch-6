@@ -25,7 +25,7 @@ const MoviesList = ({films, count, onFavoritesPage}) => {
   }, [allFilms.length]);
 
   return (
-    <div className="catalog__movies-list">
+    <div className="catalog__movies-list" data-testid="movies-list">
       {filmsInList}
     </div>
   );
