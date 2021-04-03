@@ -199,6 +199,17 @@ const reviewsMocks = [
   }
 ];
 
+const oneReviewMock = {
+  id: 1,
+  user: {
+    id: 15,
+    name: `Kendall`
+  },
+  rating: 6,
+  comment: `I personally found this movie to be boring. Definitely one of the most boring movies I've ever seen.`,
+  date: `2021-02-15T08:04:28.658Z`
+};
+
 const favoritesMock = [
   {
     description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.`,
@@ -509,6 +520,7 @@ export {
   promoMock,
   favoritesMock,
   reviewsMocks,
+  oneReviewMock,
   storeInitialMock,
   storeFilledMock,
   filmsResponseMock,
