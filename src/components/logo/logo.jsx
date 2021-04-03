@@ -15,11 +15,12 @@ const Logo = ({centered, onMainPage}) => {
   };
 
   return (
-    <div className="logo">
+    <div className="logo" data-testid="logo">
       <a
         href={onMainPage ? `` : `/`}
         className={`logo__link ${centered ? `logo__link--light` : ``}`}
         onClick={handleLogoClick}
+        data-testid="logo__link"
       >
         <span className="logo__letter logo__letter--1">W</span>
         <span className="logo__letter logo__letter--2">T</span>
