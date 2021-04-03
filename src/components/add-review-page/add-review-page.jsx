@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {selectAllFilms} from '../../store/reducers/data/selectors';
+import {selectFilmById} from '../../store/reducers/data/selectors';
 import {AppRoute} from '../../consts';
 import {Logo} from '../logo/logo';
 import {CommentForm} from '../comments-form/comments-form';
@@ -9,9 +9,8 @@ import {UserBlock} from '../user-block/user-block';
 import {NotFoundPage} from '../not-found-page/not-found-page';
 
 const AddReviewPage = () => {
-  const films = useSelector(selectAllFilms);
   const id = +useParams().id;
-  const reviewedFilm = films.find((film) => film.id === id);
+  const reviewedFilm = useSelector(selectFilmById(id));
 
   if (!reviewedFilm) {
     return <NotFoundPage />;
@@ -40,7 +39,7 @@ const AddReviewPage = () => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={AppRoute.ROOT} className="breadcrumbs__link" >The Grand Budapest Hotel</Link>
+                <Link to={AppRoute.ROOT} className="breadcrumbs__link" >{title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -50,7 +49,7 @@ const AddReviewPage = () => {
           <UserBlock />
         </header>
         <div className="movie-card__poster movie-card__poster--small">
-          <img src={posterImage} alt={title} width={218} height={327} />
+          <img src={posterImage} alt={`${title} poster`} width={218} height={327} />
         </div>
       </div>
       <div className="add-review">
