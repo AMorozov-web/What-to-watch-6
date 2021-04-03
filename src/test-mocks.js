@@ -354,7 +354,7 @@ const storeInitialMock = {
 const storeFilledMock = {
   DATA: {
     films: filmsMocks,
-    genres: [`genreOne`, `genreTwo`, `genreThree`],
+    genres: [Genre.ALL, `genreOne`, `genreTwo`, `genreThree`],
     promo: promoMock,
     favorites: favoritesMock,
     reviewsForSelectedFilm: reviewsMocks,

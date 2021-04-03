@@ -32,7 +32,7 @@ const GenreList = () => {
   };
 
   return (
-    <ul className="catalog__genres-list">
+    <ul className="catalog__genres-list" data-testid="genres-list">
       {genres.map((genre) => getGenre(genre))}
     </ul>
   );
