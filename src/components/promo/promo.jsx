@@ -18,7 +18,7 @@ const Promo = () => {
   } = promo;
 
   return (
-    <section className="movie-card">
+    <section className="movie-card" data-testid="promo">
       <div className="movie-card__bg">
         <img src={backgroundImage} alt={title} />
       </div>
