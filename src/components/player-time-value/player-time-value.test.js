@@ -6,7 +6,7 @@ import {PlayerTimeValue} from './player-time-value';
 
 describe(`Player time value testing`, () => {
 
-  it(`Component is render correctly`, () => {
+  it(`Component is render correctly and returned data in correct format`, () => {
     const history = createMemoryHistory();
     const exampleTimeInSec = 1000;
     const expected = /^([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)$/i;
