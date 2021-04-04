@@ -14,7 +14,7 @@ const api = createAPI(() => {});
 const middleware = [thunk.withExtraArgument(api)];
 const mockStore = configureStore(middleware);
 
-describe(`Add-review form testing`, () => {
+describe(`Comment form testing`, () => {
 
   it(`Component is render correctly`, () => {
     const history = createMemoryHistory();

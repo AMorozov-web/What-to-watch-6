@@ -70,7 +70,7 @@ describe(`Sign-in page testing`, () => {
     expect(action).toBeInstanceOf(Function);
   });
 
-  it(`Component shows error when authorizationStatus is in error`, () => {
+  it(`Component shows error when authorizationStatus is error`, () => {
     const history = createMemoryHistory();
 
     const store = mockStore({
