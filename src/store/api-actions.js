@@ -15,21 +15,25 @@ const fetchFilms = () => (dispatch, _getState, api) => (
       dispatch(loadFilms(data));
       dispatch(collectGenres(data));
     })
+    .catch(() => {})
 );
 
 const fetchPromo = () => (dispatch, _getState, api) => (
   api.get(APIRoute.PROMO)
     .then(({data}) => dispatch(loadPromo(data)))
+    .catch(() => {})
 );
 
 const fetchFavorites = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FAVORITE)
     .then(({data}) => dispatch(loadFavorites(data)))
+    .catch(() => {})
 );
 
 const fetchReviewsById = (id) => (dispatch, _getState, api) => (
   api.get(`/comments/${id}`)
     .then(({data}) => dispatch(loadReviewsById(data)))
+    .catch(() => {})
 );
 
 const checkAuth = () => (dispatch, _getState, api) => (
@@ -66,6 +70,7 @@ const logout = () => (dispatch, _getState, api) => (
 const changeFilmFavoriteStatus = (id, status) => (dispatch, _getState, api) => (
   api.post(`/favorite/${id}/${status ? 1 : 0}`)
   .then(() => dispatch(fetchFavorites()))
+  .catch(() => {})
 );
 
 const sendReview = (id, sendData) => (dispatch, _getState, api) => {
