@@ -27,36 +27,6 @@ const adaptToClient = (film) => {
   return adaptedFilm;
 };
 
-const adaptToServer = (film) => {
-  const adaptedFilm = {
-    ...film,
-    [`name`]: film.title,
-    [`poster_image`]: film.posterImage,
-    [`preview_image`]: film.previewImage,
-    [`background_image`]: film.backgroundImage,
-    [`background_color`]: film.backgroundColor,
-    [`scores_count`]: film.scoresCount,
-    [`run_time`]: film.runTime,
-    [`is_favorite`]: film.isFavorite,
-    [`video_link`]: film.videoLink,
-    [`preview_video_link`]: film.previewVideoLink,
-  };
-
-  delete adaptedFilm.title;
-  delete adaptedFilm.posterImage;
-  delete adaptedFilm.previewImage;
-  delete adaptedFilm.backgroundImage;
-  delete adaptedFilm.backgroundColor;
-  delete adaptedFilm.scoresCount;
-  delete adaptedFilm.runTime;
-  delete adaptedFilm.isFavorite;
-  delete adaptedFilm.videoLink;
-  delete adaptedFilm.previewVideoLink;
-
-  return adaptedFilm;
-};
-
 export {
   adaptToClient,
-  adaptToServer
 };
