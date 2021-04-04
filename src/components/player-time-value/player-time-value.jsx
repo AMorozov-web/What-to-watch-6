@@ -7,7 +7,7 @@ dayjs.extend(duration);
 const PlayerTimeValue = ({timeElapsed}) => {
 
   return (
-    <div className="player__time-value">{dayjs.duration(timeElapsed, `seconds`).format(`H:mm:ss`)}</div>
+    <div className="player__time-value" data-testid="time-value">{dayjs.duration(timeElapsed, `seconds`).format(`H:mm:ss`)}</div>
   );
 };
 
