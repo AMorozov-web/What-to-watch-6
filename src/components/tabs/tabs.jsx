@@ -27,12 +27,14 @@ const Tabs = ({film}) => {
 
   return (
     <div className="movie-card__desc">
-      <nav className="movie-nav movie-card__nav">
+      <nav className="movie-nav movie-card__nav" data-testid="tabs-nav">
         <ul className="movie-nav__list">
-          <li className={`movie-nav__item ${selectedTab === TabType.OVERVIEW ? `movie-nav__item--active` : ``}`}>
+          <li className={`movie-nav__item ${selectedTab === TabType.OVERVIEW ? `movie-nav__item--active` : ``}`}
+            data-testid="item-overview">
             <a href="#" className="movie-nav__link" onClick={selectTab}>Overview</a>
           </li>
-          <li className={`movie-nav__item ${selectedTab === TabType.DETAILS ? `movie-nav__item--active` : ``}`}>
+          <li className={`movie-nav__item ${selectedTab === TabType.DETAILS ? `movie-nav__item--active` : ``}`}
+            data-testid="item-details">
             <a href="#" className="movie-nav__link" onClick={selectTab}>Details</a>
           </li>
           <li className={`movie-nav__item ${selectedTab === TabType.REVIEWS ? `movie-nav__item--active` : ``}`}>
