@@ -32,6 +32,7 @@ const SignInPage = () => {
           action="#"
           className="sign-in__form"
           onSubmit={handleSubmit}
+          data-testid="sign-in-form"
         >
           {
             authorizationStatus === AuthorizationStatus.ERROR &&
@@ -48,6 +49,7 @@ const SignInPage = () => {
                 placeholder="Email address"
                 name="user-email"
                 id="user-email"
+                data-testid="user-email"
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
@@ -60,6 +62,7 @@ const SignInPage = () => {
                 name="user-password"
                 id="user-password"
                 autoComplete="on"
+                data-testid="user-password"
               />
               <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
             </div>
