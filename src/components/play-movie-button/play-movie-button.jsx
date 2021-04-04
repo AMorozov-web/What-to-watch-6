@@ -16,7 +16,8 @@ const PlayMovieButton = ({id}) => {
     <button
       className="btn btn--play movie-card__button"
       type="button"
-      onClick={handlePlayButtonClick}>
+      onClick={handlePlayButtonClick}
+      data-testid="play-button">
       <svg viewBox="0 0 19 19" width={19} height={19}>
         <use xlinkHref="#play-s" />
       </svg>

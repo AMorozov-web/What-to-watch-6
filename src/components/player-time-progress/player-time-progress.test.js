@@ -4,7 +4,7 @@ import {render, screen} from '@testing-library/react';
 import {createMemoryHistory} from 'history';
 import {PlayerTimeProgress} from './player-time-progress';
 
-describe(`Player time value testing`, () => {
+describe(`Player progress testing`, () => {
 
   it(`Component is render correctly and returned data in correct format`, () => {
     const history = createMemoryHistory();
