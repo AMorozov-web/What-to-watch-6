@@ -26,11 +26,11 @@ const UserBlock = ({onMyListPage}) => {
     <div className="user-block">
       {authorizationStatus === AuthorizationStatus.AUTH
         ?
-        <div className="user-block__avatar">
+        <div className="user-block__avatar" data-testid="user-block-avatar">
           <img src={authInfo[`avatar_url`]} alt="User avatar" width={63} height={63} onClick={handleAvatarClick}/>
         </div>
         :
-        <a href="sign-in.html" className="user-block__link" onClick={handleLinkClick}>Sign in</a>
+        <a href="sign-in.html" className="user-block__link" onClick={handleLinkClick} data-testid="user-block-link">Sign in</a>
       }
     </div>
   );
