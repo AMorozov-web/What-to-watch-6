@@ -21,6 +21,7 @@ const VideoPlayer = ({id, videoPlayerRef, onPlayerPage, onFilmLoaded}) => {
       width="100%"
       height="100%"
       preload={onPlayerPage ? `auto` : `none`}
+      data-testid="video-player"
       muted />
   );
 };
