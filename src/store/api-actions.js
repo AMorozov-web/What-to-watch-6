@@ -74,6 +74,7 @@ const changeFilmFavoriteStatus = (id, status) => (dispatch, _getState, api) => (
 );
 
 const sendReview = (id, sendData) => (dispatch, _getState, api) => {
+  dispatch(setErrorMessage(null));
   dispatch(setFormDisabled(true));
 
   return api.post(`/comments/${id}`, sendData)

@@ -6,8 +6,16 @@ import {selectErrorMessage, selectFormDisabled} from '../../store/reducers/user/
 import {sendReview} from '../../store/api-actions';
 import {RATING_STARS_COUNT, ReviewTextValidation} from '../../consts';
 
-const getErrorMessage = (errorMessage) => {
+const CommentForm = ({id}) => {
+  const errorMessage = useSelector(selectErrorMessage);
+  const isFormDisabled = useSelector(selectFormDisabled);
+  const [review, setReview] = useState({
+    rating: 0,
+    comment: ``,
+  });
+  const [isCommentValid, setCommentValid] = useState(false);
   const dispatch = useDispatch();
+
   const styles = {
     display: `block`,
     width: `auto`,
@@ -19,25 +27,6 @@ const getErrorMessage = (errorMessage) => {
     border: `2px solid rgba(252, 7, 7, 0.5)`,
     borderRadius: `8px`,
   };
-
-  setTimeout(() => {
-    dispatch(setErrorMessage(null));
-  }, 3000);
-
-  return (
-    <p style={styles}>{`${errorMessage}. Please try again later`}</p>
-  );
-};
-
-const CommentForm = ({id}) => {
-  const errorMessage = useSelector(selectErrorMessage);
-  const isFormDisabled = useSelector(selectFormDisabled);
-  const [review, setReview] = useState({
-    rating: 0,
-    comment: ``,
-  });
-  const [isCommentValid, setCommentValid] = useState(false);
-  const dispatch = useDispatch();
 
   const handleRatingChange = (evt) => {
     const {defaultValue} = evt.target;
@@ -61,6 +50,12 @@ const CommentForm = ({id}) => {
 
     setCommentValid(isRatingValid && isTextValid);
   }, [review]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(setErrorMessage(null));
+    };
+  }, []);
 
   const getStar = (value) => {
 
@@ -96,7 +91,7 @@ const CommentForm = ({id}) => {
           <button className="add-review__btn" type="submit" disabled={!isCommentValid || isFormDisabled}>Post</button>
         </div>
       </div>
-      {errorMessage && getErrorMessage(errorMessage)}
+      {errorMessage && <p style={styles}>{`${errorMessage}. Please try again later`}</p>}
     </form>
   );
 };
